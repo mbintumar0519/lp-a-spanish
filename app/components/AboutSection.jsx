@@ -93,7 +93,7 @@ export default function AboutSection() {
               color: 'var(--gray-500)',
               lineHeight: '1.6'
             }}>
-              This is a Phase 3 global research study testing <strong>olpasiran</strong>, an investigational medication that targets lp(a) production in the liver. With <strong>1 in 5 people</strong> having elevated lp(a)—often without knowing it—this study aims to see if lowering lp(a) can help prevent first major heart attacks, strokes, or urgent heart procedures.
+              This is a Phase 3 global research study testing <strong>olpasiran</strong>, an investigational medication that targets Lp(a) production in the liver. With <strong>1 in 5 people</strong> having elevated Lp(a)—often without knowing it—this study aims to see if lowering Lp(a) can help prevent first major heart attacks, strokes, or urgent heart procedures.
             </p>
           </div>
           
@@ -129,12 +129,12 @@ export default function AboutSection() {
               color: 'var(--gray-900)',
               marginBottom: 'var(--space-4)',
               fontWeight: '600'
-            }}>What Is lp(a)?</h3>
+            }}>What Is Lp(a)?</h3>
             <p style={{
               color: 'var(--gray-500)',
               lineHeight: '1.6'
             }}>
-              Lipoprotein(a), or lp(a), is a <strong>genetic protein in your blood that builds up regardless of diet or exercise</strong>. Unlike other cholesterol, you can't control it with lifestyle changes. High lp(a) increases stroke risk by <strong>60%</strong>, yet <strong>90% of doctors don't regularly check it</strong>. It's typically not included in standard cholesterol tests.
+              Lipoprotein(a), or Lp(a), is a <strong>genetic protein in your blood that builds up regardless of diet or exercise</strong>. Unlike other cholesterol, you can't control it with lifestyle changes. High Lp(a) increases stroke risk by <strong>60%</strong>, yet <strong>90% of doctors don't regularly check it</strong>. It's typically not included in standard cholesterol tests.
             </p>
           </div>
           
@@ -176,7 +176,7 @@ export default function AboutSection() {
               color: 'var(--gray-500)',
               lineHeight: '1.6'
             }}>
-              Adults with <strong>elevated lp(a) levels</strong> and risk factors like high blood pressure, high cholesterol, diabetes, family history of heart disease, or smoking. If you have high lp(a) and want to contribute to critical research that could help future generations, we'd like to hear from you.
+              Adults with <strong>elevated Lp(a) levels</strong> and risk factors like high blood pressure, high cholesterol, diabetes, family history of heart disease, or smoking. If you have high Lp(a) and want to contribute to critical research that could help future generations, we'd like to hear from you.
             </p>
           </div>
         </div>
@@ -216,7 +216,7 @@ export default function AboutSection() {
           }}>
             {/* SMS/Text Message */}
             <a
-              href={`sms:?body=${encodeURIComponent('There\'s a heart health research study for people with high lp(a). Compensation and travel reimbursement provided. If this could help you or someone you know, take a look:\n\n' + (pageUrl || ''))}`}
+              href={`sms:?body=${encodeURIComponent('There\'s a heart health research study for people with high Lp(a). Compensation and travel reimbursement provided. If this could help you or someone you know, take a look:\n\n' + (pageUrl || ''))}`}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -248,7 +248,7 @@ export default function AboutSection() {
 
             {/* WhatsApp */}
             <a
-              href={`https://wa.me/?text=${encodeURIComponent('Heart health research study for people with high lp(a). Compensation provided. Learn more:\n\n' + (pageUrl || ''))}`}
+              href={`https://wa.me/?text=${encodeURIComponent('Heart health research study for people with high Lp(a). Compensation provided. Learn more:\n\n' + (pageUrl || ''))}`}
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -319,7 +319,7 @@ export default function AboutSection() {
             <button
               onClick={() => {
                 if (typeof window !== 'undefined') {
-                  const message = `Heart health research study for people with high lp(a). Compensation provided. Learn more: ${typeof window !== 'undefined' ? window.location.href : ''}`;
+                  const message = `Heart health research study for people with high Lp(a). Compensation provided. Learn more: ${typeof window !== 'undefined' ? window.location.href : ''}`;
                   navigator.clipboard.writeText(message);
                   alert('Message copied to clipboard! You can now paste it in any app.');
                 }
@@ -376,7 +376,7 @@ export default function AboutSection() {
             }}
           >
             <FontAwesomeIcon icon={faClipboardCheck} style={{ width: '20px', height: '20px' }} />
-            <span>Get your lp(a) Tested</span>
+            <span>Get your Lp(a) Tested</span>
           </button>
         </div>
       </div>

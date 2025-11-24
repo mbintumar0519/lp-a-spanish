@@ -7,11 +7,11 @@ const questions = [
     id: 'high_lpa',
     question: (
       <>
-        Have you been told you have <span className="key-term">high lipoprotein(a)</span> or <strong>lp(a)</strong> levels?
+        Have you been told you have <span className="key-term">high lipoprotein(a)</span> or <strong>Lp(a)</strong> levels?
       </>
     ),
     icon: '🫀',
-    guidanceMessage: 'This study is for people with elevated lp(a) levels.'
+    guidanceMessage: 'This study is for people with elevated Lp(a) levels.'
   },
   {
     id: 'heart_risk_factors',
@@ -22,7 +22,7 @@ const questions = [
     ),
     icon: '💓',
     subtext: <em>Such as high cholesterol, high blood pressure, diabetes, family history, or smoking history.</em>,
-    guidanceMessage: 'This study is looking for people with elevated lp(a) and cardiovascular risk factors.'
+    guidanceMessage: 'This study is looking for people with elevated Lp(a) and cardiovascular risk factors.'
   },
   {
     id: 'can_travel',
@@ -193,11 +193,11 @@ export default function PreScreeningForm() {
           className="font-bold mb-3 text-gray-900 text-2xl sm:text-3xl"
           style={{ fontWeight: '700', lineHeight: '1.2', letterSpacing: '-0.02em' }}
         >
-          Get Your lp(a) Tested
+          Get Your Lp(a) Tested
         </h2>
 
         <p className="text-gray-600 leading-relaxed max-w-lg mx-auto text-sm sm:text-base" style={{ lineHeight: '1.6' }}>
-          Complete this quick form to see if you may qualify for free lp(a) testing and the research study.
+          Complete this quick form to see if you may qualify for free Lp(a) testing and the research study.
         </p>
       </div>
 
@@ -403,7 +403,7 @@ export default function PreScreeningForm() {
                       background: validationErrors.phone ? '' : 'linear-gradient(135deg, #FEFEFE 0%, #FFFBFA 100%)',
                       boxShadow: validationErrors.phone ? '' : '0 1px 3px rgba(220, 38, 38, 0.05), inset 0 1px 2px rgba(0, 0, 0, 0.02)'
                     }}
-                    placeholder="+1 (404) 999-2734"
+                    placeholder="+1(813) 796-6716"
                   />
                   {validationErrors.phone && (
                     <p className="text-red-600 mt-2 animate-in slide-in-from-top-2 duration-200" style={{ fontSize: '13px' }}>
@@ -478,7 +478,7 @@ export default function PreScreeningForm() {
                 Submitting...
               </div>
             ) : (
-              'Get Your lp(a) Tested'
+              'Get Your Lp(a) Tested'
             )}
           </button>
 

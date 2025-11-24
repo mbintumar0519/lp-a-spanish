@@ -52,7 +52,7 @@ export default function LpaTestingSection() {
             marginBottom: 'var(--space-4)',
             fontFamily: 'var(--font-heading)'
           }}>
-            Get Your lp(a) Test Results in 3 Easy Steps!
+            Get Your Lp(a) Test Results in 3 Easy Steps!
           </h2>
           <p style={{
             fontSize: 'var(--text-xl)',
@@ -62,7 +62,7 @@ export default function LpaTestingSection() {
             lineHeight: '1.6',
             fontFamily: 'var(--font-primary)'
           }}>
-            Most people don't know their lp(a) levels. Join our research study and get comprehensive testing—completely free, no insurance required.
+            Most people don't know their Lp(a) levels. Join our research study and get comprehensive testing—completely free, no insurance required.
           </p>
         </div>
 
@@ -207,7 +207,7 @@ export default function LpaTestingSection() {
               fontSize: 'var(--text-base)',
               fontFamily: 'var(--font-primary)'
             }}>
-              Visit our Plant City clinic for a simple blood draw. You'll receive comprehensive testing including lp(a), lipid panel, A1c, and more. Plus, $100 compensation for your time.
+              Visit our Plant City clinic for a simple blood draw. You'll receive comprehensive testing including Lp(a), lipid panel, A1c, and more. Plus, $100 compensation for your time.
             </p>
           </div>
 
@@ -303,7 +303,7 @@ export default function LpaTestingSection() {
             }}
             className="cta-button"
           >
-            Get Your lp(a) Tested
+            Get Your Lp(a) Tested
             <svg style={{ width: '24px', height: '24px' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>

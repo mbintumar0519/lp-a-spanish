@@ -166,7 +166,7 @@ export default function Navbar() {
                 }}
                 className="nav-link"
               >
-                Get your lp(a) Tested
+                Get your Lp(a) Tested
               </button>
               
               <div>
@@ -361,7 +361,7 @@ export default function Navbar() {
                     }}
                   className="mobile-nav-link"
                 >
-                  Get your lp(a) Tested
+                  Get your Lp(a) Tested
                 </button>
                 <div style={{
                   padding: 'var(--space-6)',

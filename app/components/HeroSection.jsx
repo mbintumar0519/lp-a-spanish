@@ -46,7 +46,7 @@ export default function HeroSection() {
                 marginBottom: 'var(--space-8)',
                 fontFamily: 'var(--font-primary)'
               }}>
-               If you have elevated lp(a)—a genetic cholesterol that builds up regardless of diet or exercise—you may be at 3x higher risk. Join a  study testing a new treatment that could help prevent your first major heart event.
+               If you have elevated Lp(a)—a genetic cholesterol that builds up regardless of diet or exercise—you may be at 3x higher risk. Join a  study testing a new treatment that could help prevent your first major heart event.
               </p>
 
               {/* Balanced benefits - larger and higher contrast */}

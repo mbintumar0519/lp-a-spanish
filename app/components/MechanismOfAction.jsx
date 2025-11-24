@@ -7,14 +7,14 @@ const MechanismOfAction = () => {
   const steps = [
     {
       icon: <FaDna className="w-12 h-12" />,
-      title: "Targets lp(a) at Its Source",
-      description: "Olpasiran is a small interfering RNA (siRNA) that works by blocking the production of lp(a) in your liver.",
-      detail: "This approach is designed to lower lp(a) levels where they are made."
+      title: "Targets Lp(a) at Its Source",
+      description: "Olpasiran is a small interfering RNA (siRNA) that works by blocking the production of Lp(a) in your liver.",
+      detail: "This approach is designed to lower Lp(a) levels where they are made."
     },
     {
       icon: <FaBullseye className="w-12 h-12" />,
       title: "Preventing First Major Heart Events",
-      description: "The study aims to see if lowering lp(a) can help prevent heart attacks, urgent heart procedures, or death from heart disease.",
+      description: "The study aims to see if lowering Lp(a) can help prevent heart attacks, urgent heart procedures, or death from heart disease.",
       detail: "This research may help people at higher risk for cardiovascular events."
     },
     {
@@ -70,7 +70,7 @@ const MechanismOfAction = () => {
             margin: '0 auto',
             fontFamily: 'var(--font-primary)'
           }}>
-            An investigational approach to lowering lp(a) and reducing cardiovascular risk
+            An investigational approach to lowering Lp(a) and reducing cardiovascular risk
           </p>
         </div>
 
@@ -117,7 +117,7 @@ const MechanismOfAction = () => {
                   lineHeight: '1.6',
                   fontFamily: 'var(--font-primary)'
                 }}>
-                Olpasiran (AMG 890) is an investigational medication using RNA interference technology to block lp(a) production in your liver. Since lp(a) is genetic and <strong>not affected by diet or exercise</strong>, this targeted approach may be the key to reducing cardiovascular risk for people with elevated lp(a). <em>Olpasiran is not yet FDA-approved.</em>
+                Olpasiran (AMG 890) is an investigational medication using RNA interference technology to block Lp(a) production in your liver. Since Lp(a) is genetic and <strong>not affected by diet or exercise</strong>, this targeted approach may be the key to reducing cardiovascular risk for people with elevated Lp(a). <em>Olpasiran is not yet FDA-approved.</em>
                 </p>
               </div>
               
@@ -136,7 +136,7 @@ const MechanismOfAction = () => {
                   lineHeight: '1.6',
                   fontFamily: 'var(--font-primary)'
                 }}>
-                High lp(a) is <strong>genetically determined</strong> and can't be controlled with lifestyle changes or standard cholesterol medications. Currently, there are <strong>no approved lp(a) treatments</strong> on the market. This groundbreaking study is testing whether lowering lp(a) with olpasiran could help prevent first heart attacks, strokes, or urgent heart procedures in at-risk individuals.
+                High Lp(a) is <strong>genetically determined</strong> and can't be controlled with lifestyle changes or standard cholesterol medications. Currently, there are <strong>no approved Lp(a) treatments</strong> on the market. This groundbreaking study is testing whether lowering Lp(a) with olpasiran could help prevent first heart attacks, strokes, or urgent heart procedures in at-risk individuals.
                 </p>
               </div>
             </div>

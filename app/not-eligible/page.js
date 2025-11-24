@@ -309,7 +309,7 @@ export default function NotEligiblePage() {
                 className="text-xl font-bold text-emerald-600 hover:text-emerald-700 transition-colors flex items-center justify-center"
               >
                 <FontAwesomeIcon icon={faPhone} className="mr-2" />
-                +1 (404) 999-2734
+                +1(813) 796-6716
               </a>
             </div>
 
@@ -329,7 +329,7 @@ export default function NotEligiblePage() {
 
         {/* Footer Text */}
         <p className="text-center text-gray-500 text-sm mt-6">
-          Denali Health Atlanta • 5329 Memorial Drive, Suite A, Stone Mountain, Georgia 30083
+          Denali Health Plant City • 1601 W. Reynolds St, Suite 203, Plant City, FL 33563
         </p>
       </div>
     </div>

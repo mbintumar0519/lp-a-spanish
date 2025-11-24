@@ -241,7 +241,7 @@ export default function ThankYouPage() {
                     className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent"
                     whileHover={{ scale: 1.05 }}
                   >
-                    +1 (404) 999-2734
+                    +1(813) 796-6716
                   </motion.div>
                   <p className="text-xs sm:text-sm text-gray-600 mt-2 sm:mt-3">
                     So you'll recognize our call
@@ -269,7 +269,7 @@ export default function ThankYouPage() {
                     icon={faPhone}
                     className="mr-2 sm:mr-3 group-hover:animate-pulse"
                   />
-                  +1 (404) 999-2734
+                  +1(813) 796-6716
                 </motion.a>
                 <p className="text-xs sm:text-sm text-gray-500 mt-2 sm:mt-3">
                   Mon-Fri, 8 AM - 5 PM EST
@@ -379,7 +379,7 @@ export default function ThankYouPage() {
 
         {/* Footer Text */}
         <p className="text-center text-gray-500 text-sm mt-6">
-          Denali Health Atlanta • 5329 Memorial Drive, Suite A, Stone Mountain, Georgia 30083
+          Denali Health Plant City • 1601 W. Reynolds St, Suite 203, Plant City, FL 33563
         </p>
       </div>
     </div>
