@@ -59,9 +59,9 @@ function getGeolocationAsync(params) {
 }
 
 const ANSWER_LABELS = {
-  diagnosed_bipolar: "Diagnosed with bipolar I or II",
-  current_depressive_episode: "Currently going through a depressive episode",
-  can_travel: "Can travel to study location for visits",
+  high_lpa: "Has elevated Lp(a) levels",
+  heart_risk_factors: "Has cardiovascular risk factors",
+  can_travel: "Can travel to Plant City, FL for study visits",
 };
 
 const CONDITION_NAMES = {
@@ -147,20 +147,14 @@ export async function POST(request) {
     // --- Only accept qualified leads from pre-screening form ---
     const isPreScreening = formData.source === "pre-screening-form";
 
-    // Validate that this is a qualified lead
-    if (formData.qualificationStatus !== 'qualified') {
-      return NextResponse.json(
-        { success: false, message: 'Only qualified leads can be submitted' },
-        { status: 400 }
-      );
-    }
+    // Accept all leads for Lp(a) study (non-conditional form)
+    // No qualification validation needed
 
     // --- Build the qualification note ---
     const qualificationNote = `=== QUALIFICATION STATUS ===
-Status: QUALIFIED
-✓ Bipolar I or II diagnosis
-✓ Current depressive episode
-✓ Can travel to Stone Mountain study location
+Status: PENDING REVIEW
+Study: Lp(a) Cardiovascular Research
+Location: Plant City, FL
 `;
 
     const answerLines = [];
@@ -190,7 +184,7 @@ Status: QUALIFIED
       ? capitalizeFullName(formData.name)
       : "N/A";
 
-    const fullAssessmentNote = `=== BIPOLAR STUDY FULL ASSESSMENT ===
+    const fullAssessmentNote = `=== LP(A) CARDIOVASCULAR STUDY FULL ASSESSMENT ===
 === PATIENT INFO ===
 Name: ${displayName}
 Age: ${formData.age || "Not provided"}
@@ -201,7 +195,7 @@ ${answerLines.join("\n") || "- None"}
 `;
 
     // --- Build contact tags - all leads are qualified ---
-    const tags = ["website-lead", "XENON BPD", "qualified"];
+    const tags = ["website-lead", "Lp(a)", "qualified"];
 
     // Apply proper name capitalization
     const { firstName, lastName } = splitAndCapitalizeName(formData.name || "");
@@ -234,7 +228,7 @@ ${answerLines.join("\n") || "- None"}
         ? "Pre-Screening Form - Website"
         : "Website Eligibility Form",
       tags, // ONLY these tags
-      companyName: "Bipolar - Website Lead",
+      companyName: "Lp(a) - Website Lead",
     };
 
     // --- Send to Google Sheets (non-blocking) ---
@@ -243,8 +237,8 @@ ${answerLines.join("\n") || "- None"}
       name: displayName,
       phone: rawPhone,
       email: email,
-      status: 'Qualified - XENON BPD Study'
-    }, 'BPD Leads').catch(err => {
+      status: 'Qualified - Lp(a) Study'
+    }, 'Lp(a) Leads').catch(err => {
       console.warn('[Google Sheets] Failed to send lead:', err.message);
     });
 
