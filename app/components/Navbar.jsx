@@ -121,7 +121,7 @@ export default function Navbar() {
                 }}
                 className="nav-link"
               >
-                Meet the Doc!
+                Meet the Investigator
               </Link>
               <Link 
                 href="/#enroll" 
@@ -166,12 +166,12 @@ export default function Navbar() {
                 }}
                 className="nav-link"
               >
-                Get Help Today
+                Get your Lp(a) Tested
               </button>
               
               <div>
                 <a 
-                  href="tel:+14049992734"
+                  href="tel:+18137966716"
                   style={{
                     background: 'var(--primary-blue)',
                     color: 'white',
@@ -306,7 +306,7 @@ export default function Navbar() {
                     }}
                   className="mobile-nav-link"
                 >
-                  Meet the Doc!
+                  Meet the Investigator
                 </Link>
                 <Link 
                   href="/#enroll" 
@@ -361,14 +361,14 @@ export default function Navbar() {
                     }}
                   className="mobile-nav-link"
                 >
-                  Get Help Today
+                  Get your Lp(a) Tested
                 </button>
                 <div style={{
                   padding: 'var(--space-6)',
                   background: 'var(--gray-50)'
                 }}>
                   <a 
-                    href="tel:+14049992734" 
+                    href="tel:+18137966716" 
                     onClick={() => setIsOpen(false)}
                     style={{
                       background: 'var(--primary-blue)',

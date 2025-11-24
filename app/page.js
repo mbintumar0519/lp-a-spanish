@@ -5,19 +5,19 @@ import AboutSection from "./components/AboutSection";
 import MeetPISection from "./components/MeetPISection";
 import BenefitsSection from "./components/BenefitsSection";
 import EnrollmentSection from "./components/EnrollmentSection";
-import ConsultationSection from "./components/ConsultationSection";
 import ContactSection from "./components/ContactSection";
 import FloatingCTA from "./components/FloatingCTA";
 import FAQSection from "./components/FAQSection";
-import DoctorVideoSection from "./components/DoctorVideoSection";
-import CrisisSupport from "./components/CrisisSupport";
 import EligibilitySection from "./components/EligibilitySection";
+import StatisticsSection from "./components/StatisticsSection";
+import LpaTestingSection from "./components/LpaTestingSection";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
-      <DoctorVideoSection />
+      <StatisticsSection />
+      <LpaTestingSection />
       <AboutSection />
       <EligibilitySection />
       <MechanismOfAction />
@@ -25,9 +25,7 @@ export default function Home() {
       <BenefitsSection />
       <EnrollmentSection />
       <FAQSection />
-      <ConsultationSection />
       <ContactSection />
-      <CrisisSupport />
       <Footer />
       <FloatingCTA />
     </>

@@ -11,7 +11,7 @@ export default function HeroSection() {
     <section className="hero-gradient relative min-h-screen overflow-hidden" style={{ paddingTop: '0' }}>
       {/* Background gradient - extends to cover navbar area */}
       <div className="absolute inset-0 z-[0]" style={{
-        background: 'linear-gradient(135deg, #0B2A6B 0%, #1E3A8A 50%, #A7F3D0 100%)',
+        background: 'linear-gradient(135deg, #dc2626 0%, #f97316 50%, #fbbf24 100%)',
         top: '0',
         bottom: '0'
       }}>
@@ -37,16 +37,16 @@ export default function HeroSection() {
                 textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
                 fontFamily: 'var(--font-heading)'
               }}>
-                Find Hope When Depression Feels Overwhelming
+                Concerned About Your Risk for a Heart Attack?
               </h1>
               <p style={{
-                color: 'rgba(255, 255, 255, 0.9)',
+                color: 'rgba(255, 255, 255, 0.95)',
                 fontSize: 'var(--text-xl)',
                 lineHeight: '1.6',
                 marginBottom: 'var(--space-8)',
                 fontFamily: 'var(--font-primary)'
               }}>
-               This is a research study for exploring a potential new treatment for people living with bipolar depression. Up to $1,500 compensation and free round‑trip Uber to every visit is available.
+               If you have elevated Lp(a)—a genetic cholesterol that builds up regardless of diet or exercise—you may be at 3x higher risk. Join a  study testing a new treatment that could help prevent your first major heart event.
               </p>
 
               {/* Balanced benefits - larger and higher contrast */}
@@ -71,14 +71,14 @@ export default function HeroSection() {
                   <svg className="w-4 h-4 lg:w-5 lg:h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  Up to $1,500
+                  Compensation
                 </div>
 
                 <div className="benefit-pill flex items-center justify-center gap-3 lg:gap-4 px-4 py-3 lg:px-6 lg:py-4 bg-white/30 rounded-3xl border border-white/40 text-base lg:text-lg text-white font-semibold shadow-[0_8px_28px_rgba(0,0,0,0.28)] backdrop-blur">
                   <svg className="w-4 h-4 lg:w-5 lg:h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
-                  Free Uber Rides
+                  Travel Reimbursed
                 </div>
               </div>
             </div>

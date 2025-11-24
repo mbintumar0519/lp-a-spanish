@@ -1,40 +1,39 @@
 'use client';
 
-import { useState } from 'react';
-import Script from 'next/script';
+import { useState, useEffect } from 'react';
 
 const questions = [
   {
-    id: 'diagnosed_bipolar',
+    id: 'high_lpa',
     question: (
       <>
-        Have you been <span className="key-term">diagnosed</span> with <strong>bipolar I or bipolar II</strong> by a clinician?
+        Have you been told you have <span className="key-term">high lipoprotein(a)</span> or <strong>Lp(a)</strong> levels?
       </>
     ),
-    icon: '🩺',
-    guidanceMessage: 'This study requires a bipolar I or II diagnosis from a healthcare provider.'
+    icon: '🫀',
+    guidanceMessage: 'This study is for people with elevated Lp(a) levels.'
   },
   {
-    id: 'current_depressive_episode',
+    id: 'heart_risk_factors',
     question: (
       <>
-        Are you currently going through a <span className="key-term">depressive episode</span>?
+        Do you have <span className="key-term">risk factors</span> for heart disease?
       </>
     ),
-    icon: '🌧️',
-    subtext: <em>Ideally lasting at least 4 weeks.</em>,
-    guidanceMessage: 'This study is for people currently in a depressive episode (lasting ~4+ weeks).'
+    icon: '💓',
+    subtext: <em>Such as high cholesterol, high blood pressure, diabetes, family history, or smoking history.</em>,
+    guidanceMessage: 'This study is looking for people with elevated Lp(a) and cardiovascular risk factors.'
   },
   {
     id: 'can_travel',
     question: (
       <>
-        Can you travel to <span className="key-term">Stone Mountain</span> for study visits?
+        Can you travel to <span className="key-term">Plant City, FL</span> for regular study visits?
       </>
     ),
     icon: '🚗',
-    subtext: <em>We provide free round‑trip Uber transportation.</em>,
-    guidanceMessage: 'We provide free Uber transportation. If travel is difficult, let us know — our team can help.'
+    subtext: <em>Travel expenses will be reimbursed.</em>,
+    guidanceMessage: 'Travel expenses are reimbursed. If travel is difficult, let us know — our team can help.'
   }
 ];
 
@@ -56,7 +55,18 @@ export default function PreScreeningForm() {
   });
   const [validationErrors, setValidationErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showBooking, setShowBooking] = useState(false);
+
+  // CRIO Impression Tracking
+  useEffect(() => {
+    try {
+      fetch('https://app.clinicalresearch.io/web-form-impression?id=14681', {
+        method: 'GET',
+        mode: 'no-cors', // CRIO returns an image/pixel, usually safe to fire-and-forget
+      }).catch(err => console.warn('CRIO impression error:', err));
+    } catch (e) {
+      console.warn('CRIO impression error:', e);
+    }
+  }, []);
 
   const handleAnswer = (questionId, answer) => {
     setAnswers({ ...answers, [questionId]: answer });
@@ -94,38 +104,11 @@ export default function PreScreeningForm() {
     return errors;
   };
 
-  // Check if user qualifies based on current answers
-  const checkQualification = () => {
-    const hasBipolarDiagnosis = answers.diagnosed_bipolar === 'Yes';
-    const hasCurrentEpisode = answers.current_depressive_episode === 'Yes';
-    const canTravelToStoneMountain = answers.can_travel === 'Yes';
-    const ageQualified = true;
-
-    // Check if any question has a disqualifying "No" answer
-    const hasDisqualifyingAnswer = answers.diagnosed_bipolar === 'No' ||
-                                   answers.current_depressive_episode === 'No' ||
-                                   answers.can_travel === 'No';
-
-    // Check if age is entered and out of range
-    const hasDisqualifyingAge = false;
-
-    // User is disqualified if they have any disqualifying answer OR disqualifying age
-    const isDisqualified = hasDisqualifyingAnswer;
-
-    // User qualifies if: all answers are "Yes" AND age is in range
-    const qualified = hasBipolarDiagnosis && hasCurrentEpisode && canTravelToStoneMountain;
-    return {
-      qualified,
-      isDisqualified,
-      hasBipolarDiagnosis,
-      hasCurrentEpisode,
-      canTravelToStoneMountain,
-      ageQualified
-    };
+  // Non-conditional form - all submissions accepted
+  const qualificationStatus = {
+    qualified: true,
+    isDisqualified: false
   };
-
-  const qualificationStatus = checkQualification();
-  const isAgeOutOfRange = false;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -144,22 +127,6 @@ export default function PreScreeningForm() {
     const [firstName, ...lastNameParts] = formattedName.split(' ');
     const lastName = lastNameParts.join(' ');
 
-    // Check all qualification criteria
-    const hasBipolarDiagnosis = answers.diagnosed_bipolar === 'Yes';
-    const hasCurrentEpisode = answers.current_depressive_episode === 'Yes';
-    const canTravelToStoneMountain = answers.can_travel === 'Yes';
-    const ageQualified = true;
-
-    // Overall qualification requires ALL criteria to be met
-    const finalQualificationStatus = hasBipolarDiagnosis && hasCurrentEpisode && canTravelToStoneMountain && ageQualified;
-
-    // Safeguard: Only allow qualified leads to submit
-    if (!finalQualificationStatus) {
-      setValidationErrors({ submit: 'Please answer all questions to proceed.' });
-      setIsSubmitting(false);
-      return;
-    }
-
     try {
       const response = await fetch('/api/submit-lead', {
         method: 'POST',
@@ -171,7 +138,7 @@ export default function PreScreeningForm() {
           phone: contactInfo.phone,
           email: contactInfo.email,
           source: 'pre-screening-form',
-          qualificationStatus: 'qualified',
+          qualificationStatus: 'pending',
           answers: answers,
         }),
       });
@@ -208,30 +175,29 @@ export default function PreScreeningForm() {
     <div
       className="qualification-questionnaire bg-white rounded-2xl shadow-xl max-w-[600px] mx-auto animate-in slide-in-from-bottom-4 duration-500 px-4 py-6 sm:px-8 sm:py-8"
       style={{
-        border: '1px solid transparent',
-        backgroundImage: 'linear-gradient(white, white), linear-gradient(135deg, #14B8A6 0%, #2DD4BF 100%)',
+        border: '2px solid transparent',
+        backgroundImage: 'linear-gradient(white, white), linear-gradient(135deg, #dc2626 0%, #f97316 100%)',
         backgroundOrigin: 'border-box',
         backgroundClip: 'padding-box, border-box'
       }}
     >
       {/* Gradient Top Accent */}
       <div
-        className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl"
-        style={{ background: 'linear-gradient(135deg, #14B8A6 0%, #2DD4BF 100%)' }}
+        className="absolute top-0 left-0 right-0 h-1.5 rounded-t-2xl"
+        style={{ background: 'linear-gradient(135deg, #dc2626 0%, #f97316 100%)' }}
       />
 
-      {/* Minimal Header */}
-      <div className="text-center mb-8 sm:mb-12 animate-in fade-in duration-300 delay-100">
+      {/* Header */}
+      <div className="text-center mb-8 sm:mb-10 animate-in fade-in duration-300 delay-100">
         <h2
-          className="font-semibold mb-3 sm:mb-4 text-gray-900 text-xl sm:text-2xl"
-          style={{ fontWeight: '600', lineHeight: '1.3', letterSpacing: '-0.01em' }}
+          className="font-bold mb-3 text-gray-900 text-2xl sm:text-3xl"
+          style={{ fontWeight: '700', lineHeight: '1.2', letterSpacing: '-0.02em' }}
         >
-          ✨ Get Help Today
+          Get Your Lp(a) Tested
         </h2>
 
-        <p className="text-gray-600 leading-relaxed max-w-md mx-auto text-sm sm:text-base" style={{ lineHeight: '1.6' }}>
-          Answer 2 quick questions. Our team will follow up with a short call to complete the full screening.
-          <span className="font-medium text-gray-700"> No commitment required.</span>
+        <p className="text-gray-600 leading-relaxed max-w-lg mx-auto text-sm sm:text-base" style={{ lineHeight: '1.6' }}>
+          Complete this quick form to see if you may qualify for free Lp(a) testing and the research study.
         </p>
       </div>
 
@@ -240,15 +206,17 @@ export default function PreScreeningForm() {
         <div className="mb-12 sm:mb-20">
           <div className="mb-4 sm:mb-6 animate-in slide-in-from-left duration-300 delay-200">
             <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
-              <div className="flex items-center justify-center w-6 h-6 rounded-full bg-teal-100 text-teal-700 text-sm font-medium">
+              <div className="flex items-center justify-center w-6 h-6 rounded-full text-sm font-medium" style={{
+                background: 'linear-gradient(135deg, #dc2626, #f97316)',
+                color: 'white'
+              }}>
                 1
               </div>
               <h3 className="font-medium text-gray-800 text-base sm:text-lg" style={{ fontWeight: '500', letterSpacing: '-0.005em' }}>
-                3 quick questions
+                Quick questions
               </h3>
-              <span className="text-sm">🎯</span>
             </div>
-            <div className="h-px bg-gradient-to-r from-teal-200 via-emerald-200 to-transparent ml-9"></div>
+            <div className="h-px bg-gradient-to-r from-red-200 via-orange-200 to-transparent ml-9"></div>
           </div>
 
           <div className="space-y-6 sm:space-y-10">
@@ -258,7 +226,7 @@ export default function PreScreeningForm() {
                 className="animate-in slide-in-from-right duration-300"
                 style={{ animationDelay: `${300 + index * 100}ms` }}
               >
-                <div className="bg-gradient-to-br from-teal-50/50 via-emerald-50/40 to-teal-50/50 rounded-xl p-4 sm:p-6 border border-teal-200/50 shadow-sm">
+                <div className="bg-gradient-to-br from-red-50/30 via-orange-50/30 to-red-50/30 rounded-xl p-4 sm:p-6 border border-red-200/30 shadow-sm">
                   <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-5">
                     <span className="text-2xl sm:text-3xl flex-shrink-0" style={{ lineHeight: '1' }}>{question.icon}</span>
                     <div className="flex-1 min-w-0">
@@ -283,17 +251,19 @@ export default function PreScreeningForm() {
                         className="sr-only"
                       />
                       <div
-                        className={`w-full text-center rounded-xl font-semibold transition-all duration-300 active:scale-95 sm:hover:scale-105 relative overflow-hidden ${
-                          answers[question.id] === 'Yes'
-                            ? 'bg-gradient-to-r from-teal-500 via-teal-600 to-teal-500 text-white shadow-lg shadow-teal-500/25 border border-teal-400/30'
-                            : 'bg-gradient-to-br from-teal-50/80 via-emerald-50/60 to-teal-50/80 text-gray-700 sm:hover:from-teal-100/90 sm:hover:via-emerald-100/80 sm:hover:to-teal-100/90 sm:hover:shadow-md border border-teal-200/60 sm:hover:border-teal-300/70'
-                        }`}
+                        className={`w-full text-center rounded-xl font-semibold transition-all duration-300 active:scale-95 sm:hover:scale-105 relative overflow-hidden ${answers[question.id] === 'Yes'
+                            ? 'text-white shadow-lg border'
+                            : 'bg-gradient-to-br from-red-50/40 via-orange-50/40 to-red-50/40 text-gray-700 sm:hover:from-red-100/50 sm:hover:via-orange-100/50 sm:hover:to-red-100/50 sm:hover:shadow-md border border-red-200/50 sm:hover:border-red-300/60'
+                          }`}
                         style={{
                           height: '52px',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          fontSize: '17px'
+                          fontSize: '17px',
+                          background: answers[question.id] === 'Yes' ? 'linear-gradient(135deg, #dc2626, #f97316)' : undefined,
+                          borderColor: answers[question.id] === 'Yes' ? 'rgba(220, 38, 38, 0.3)' : undefined,
+                          boxShadow: answers[question.id] === 'Yes' ? '0 8px 20px rgba(220, 38, 38, 0.25)' : undefined
                         }}
                       >
                         Yes
@@ -309,17 +279,19 @@ export default function PreScreeningForm() {
                         className="sr-only"
                       />
                       <div
-                        className={`w-full text-center rounded-xl font-semibold transition-all duration-300 active:scale-95 sm:hover:scale-105 relative overflow-hidden ${
-                          answers[question.id] === 'No'
-                            ? 'bg-gradient-to-r from-teal-500 via-teal-600 to-teal-500 text-white shadow-lg shadow-teal-500/25 border border-teal-400/30'
-                            : 'bg-gradient-to-br from-teal-50/80 via-emerald-50/60 to-teal-50/80 text-gray-700 sm:hover:from-teal-100/90 sm:hover:via-emerald-100/80 sm:hover:to-teal-100/90 sm:hover:shadow-md border border-teal-200/60 sm:hover:border-teal-300/70'
-                        }`}
+                        className={`w-full text-center rounded-xl font-semibold transition-all duration-300 active:scale-95 sm:hover:scale-105 relative overflow-hidden ${answers[question.id] === 'No'
+                            ? 'text-white shadow-lg border'
+                            : 'bg-gradient-to-br from-red-50/40 via-orange-50/40 to-red-50/40 text-gray-700 sm:hover:from-red-100/50 sm:hover:via-orange-100/50 sm:hover:to-red-100/50 sm:hover:shadow-md border border-red-200/50 sm:hover:border-red-300/60'
+                          }`}
                         style={{
                           height: '52px',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          fontSize: '17px'
+                          fontSize: '17px',
+                          background: answers[question.id] === 'No' ? 'linear-gradient(135deg, #dc2626, #f97316)' : undefined,
+                          borderColor: answers[question.id] === 'No' ? 'rgba(220, 38, 38, 0.3)' : undefined,
+                          boxShadow: answers[question.id] === 'No' ? '0 8px 20px rgba(220, 38, 38, 0.25)' : undefined
                         }}
                       >
                         No
@@ -332,11 +304,11 @@ export default function PreScreeningForm() {
                     <div
                       className="mt-3 sm:mt-4 rounded-xl animate-in slide-in-from-top-2 duration-200 p-3 sm:p-4"
                       style={{
-                        background: 'linear-gradient(135deg, #EBF4FF 0%, #DBEAFE 100%)',
-                        border: '1px solid #BFDBFE'
+                        background: 'linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%)',
+                        border: '1px solid #FCA5A5'
                       }}
                     >
-                      <p className="text-teal-700 flex items-start gap-2 sm:gap-3 text-sm sm:text-base" style={{ lineHeight: '1.5' }}>
+                      <p className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base" style={{ lineHeight: '1.5', color: '#991b1b' }}>
                         <span className="text-base sm:text-lg flex-shrink-0">
                           {question.id === 'can_travel' ? '🚐' : 'ℹ️'}
                         </span>
@@ -354,18 +326,20 @@ export default function PreScreeningForm() {
         <div className="animate-in slide-in-from-bottom duration-300 delay-500">
           <div className="mb-4 sm:mb-6 animate-in slide-in-from-left duration-300 delay-200">
             <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
-              <div className="flex items-center justify-center w-6 h-6 rounded-full bg-teal-100 text-teal-700 text-sm font-medium">
+              <div className="flex items-center justify-center w-6 h-6 rounded-full text-sm font-medium" style={{
+                background: 'linear-gradient(135deg, #dc2626, #f97316)',
+                color: 'white'
+              }}>
                 2
               </div>
               <h3 className="font-medium text-gray-800 text-base sm:text-lg" style={{ fontWeight: '500', letterSpacing: '-0.005em' }}>
                 Your contact info
               </h3>
-              <span className="text-sm">📝</span>
             </div>
-            <div className="h-px bg-gradient-to-r from-teal-200 via-emerald-200 to-transparent ml-9"></div>
+            <div className="h-px bg-gradient-to-r from-red-200 via-orange-200 to-transparent ml-9"></div>
           </div>
 
-          <div className="bg-gradient-to-br from-teal-50/40 via-emerald-50/30 to-teal-50/40 rounded-xl p-4 sm:p-6 border border-teal-200/40 shadow-sm">
+          <div className="bg-gradient-to-br from-red-50/20 via-orange-50/20 to-red-50/20 rounded-xl p-4 sm:p-6 border border-red-200/30 shadow-sm">
             <div className="space-y-4 sm:space-y-6">
               {/* Full Name */}
               <div>
@@ -383,16 +357,15 @@ export default function PreScreeningForm() {
                       setValidationErrors({ ...validationErrors, name: undefined });
                     }
                   }}
-                  className={`w-full px-4 border rounded-xl transition-all duration-300 focus:scale-102 focus:shadow-lg input-field ${
-                    validationErrors.name
+                  className={`w-full px-4 border rounded-xl transition-all duration-300 focus:scale-102 focus:shadow-lg input-field ${validationErrors.name
                       ? 'border-red-300 bg-red-50 focus:border-red-500 focus:ring-red-500'
-                      : 'border-blue-200/60 focus:border-blue-400/80 focus:ring-4 focus:ring-blue-500/15 hover:border-blue-300/70'
-                  }`}
+                      : 'border-gray-200 focus:border-red-400 focus:ring-4 focus:ring-red-500/15 hover:border-red-300/50'
+                    }`}
                   style={{
                     height: '48px',
                     fontSize: '16px',
-                    background: validationErrors.name ? '' : 'linear-gradient(135deg, #FEFEFE 0%, #F8FAFC 100%)',
-                    boxShadow: validationErrors.name ? '' : '0 1px 3px rgba(59, 130, 246, 0.05), inset 0 1px 2px rgba(0, 0, 0, 0.02)'
+                    background: validationErrors.name ? '' : 'linear-gradient(135deg, #FEFEFE 0%, #FFFBFA 100%)',
+                    boxShadow: validationErrors.name ? '' : '0 1px 3px rgba(220, 38, 38, 0.05), inset 0 1px 2px rgba(0, 0, 0, 0.02)'
                   }}
                   placeholder="John Doe"
                 />
@@ -420,16 +393,15 @@ export default function PreScreeningForm() {
                         setValidationErrors({ ...validationErrors, phone: undefined });
                       }
                     }}
-                    className={`w-full px-4 border rounded-xl transition-all duration-300 focus:scale-102 focus:shadow-lg input-field ${
-                      validationErrors.phone
+                    className={`w-full px-4 border rounded-xl transition-all duration-300 focus:scale-102 focus:shadow-lg input-field ${validationErrors.phone
                         ? 'border-red-300 bg-red-50 focus:border-red-500 focus:ring-red-500'
-                        : 'border-blue-200/60 focus:border-blue-400/80 focus:ring-4 focus:ring-blue-500/15 hover:border-blue-300/70'
-                    }`}
+                        : 'border-gray-200 focus:border-red-400 focus:ring-4 focus:ring-red-500/15 hover:border-red-300/50'
+                      }`}
                     style={{
                       height: '48px',
                       fontSize: '16px',
-                      background: validationErrors.phone ? '' : 'linear-gradient(135deg, #FEFEFE 0%, #F8FAFC 100%)',
-                      boxShadow: validationErrors.phone ? '' : '0 1px 3px rgba(59, 130, 246, 0.05), inset 0 1px 2px rgba(0, 0, 0, 0.02)'
+                      background: validationErrors.phone ? '' : 'linear-gradient(135deg, #FEFEFE 0%, #FFFBFA 100%)',
+                      boxShadow: validationErrors.phone ? '' : '0 1px 3px rgba(220, 38, 38, 0.05), inset 0 1px 2px rgba(0, 0, 0, 0.02)'
                     }}
                     placeholder="+1 (404) 999-2734"
                   />
@@ -458,16 +430,15 @@ export default function PreScreeningForm() {
                       setValidationErrors({ ...validationErrors, email: undefined });
                     }
                   }}
-                  className={`w-full px-4 border rounded-xl transition-all duration-300 focus:scale-102 focus:shadow-lg input-field ${
-                    validationErrors.email
+                  className={`w-full px-4 border rounded-xl transition-all duration-300 focus:scale-102 focus:shadow-lg input-field ${validationErrors.email
                       ? 'border-red-300 bg-red-50 focus:border-red-500 focus:ring-red-500'
-                      : 'border-blue-200/60 focus:border-blue-400/80 focus:ring-4 focus:ring-blue-500/15 hover:border-blue-300/70'
-                  }`}
+                      : 'border-gray-200 focus:border-red-400 focus:ring-4 focus:ring-red-500/15 hover:border-red-300/50'
+                    }`}
                   style={{
                     height: '48px',
                     fontSize: '16px',
-                    background: validationErrors.email ? '' : 'linear-gradient(135deg, #FEFEFE 0%, #F8FAFC 100%)',
-                    boxShadow: validationErrors.email ? '' : '0 1px 3px rgba(59, 130, 246, 0.05), inset 0 1px 2px rgba(0, 0, 0, 0.02)'
+                    background: validationErrors.email ? '' : 'linear-gradient(135deg, #FEFEFE 0%, #FFFBFA 100%)',
+                    boxShadow: validationErrors.email ? '' : '0 1px 3px rgba(220, 38, 38, 0.05), inset 0 1px 2px rgba(0, 0, 0, 0.02)'
                   }}
                   placeholder="john@example.com"
                 />
@@ -478,50 +449,26 @@ export default function PreScreeningForm() {
                 )}
               </div>
 
-              {/* Privacy Text */}
-              <div className="flex items-start gap-2 pt-1 sm:pt-2">
-                <span className="text-base sm:text-lg flex-shrink-0">🔒</span>
-                <p className="text-gray-600 leading-relaxed text-xs sm:text-sm">
-                  By submitting, you agree to be contacted about this or related studies. We never sell your information.
-                </p>
-              </div>
 
-              
+
             </div>
           </div>
         </div>
 
         {/* Submit Button */}
         <div className="pt-6 sm:pt-8 animate-in slide-in-from-bottom duration-300 delay-700">
-          {qualificationStatus.isDisqualified && (
-            <div
-              className="mb-4 rounded-xl animate-in slide-in-from-top-2 duration-200 p-3 sm:p-4"
-              style={{
-                background: 'linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%)',
-                border: '1px solid #FCA5A5'
-              }}
-            >
-              <p className="text-red-700 flex items-start gap-2 sm:gap-3 text-sm sm:text-base" style={{ lineHeight: '1.5' }}>
-                <span className="text-base sm:text-lg flex-shrink-0">ℹ️</span>
-                <span>
-                  Based on your answers, you may not qualify for this study at this time. Please call or text us at <strong className="font-bold">+1 (404) 999-2734</strong> to discuss other options or studies that may be available.
-                </span>
-              </p>
-            </div>
-          )}
-
           <button
             type="submit"
-            disabled={isSubmitting || qualificationStatus.isDisqualified}
+            disabled={isSubmitting}
             className="w-full text-white font-bold rounded-xl transition-all duration-300 shadow-lg sm:hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 sm:hover:scale-105 sm:hover:translate-y-[-2px] relative overflow-hidden button-hover"
             style={{
               height: '54px',
               fontSize: '17px',
               fontWeight: '700',
-              background: isSubmitting || qualificationStatus.isDisqualified
+              background: isSubmitting
                 ? 'linear-gradient(135deg, #94A3B8 0%, #64748B 100%)'
-                : 'linear-gradient(135deg, #0F766E 0%, #14B8A6 50%, #2DD4BF 100%)',
-              boxShadow: isSubmitting || qualificationStatus.isDisqualified ? '' : '0 8px 25px rgba(20, 184, 166, 0.25), 0 4px 10px rgba(20, 184, 166, 0.15)',
+                : 'linear-gradient(135deg, #dc2626 0%, #f97316 100%)',
+              boxShadow: isSubmitting ? '' : '0 8px 25px rgba(220, 38, 38, 0.3), 0 4px 10px rgba(220, 38, 38, 0.2)',
               border: '1px solid rgba(255, 255, 255, 0.2)'
             }}
           >
@@ -531,7 +478,7 @@ export default function PreScreeningForm() {
                 Submitting...
               </div>
             ) : (
-              'Get Help Today!'
+              'Get Your Lp(a) Tested'
             )}
           </button>
 
@@ -541,35 +488,10 @@ export default function PreScreeningForm() {
             </p>
           )}
 
-          <p className="text-gray-600 text-center mt-3 sm:mt-4 text-xs sm:text-sm">
-            We'll call to answer your questions and explain next steps.
+          <p className="text-gray-600 text-center mt-3 sm:mt-4 text-xs sm:text-sm leading-relaxed">
+            🔒 Your information is secure and will never be shared with third parties
           </p>
 
-          {/* Optional: Direct booking alternative */}
-          <div className="text-center mt-6 sm:mt-8">
-            <button
-              type="button"
-              onClick={() => setShowBooking(!showBooking)}
-            className="inline-flex items-center justify-center px-4 py-2 rounded-lg border border-teal-200 text-teal-700 bg-teal-50 hover:bg-teal-100 transition-colors text-sm sm:text-base"
-            >
-              {showBooking ? 'Hide Online Booking' : 'Prefer to book directly? Book online'}
-            </button>
-          </div>
-
-          {showBooking && (
-            <div className="mt-4 sm:mt-6">
-              <div className="rounded-xl border border-gray-200 bg-gray-50 p-3 sm:p-4">
-                <iframe
-                  src="https://api.leadconnectorhq.com/widget/booking/oCJUF0iOMFKJBd4fpZS6"
-                  style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '780px' }}
-                  scrolling="no"
-                  id="oCJUF0iOMFKJBd4fpZS6_1761332013779"
-                  title="Online Booking"
-                ></iframe>
-                <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="afterInteractive" />
-              </div>
-            </div>
-          )}
         </div>
       </form>
 
@@ -621,12 +543,12 @@ export default function PreScreeningForm() {
         }
 
         :global(.key-term) {
-          color: #15803D;
+          color: #991b1b;
           font-weight: 700;
-          background: linear-gradient(135deg, #DCFCE7 0%, #BBF7D0 100%);
+          background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%);
           padding: 2px 6px;
           border-radius: 4px;
-          border: 1px solid #86EFAC;
+          border: 1px solid #FCA5A5;
           display: inline-block;
           white-space: nowrap;
         }

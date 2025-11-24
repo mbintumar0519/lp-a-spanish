@@ -44,7 +44,7 @@ export default function ContactSection() {
             margin: '0 auto',
             fontFamily: 'var(--font-primary)'
           }}>
-            Call or text +1 (404) 999‑2734. Or email info@denali-health.com. We provide the Uber — you don’t need to worry about getting here.
+            Call or text +1 (813) 796‑6716. Or email info@denali-health.com. Travel expenses reimbursed to help you get here.
           </p>
         </div>
         
@@ -77,7 +77,7 @@ export default function ContactSection() {
               marginBottom: 'var(--space-6)'
             }}>
               <iframe 
-                src="https://www.google.com/maps?q=5329%20Memorial%20Drive%20STE%20A%20Stone%20Mountain%20GA%2030083&output=embed" 
+                src="https://www.google.com/maps?q=1601%20W%20Reynolds%20St%20STE%20203%20Plant%20City%20FL%2033563&output=embed" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
@@ -105,7 +105,7 @@ export default function ContactSection() {
                 <div className="icon-circle" style={{
                   width: '48px',
                   height: '48px',
-                  background: 'linear-gradient(135deg, var(--primary-blue), var(--primary-dark))',
+                  background: 'linear-gradient(135deg, #dc2626, #f97316)',
                   borderRadius: '50%',
                   display: 'flex',
                   alignItems: 'center',
@@ -127,7 +127,7 @@ export default function ContactSection() {
                   fontSize: 'var(--text-sm)',
                   color: 'var(--gray-600)',
                   lineHeight: '1.4'
-                }}>5329 Memorial Drive STE A<br />Stone Mountain, GA 30083</p>
+                }}>1601 W Reynolds St STE 203<br />Plant City, FL 33563</p>
               </div>
               
               <div className="detail-item" style={{
@@ -142,7 +142,7 @@ export default function ContactSection() {
                 <div className="icon-circle" style={{
                   width: '48px',
                   height: '48px',
-                  background: 'linear-gradient(135deg, var(--primary-blue), var(--primary-dark))',
+                  background: 'linear-gradient(135deg, #dc2626, #f97316)',
                   borderRadius: '50%',
                   display: 'flex',
                   alignItems: 'center',
@@ -178,7 +178,7 @@ export default function ContactSection() {
                 <div className="icon-circle" style={{
                   width: '48px',
                   height: '48px',
-                  background: 'linear-gradient(135deg, var(--primary-blue), var(--primary-dark))',
+                  background: 'linear-gradient(135deg, #dc2626, #f97316)',
                   borderRadius: '50%',
                   display: 'flex',
                   alignItems: 'center',
@@ -199,7 +199,7 @@ export default function ContactSection() {
                   fontSize: 'var(--text-sm)',
                   color: 'var(--gray-600)',
                   lineHeight: '1.4'
-                }}>Free Uber provided<br />Free parking if preferred</p>
+                }}>Travel expenses reimbursed<br />Free parking available</p>
               </div>
             </div>
             
@@ -209,7 +209,7 @@ export default function ContactSection() {
               gap: 'var(--space-4)'
             }}>
               <a 
-                href="https://maps.google.com/?q=5329+Memorial+Drive+STE+A+Stone+Mountain+GA+30083" 
+                href="https://maps.google.com/?q=1601+W+Reynolds+St+STE+203+Plant+City+FL+33563" 
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -236,8 +236,8 @@ export default function ContactSection() {
               </a>
               
               <a 
-                href="tel:+14049992734"
-                className="bg-gradient-to-r from-[#0B2A6B] to-[#1E3A8A] hover:from-[#1E3A8A] hover:to-black text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                href="tel:+18137966716"
+                className="bg-gradient-to-r from-[#dc2626] to-[#f97316] hover:from-[#991b1b] hover:to-[#dc2626] text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 style={{
                   padding: 'var(--space-4)',
                   fontSize: 'var(--text-base)',
@@ -252,7 +252,7 @@ export default function ContactSection() {
                 <svg style={{ width: '20px', height: '20px' }} fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                 </svg>
-                <span>Get Help Today</span>
+                <span>Call or Text</span>
               </a>
             </div>
 
@@ -273,13 +273,13 @@ export default function ContactSection() {
                 padding: 'var(--space-4)'
               }}>
                 <iframe
-                  src="https://api.leadconnectorhq.com/widget/booking/oCJUF0iOMFKJBd4fpZS6"
+                  src="https://api.leadconnectorhq.com/widget/booking/5tFnVrBbAfETptz6sPZ8"
                   style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '780px' }}
                   scrolling="no"
-                  id="oCJUF0iOMFKJBd4fpZS6_1761332013779"
+                  id="5tFnVrBbAfETptz6sPZ8_1763946537207"
                   title="Online Booking"
                 ></iframe>
-                <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="afterInteractive" />
+                <Script src="https://api.leadconnectorhq.com/js/form_embed.js" strategy="afterInteractive" />
               </div>
             </div>
           </div>

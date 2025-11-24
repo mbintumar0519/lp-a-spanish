@@ -72,14 +72,17 @@ body {
 }
 
 :root {
-  /* Primary Colors */
-  --primary-blue: #0b2a6b; /* navy */
-  --primary-dark: #071c3a; /* deep navy */
-  --primary-light: #a7f3d0; /* mint */
+  /* Primary Colors - Heart Health Theme */
+  --primary-blue: #ef4444; /* lighter red for better contrast on dark backgrounds */
+  --primary-dark: #991b1b; /* deep red */
+  --primary-light: #fbbf24; /* warm yellow */
   
-  /* Accent Colors */
-  --accent-blue: #60a5fa;
-  --accent-purple: #818cf8;
+  /* Accent Colors - Heart Health Theme */
+  --accent-blue: #f97316; /* orange */
+  --accent-purple: #22c55e; /* green for health */
+  --accent-teal: #14b8a6; /* teal for contrast */
+  --accent-teal-dark: #0d9488; /* deep teal */
+  --accent-teal-light: #5eead4; /* light teal */
   
   /* Neutral Colors */
   --gray-50: #f9fafb;
@@ -94,10 +97,10 @@ body {
   --gray-900: #111827;
   
   /* Semantic Colors */
-  --success: #10b981;
-  --warning: #f59e0b;
-  --error: #ef4444;
-  --info: #3b82f6;
+  --success: #22c55e; /* bright green */
+  --warning: #f59e0b; /* amber */
+  --error: #dc2626; /* red */
+  --info: #f97316; /* orange */
   
   /* Typography */
   --font-primary: "Work Sans", -apple-system, BlinkMacSystemFont, sans-serif;

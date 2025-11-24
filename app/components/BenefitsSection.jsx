@@ -8,7 +8,7 @@ import { scrollToHeroForm } from '../utils/scrollToForm';
 export default function BenefitsSection() {
   return (
     <section id="benefits" className="benefits-section" style={{
-      background: 'white',
+      background: 'linear-gradient(180deg, rgba(249, 115, 22, 0.03) 0%, rgba(255, 255, 255, 1) 50%, rgba(249, 115, 22, 0.03) 100%)',
       padding: 'var(--space-20) 0'
     }}>
       <div className="container" style={{
@@ -31,7 +31,7 @@ export default function BenefitsSection() {
           <div className="underline" style={{
             width: '80px',
             height: '4px',
-            background: 'var(--primary-blue)',
+            background: 'linear-gradient(90deg, #14b8a6 0%, #5eead4 100%)',
             margin: '0 auto var(--space-6)',
             borderRadius: '2px'
           }}></div>
@@ -42,7 +42,7 @@ export default function BenefitsSection() {
             margin: '0 auto',
             fontFamily: 'var(--font-primary)'
           }}>
-            Financial, transportation, and medical support designed to make participation easier during depression.
+            No insurance required. All study care, monitoring, and Lp(a) testing provided free. Compensation and travel support included.
           </p>
         </div>
         
@@ -67,12 +67,12 @@ export default function BenefitsSection() {
               flexShrink: 0,
               width: '48px',
               height: '48px',
-              background: 'linear-gradient(135deg, var(--primary-blue) 0%, #4F46E5 100%)',
+              background: 'linear-gradient(135deg, #dc2626 0%, #f97316 100%)',
               borderRadius: '1rem',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)'
+              boxShadow: '0 4px 12px rgba(220, 38, 38, 0.3)'
               }}>
               <svg style={{
                 width: '24px',
@@ -89,13 +89,13 @@ export default function BenefitsSection() {
                 marginBottom: 'var(--space-2)',
                 fontWeight: '600',
                 lineHeight: '1.3'
-              }}>Up to $1,500 Compensation</h3>
+              }}>Compensation for Your Time</h3>
               <p style={{
                 color: 'var(--gray-600)',
                 lineHeight: '1.5',
                 fontSize: 'var(--text-sm)'
               }}>
-                Payments are provided after each visit for your time and commitment. You are compensated whether you receive study medication or placebo.
+                You'll receive $100 for each completed study visit. Payments are provided for your time and commitment, whether you receive the study medication or placebo.
               </p>
             </div>
           </div>
@@ -115,12 +115,12 @@ export default function BenefitsSection() {
               flexShrink: 0,
               width: '48px',
               height: '48px',
-              background: 'linear-gradient(135deg, var(--primary-blue) 0%, #4F46E5 100%)',
+              background: 'linear-gradient(135deg, #dc2626 0%, #f97316 100%)',
               borderRadius: '1rem',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)'
+              boxShadow: '0 4px 12px rgba(220, 38, 38, 0.3)'
               }}>
               <svg style={{
                 width: '24px',
@@ -137,13 +137,13 @@ export default function BenefitsSection() {
                 marginBottom: 'var(--space-2)',
                 fontWeight: '600',
                 lineHeight: '1.3'
-              }}>Free Uber Transportation</h3>
+              }}>Travel Expenses Reimbursed</h3>
               <p style={{
                 color: 'var(--gray-600)',
                 lineHeight: '1.5',
                 fontSize: 'var(--text-sm)'
               }}>
-                Round-trip Ubers to every visit. No driving, no parking, no asking for rides. We handle arrangements.
+                Reasonable travel costs including mileage, parking, and other out-of-pocket expenses are reimbursed when you submit receipts to the study staff.
               </p>
             </div>
           </div>
@@ -163,12 +163,12 @@ export default function BenefitsSection() {
               flexShrink: 0,
               width: '48px',
               height: '48px',
-              background: 'linear-gradient(135deg, var(--primary-blue) 0%, #4F46E5 100%)',
+              background: 'linear-gradient(135deg, #dc2626 0%, #f97316 100%)',
               borderRadius: '1rem',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)'
+              boxShadow: '0 4px 12px rgba(220, 38, 38, 0.3)'
               }}>
               <svg style={{
                 width: '24px',
@@ -185,13 +185,13 @@ export default function BenefitsSection() {
                 marginBottom: 'var(--space-2)',
                 fontWeight: '600',
                 lineHeight: '1.3'
-              }}>All Care Provided at No Cost</h3>
+              }}>No Insurance Required</h3>
               <p style={{
                 color: 'var(--gray-600)',
                 lineHeight: '1.5',
                 fontSize: 'var(--text-sm)'
               }}>
-                Study medication, psychiatric evaluations, regular health monitoring, labs, EKGs, and ophthalmology exams — no insurance required.
+                All study-related care is provided at no cost. Study medication (or placebo), Lp(a) testing, blood work, ECGs, physical exams, and monitoring — all free. No insurance needed, no charges for any study visits or procedures.
               </p>
             </div>
           </div>
@@ -211,12 +211,12 @@ export default function BenefitsSection() {
               flexShrink: 0,
               width: '48px',
               height: '48px',
-              background: 'linear-gradient(135deg, var(--primary-blue) 0%, #4F46E5 100%)',
+              background: 'linear-gradient(135deg, #dc2626 0%, #f97316 100%)',
               borderRadius: '1rem',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)'
+              boxShadow: '0 4px 12px rgba(220, 38, 38, 0.3)'
               }}>
               <svg style={{
                 width: '24px',
@@ -233,13 +233,13 @@ export default function BenefitsSection() {
                 marginBottom: 'var(--space-2)',
                 fontWeight: '600',
                 lineHeight: '1.3'
-              }}>Compassionate Psychiatric Care</h3>
+              }}>Expert Team</h3>
               <p style={{
                 color: 'var(--gray-600)',
                 lineHeight: '1.5',
                 fontSize: 'var(--text-sm)'
               }}>
-                Experienced mood disorder team providing careful monitoring and support throughout screening, treatment, and follow‑up.
+                Experienced research team providing careful monitoring and safety assessments throughout screening, treatment, and follow‑up periods.
               </p>
             </div>
           </div>
@@ -267,7 +267,7 @@ export default function BenefitsSection() {
             }}
           >
             <FontAwesomeIcon icon={faUserCheck} style={{ width: '20px', height: '20px' }} />
-            Get Help Today
+            Get your Lp(a) Tested
           </button>
         </div>
       </div>
@@ -280,7 +280,7 @@ export default function BenefitsSection() {
         
         .benefit-card:hover .icon-circle {
           transform: scale(1.05);
-          box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+          box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
         }
         
         .btn-primary:hover {

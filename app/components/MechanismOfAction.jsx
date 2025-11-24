@@ -6,34 +6,34 @@ import { FaAtom, FaVirus, FaBullseye } from 'react-icons/fa';
 const MechanismOfAction = () => {
   const steps = [
     {
-      icon: <FaVirus className="w-12 h-12" />,
-      title: "Different From Typical Antidepressants",
-      description: "Azetukalner works on potassium channels (tiny switches for brain-cell signaling), not serotonin.",
-      detail: "Mechanism aims to reduce risk of triggering mania."
+      icon: <FaDna className="w-12 h-12" />,
+      title: "Targets Lp(a) at Its Source",
+      description: "Olpasiran is a small interfering RNA (siRNA) that works by blocking the production of Lp(a) in your liver.",
+      detail: "This approach is designed to lower Lp(a) levels where they are made."
     },
     {
       icon: <FaBullseye className="w-12 h-12" />,
-      title: "Targets Anhedonia",
-      description: "Addresses the numbness and emptiness where nothing feels enjoyable.",
-      detail: "Participants reported music, food, and time with loved ones feeling meaningful again."
+      title: "Preventing First Major Heart Events",
+      description: "The study aims to see if lowering Lp(a) can help prevent heart attacks, urgent heart procedures, or death from heart disease.",
+      detail: "This research may help people at higher risk for cardiovascular events."
     },
     {
       icon: <FaShieldAlt className="w-12 h-12" />,
       title: "Close Monitoring & Safety",
-      description: "Generally well‑tolerated; the most common effects reported were mild dizziness and drowsiness that often improved.",
-      detail: "You’ll have regular safety check‑ins."
+      description: "You'll receive regular health monitoring, blood tests, heart checks (ECGs), and safety assessments throughout the study.",
+      detail: "The study is overseen by independent safety committees and an ethics review board."
     },
     {
       icon: <FaAtom className="w-12 h-12" />,
-      title: "Potential for Faster Relief",
-      description: "In earlier studies, some people improved within one week (not 4–6 weeks).",
-      detail: "Individual results vary; this is still investigational."
+      title: "Simple Treatment Schedule",
+      description: "The study drug is given as an injection under the skin about every 3 months (every 12 weeks).",
+      detail: "The first three injections include a 30-minute observation period for safety."
     }
   ];
 
   return (
     <section id="mechanism" className="mechanism-section" style={{
-      background: 'white',
+      background: 'linear-gradient(180deg, rgba(251, 191, 36, 0.03) 0%, rgba(255, 255, 255, 1) 50%, rgba(251, 191, 36, 0.03) 100%)',
       padding: 'var(--space-20) 0'
     }}>
       <div className="container" style={{
@@ -54,12 +54,12 @@ const MechanismOfAction = () => {
             marginBottom: 'var(--space-4)',
             fontFamily: 'var(--font-heading)'
           }}>
-            What Makes This Different
+            How Olpasiran Works
           </h2>
           <div className="underline" style={{
             width: '80px',
             height: '4px',
-            background: 'var(--primary-blue)',
+            background: 'linear-gradient(90deg, #14b8a6 0%, #5eead4 100%)',
             margin: '0 auto var(--space-6)',
             borderRadius: '2px'
           }}></div>
@@ -70,7 +70,7 @@ const MechanismOfAction = () => {
             margin: '0 auto',
             fontFamily: 'var(--font-primary)'
           }}>
-            A research approach focused on bipolar depression symptoms like loss of pleasure and motivation
+            An investigational approach to lowering Lp(a) and reducing cardiovascular risk
           </p>
         </div>
 
@@ -97,7 +97,7 @@ const MechanismOfAction = () => {
                 color: 'var(--gray-900)',
                 fontFamily: 'var(--font-heading)'
               }}>
-                A Novel Approach to Bipolar Depression
+                A Novel Approach to Heart Disease Prevention
               </h3>
             </div>
             
@@ -117,7 +117,7 @@ const MechanismOfAction = () => {
                   lineHeight: '1.6',
                   fontFamily: 'var(--font-primary)'
                 }}>
-                Azetukalner is an investigational medication with a unique mechanism. Instead of targeting serotonin, it works on potassium channels in the brain that help neurons communicate. This approach is designed to address anhedonia — the loss of pleasure — and other core symptoms of bipolar depression.
+                Olpasiran (AMG 890) is an investigational medication using RNA interference technology to block Lp(a) production in your liver. Since Lp(a) is genetic and <strong>not affected by diet or exercise</strong>, this targeted approach may be the key to reducing cardiovascular risk for people with elevated Lp(a). <em>Olpasiran is not yet FDA-approved.</em>
                 </p>
               </div>
               
@@ -136,7 +136,7 @@ const MechanismOfAction = () => {
                   lineHeight: '1.6',
                   fontFamily: 'var(--font-primary)'
                 }}>
-                Many existing options can take weeks to help and may not address numbness and loss of pleasure. Earlier studies of azetukalner suggested meaningful improvements at the 20 mg dose being studied here. This trial focuses exclusively on bipolar I and II depression.
+                High Lp(a) is <strong>genetically determined</strong> and can't be controlled with lifestyle changes or standard cholesterol medications. Currently, there are <strong>no approved Lp(a) treatments</strong> on the market. This groundbreaking study is testing whether lowering Lp(a) with olpasiran could help prevent first heart attacks, strokes, or urgent heart procedures in at-risk individuals.
                 </p>
               </div>
             </div>
@@ -166,7 +166,7 @@ const MechanismOfAction = () => {
                   flexShrink: 0,
                   width: '60px',
                   height: '60px',
-                  background: 'var(--primary-blue)',
+                  background: 'linear-gradient(135deg, #dc2626, #f97316)',
                   borderRadius: '0.75rem',
                   display: 'flex',
                   alignItems: 'center',
@@ -210,7 +210,8 @@ const MechanismOfAction = () => {
       <style jsx>{`
         .feature-card:hover {
           background: white;
-          box-shadow: var(--shadow-md);
+          box-shadow: 0 8px 30px rgba(249, 115, 22, 0.15);
+          border-color: rgba(249, 115, 22, 0.3);
         }
         
         @media (max-width: 768px) {

@@ -29,12 +29,26 @@ export default function FloatingCTA() {
         <div className="fixed bottom-4 md:bottom-6 right-4 md:right-6 z-50">
             <button 
               onClick={scrollToHeroForm}
-              className="flex items-center gap-1 md:gap-2 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white hover:text-white font-medium px-3 md:px-5 py-2.5 md:py-3 rounded-full shadow-md transition-all duration-300 hover:shadow-lg text-sm md:text-base font-heading"
-              style={{ color: 'white' }}
+              className="flex items-center gap-1 md:gap-2 text-white hover:text-white font-medium px-3 md:px-5 py-2.5 md:py-3 rounded-full shadow-lg transition-all duration-300 text-sm md:text-base font-heading"
+              style={{ 
+                color: 'white',
+                background: 'linear-gradient(135deg, #dc2626, #f97316)',
+                boxShadow: '0 8px 25px rgba(220, 38, 38, 0.4)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(135deg, #991b1b, #dc2626)';
+                e.currentTarget.style.boxShadow = '0 12px 35px rgba(220, 38, 38, 0.5)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(135deg, #dc2626, #f97316)';
+                e.currentTarget.style.boxShadow = '0 8px 25px rgba(220, 38, 38, 0.4)';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
             >
               <FontAwesomeIcon icon={faCalendarCheck} className="h-4 w-4 md:h-5 md:w-5 opacity-90 text-white" />
-              <span className="hidden sm:inline text-white">Get Help Today</span>
-              <span className="sm:hidden text-white">Get Help</span>
+              <span className="hidden sm:inline text-white">Get Your Lp(a) Tested</span>
+              <span className="sm:hidden text-white">Get Tested</span>
             </button>
         </div>
       )}

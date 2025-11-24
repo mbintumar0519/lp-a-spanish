@@ -28,7 +28,7 @@ export default function EnrollmentSection() {
           <div className="underline" style={{
             width: '80px',
             height: '4px',
-            background: 'var(--primary-blue)',
+            background: 'linear-gradient(90deg, #14b8a6 0%, #5eead4 100%)',
             margin: '0 auto var(--space-6)',
             borderRadius: '2px'
           }}></div>
@@ -39,7 +39,7 @@ export default function EnrollmentSection() {
             margin: '0 auto',
             fontFamily: 'var(--font-primary)'
           }}>
-            From screening to follow‑up, we’ll support you every step. Free Uber provided for all visits.
+            From screening to follow‑up, we'll support you every step. Travel expenses reimbursed.
           </p>
         </div>
         
@@ -72,14 +72,14 @@ export default function EnrollmentSection() {
               width: '80px',
               height: '80px',
               background: 'white',
-              border: '3px solid var(--primary-blue)',
+              border: '3px solid #14b8a6',
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               fontSize: 'var(--text-3xl)',
               fontWeight: '700',
-              color: 'var(--primary-blue)',
+              color: '#14b8a6',
               position: 'relative',
               zIndex: 1
             }}>
@@ -97,12 +97,12 @@ export default function EnrollmentSection() {
                 color: 'var(--gray-900)',
                 marginBottom: 'var(--space-3)',
                 fontWeight: '600'
-              }}>Screening Visits (2–4 weeks)</h3>
+              }}>Screening Period (Up to 2 Months)</h3>
               <p style={{
                 color: 'var(--gray-600)',
                 lineHeight: '1.6'
               }}>
-                We’ll discuss your history and current symptoms, do health checks (blood work, EKG), and ensure the study is safe for you. Free Uber provided.
+                We'll review your medical history, measure your Lp(a) levels, and perform health assessments including blood work, ECG, and vital signs to ensure the study is safe for you. About 2 screening visits.
               </p>
             </div>
           </div>
@@ -120,14 +120,14 @@ export default function EnrollmentSection() {
               width: '80px',
               height: '80px',
               background: 'white',
-              border: '3px solid var(--primary-blue)',
+              border: '3px solid #14b8a6',
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               fontSize: 'var(--text-3xl)',
               fontWeight: '700',
-              color: 'var(--primary-blue)',
+              color: '#14b8a6',
               position: 'relative',
               zIndex: 1
             }}>
@@ -145,12 +145,12 @@ export default function EnrollmentSection() {
                 color: 'var(--gray-900)',
                 marginBottom: 'var(--space-3)',
                 fontWeight: '600'
-              }}>Treatment Phase (6 weeks)</h3>
+              }}>Treatment Period (3.5 to 5 Years)</h3>
               <p style={{
                 color: 'var(--gray-600)',
                 lineHeight: '1.6'
               }}>
-                Take one capsule daily with dinner. You’ll have regular visits to see how you’re doing and talk about symptoms. Uber picks you up and brings you home.
+                You'll receive study medication or placebo as an injection under the skin about every 3 months (every 12 weeks). Regular visits include health monitoring, blood tests, ECGs, and safety checks. Compensation provided for each visit.
               </p>
             </div>
           </div>
@@ -168,14 +168,14 @@ export default function EnrollmentSection() {
               width: '80px',
               height: '80px',
               background: 'white',
-              border: '3px solid var(--primary-blue)',
+              border: '3px solid #14b8a6',
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               fontSize: 'var(--text-3xl)',
               fontWeight: '700',
-              color: 'var(--primary-blue)',
+              color: '#14b8a6',
               position: 'relative',
               zIndex: 1
             }}>
@@ -193,12 +193,12 @@ export default function EnrollmentSection() {
                 color: 'var(--gray-900)',
                 marginBottom: 'var(--space-3)',
                 fontWeight: '600'
-              }}>Follow‑up Phase (8 weeks)</h3>
+              }}>Safety Follow‑up (About 30 Days)</h3>
               <p style={{
                 color: 'var(--gray-600)',
                 lineHeight: '1.6'
               }}>
-                We’ll check in to make sure you’re okay, see if improvements continue, and discuss possible longer‑term options. Transportation always included.
+                About 30 days after your last study drug injection, we'll check in with you to make sure you're doing well. This may be a visit or phone call depending on timing.
               </p>
             </div>
           </div>
@@ -216,14 +216,14 @@ export default function EnrollmentSection() {
               width: '80px',
               height: '80px',
               background: 'white',
-              border: '3px solid var(--primary-blue)',
+              border: '3px solid #14b8a6',
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               fontSize: 'var(--text-3xl)',
               fontWeight: '700',
-              color: 'var(--primary-blue)',
+              color: '#14b8a6',
               position: 'relative',
               zIndex: 1
             }}>
@@ -241,12 +241,12 @@ export default function EnrollmentSection() {
                 color: 'var(--gray-900)',
                 marginBottom: 'var(--space-3)',
                 fontWeight: '600'
-              }}>Flexible Scheduling & Support</h3>
+              }}>Total Study Duration</h3>
               <p style={{
                 color: 'var(--gray-600)',
                 lineHeight: '1.6'
               }}>
-                Our team schedules appointments around your needs and provides compassionate support. Many participants find the structure and care helpful during depression.
+                You are expected to be in the study for approximately 3.5 to 5.5 years total, based on when you start. You can choose to stop at any time without penalty. Visits are scheduled around your availability.
               </p>
             </div>
           </div>
@@ -255,8 +255,9 @@ export default function EnrollmentSection() {
       
       <style jsx>{`
         .step-number:hover {
-          background: var(--primary-blue);
+          background: linear-gradient(135deg, #14b8a6, #5eead4);
           color: white;
+          border-color: #5eead4;
         }
         
         @media (max-width: 768px) {

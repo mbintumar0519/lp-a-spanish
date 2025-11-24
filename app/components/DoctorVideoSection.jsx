@@ -23,7 +23,7 @@ const DoctorVideoSection = () => {
             <div className="flex flex-col items-center gap-2 md:flex-row md:justify-center md:gap-3">
               <span className="text-teal-500">About the</span>
               <span className="text-teal-500 flex items-center gap-3">
-                Bipolar Depression Study
+                Lp(a) Heart Health Study
                 <FaUserMd className="w-8 h-8 md:w-10 md:h-10 text-teal-400 drop-shadow-sm" />
               </span>
             </div>
@@ -38,7 +38,7 @@ const DoctorVideoSection = () => {
               <div className="relative overflow-hidden rounded-xl bg-gray-900 aspect-[9/16] max-w-sm mx-auto">
                 <iframe
                   src="https://www.youtube.com/embed/zuNmTXbxphE?autoplay=0&mute=0&controls=1&rel=0&modestbranding=1"
-                  title="Bipolar Depression Study Information Video"
+                  title="Lp(a) Heart Health Study Information Video"
                   className="w-full h-full"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen

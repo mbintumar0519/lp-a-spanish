@@ -15,8 +15,8 @@ const SITE_URL = process.env.SITE_URL || 'https://amariuc.netlify.app';
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Bipolar Depression Research Study | Stone Mountain",
-  description: "Find hope when depression feels overwhelming. Up to $1,500 compensation and free round-trip Uber transportation. A research study for people living with bipolar depression.",
+  title: "Lp(a) Heart Health Research Study | Plant City, FL",
+  description: "A cardiovascular research study for people with elevated Lp(a). Compensation provided for visits and travel expenses reimbursed. Help advance heart disease prevention research.",
   icons: {
     icon: '/icon.png',
     shortcut: '/icon.png',
@@ -26,16 +26,16 @@ export const metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "Bipolar Depression Research Study | Stone Mountain",
-    description: "A study for people living with bipolar depression. Up to $1,500 compensation and free Uber rides to every visit.",
+    title: "Lp(a) Heart Health Research Study | Plant City, FL",
+    description: "A cardiovascular study for people with elevated Lp(a). Compensation provided and travel expenses reimbursed.",
     url: '/',
-    siteName: 'Stone Mountain Bipolar Research',
+    siteName: 'Plant City Heart Health Research',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'A doctor and patient discussing bipolar depression research study options.',
+        alt: 'A doctor and patient discussing heart health research study options.',
       },
     ],
     locale: 'en_US',
@@ -43,8 +43,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Bipolar Depression Research Study | Stone Mountain",
-    description: "Up to $1,500 compensation and free Uber transportation. A study for bipolar depression.",
+    title: "Lp(a) Heart Health Research Study | Plant City, FL",
+    description: "Compensation provided and travel reimbursed. A study for elevated Lp(a) and cardiovascular risk.",
     images: ['/og-image.png'],
   },
   robots: {
@@ -63,12 +63,12 @@ export const metadata = {
   structuredData: {
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
-    "name": "Bipolar Depression Research Study | Stone Mountain",
-    "description": "Find hope when depression feels overwhelming. Up to $1,500 compensation and free round-trip Uber transportation.",
+    "name": "Lp(a) Heart Health Research Study | Plant City, FL",
+    "description": "A cardiovascular research study for people with elevated Lp(a). Compensation provided and travel expenses reimbursed.",
     "url": SITE_URL,
     "publisher": {
       "@type": "Organization",
-      "name": "Stone Mountain Bipolar Research",
+      "name": "Plant City Heart Health Research",
       "logo": {
         "@type": "ImageObject",
         "url": `${SITE_URL}/logo.png`
@@ -139,29 +139,27 @@ export default function RootLayout({ children }) {
               "@graph": [
                 {
                   "@type": "Organization",
-                  "name": "Stone Mountain Bipolar Research",
+                  "name": "Plant City Heart Health Research",
                   "url": SITE_URL,
-                  // Optional: Add logo, address, telephone etc.
-                  // "logo": "URL_TO_YOUR_LOGO.png",
-                  // "address": {
-                  //   "@type": "PostalAddress",
-                  //   "streetAddress": "...",
-                  //   "addressLocality": "...",
-                  //   "addressRegion": "...",
-                  //   "postalCode": "...",
-                  //   "addressCountry": "..."
-                  // },
-                  // "telephone": "+1-XXX-XXX-XXXX"
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "1601 W Reynolds St STE 203",
+                    "addressLocality": "Plant City",
+                    "addressRegion": "FL",
+                    "postalCode": "33563",
+                    "addressCountry": "US"
+                  },
+                  "telephone": "+1-813-796-6716"
                 },
                 {
                   "@type": "MedicalWebPage",
                   "@id": SITE_URL,
                   "url": SITE_URL,
-                  "name": "Bipolar Depression Research Study | Stone Mountain",
-                  "description": "A research study for people living with bipolar depression. Up to $1,500 compensation and free Uber transportation.",
+                  "name": "Lp(a) Heart Health Research Study | Plant City, FL",
+                  "description": "A cardiovascular research study for people with elevated Lp(a). Compensation provided and travel expenses reimbursed.",
                   "publisher": {
                     "@type": "Organization",
-                    "name": "Stone Mountain Bipolar Research"
+                    "name": "Plant City Heart Health Research"
                   },
                   "inLanguage": "en-US"
                 }

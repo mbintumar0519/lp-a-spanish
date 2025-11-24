@@ -6,7 +6,7 @@ import { scrollToHeroForm } from '../utils/scrollToForm';
 export default function ConsultationSection() {
   return (
     <section id="schedule" className="consultation-section" style={{
-      background: 'linear-gradient(135deg, #071C3A 0%, #0B2A6B 50%, #071C3A 100%)',
+      background: 'linear-gradient(135deg, #991b1b 0%, #dc2626 50%, #991b1b 100%)',
       padding: 'var(--space-20) 0',
       position: 'relative',
       overflow: 'hidden'
@@ -46,52 +46,6 @@ export default function ConsultationSection() {
         padding: '0 var(--space-6)',
         position: 'relative'
       }}>
-        <div className="section-header" style={{
-            textAlign: 'center',
-            marginBottom: 'var(--space-16)'
-          }}
-        >
-          <h2 style={{
-            fontSize: 'var(--text-4xl)',
-            color: 'white',
-            fontWeight: '700',
-            marginBottom: 'var(--space-4)',
-            fontFamily: 'var(--font-heading)'
-          }}>
-            Schedule Your <span style={{
-              position: 'relative',
-              display: 'inline-block'
-            }}>
-              <span style={{ position: 'relative', zIndex: 1 }}>Free</span>
-              <span style={{
-                position: 'absolute',
-                bottom: '-4px',
-                left: 0,
-                width: '100%',
-                height: '12px',
-                background: 'rgba(255, 255, 255, 0.3)',
-                borderRadius: '4px'
-              }}></span>
-            </span> Evaluation
-          </h2>
-          <div className="underline" style={{
-            width: '80px',
-            height: '4px',
-            background: 'white',
-            margin: '0 auto var(--space-6)',
-            borderRadius: '2px'
-          }}></div>
-          <p style={{
-            fontSize: 'var(--text-xl)',
-            color: 'rgba(255, 255, 255, 0.9)',
-            maxWidth: '768px',
-            margin: '0 auto',
-            fontFamily: 'var(--font-primary)'
-          }}>
-            Find out if you're a good fit for this investigational study. Our team will contact you within 24 hours.
-          </p>
-        </div>
-        
         <div className="consultation-content" style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
@@ -116,7 +70,7 @@ export default function ConsultationSection() {
               <div style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'linear-gradient(135deg, var(--primary-blue), var(--primary-dark))',
+                background: 'linear-gradient(135deg, #dc2626, #f97316)',
                 transform: 'rotate(3deg)',
                 borderRadius: '1rem'
               }}></div>
@@ -152,7 +106,7 @@ export default function ConsultationSection() {
                 gap: 'var(--space-3)'
               }}>
                 <div style={{
-                  background: 'linear-gradient(135deg, #A7F3D0, #34D399)',
+                  background: 'linear-gradient(135deg, #22c55e, #16a34a)',
                   padding: 'var(--space-2)',
                   borderRadius: '50%',
                   flexShrink: 0,
@@ -170,12 +124,12 @@ export default function ConsultationSection() {
                     color: 'var(--gray-900)',
                     fontSize: 'var(--text-base)',
                     fontFamily: 'var(--font-heading)'
-                  }}>Voluntary Participation</p>
+                  }}>Limited Spots Available</p>
                   <p style={{
                     color: 'var(--gray-600)',
                     fontSize: 'var(--text-sm)',
                     fontFamily: 'var(--font-primary)'
-                  }}>We can only accept a limited number of participants for this investigational study.</p>
+                  }}>We can only accept a limited number of participants for this groundbreaking investigational study. Early screening recommended.</p>
                 </div>
               </div>
               
@@ -185,7 +139,7 @@ export default function ConsultationSection() {
                 gap: 'var(--space-3)'
               }}>
                 <div style={{
-                  background: 'linear-gradient(135deg, #A7F3D0, #34D399)',
+                  background: 'linear-gradient(135deg, #22c55e, #16a34a)',
                   padding: 'var(--space-2)',
                   borderRadius: '50%',
                   flexShrink: 0,
@@ -208,7 +162,7 @@ export default function ConsultationSection() {
                     color: 'var(--gray-600)',
                     fontSize: 'var(--text-sm)',
                     fontFamily: 'var(--font-primary)'
-                  }}>Your consultation and all study-related care is provided at no cost to qualified participants.</p>
+                  }}>Your consultation, Lp(a) testing, and all study-related care are provided at no cost. No insurance required for qualified participants.</p>
                 </div>
               </div>
               
@@ -218,7 +172,7 @@ export default function ConsultationSection() {
                 gap: 'var(--space-3)'
               }}>
                 <div style={{
-                  background: 'linear-gradient(135deg, #A7F3D0, #34D399)',
+                  background: 'linear-gradient(135deg, #22c55e, #16a34a)',
                   padding: 'var(--space-2)',
                   borderRadius: '50%',
                   flexShrink: 0,
@@ -259,7 +213,7 @@ export default function ConsultationSection() {
           >
             {/* Header accent */}
             <div style={{
-              background: 'linear-gradient(135deg, var(--primary-blue), var(--primary-dark))',
+              background: 'linear-gradient(135deg, #dc2626, #f97316)',
               height: '8px',
               width: '100%'
             }}></div>
@@ -295,7 +249,7 @@ export default function ConsultationSection() {
                   marginBottom: 'var(--space-2)',
                   textAlign: 'center',
                   color: 'var(--gray-900)'
-                }}>Get Help Today</h3>
+                }}>Get your Lp(a) Tested</h3>
                 <p style={{
                   textAlign: 'center',
                   color: 'var(--gray-600)',
@@ -311,7 +265,7 @@ export default function ConsultationSection() {
                     onClick={scrollToHeroForm}
                     className="inline-block bg-white hover:bg-gray-50 text-navy-900 font-bold py-4 px-8 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl border-2 border-navy-900"
                   >
-                    Get Help Today
+                    Get your Lp(a) Tested
                   </button>
                 </div>
               </div>

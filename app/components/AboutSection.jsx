@@ -39,12 +39,12 @@ export default function AboutSection() {
             marginBottom: 'var(--space-4)',
             fontFamily: 'var(--font-heading)'
           }}>
-            Put What Makes This Different
+            About the Lipoprotein(a) Heart Health Study
           </h2>
           <div className="underline" style={{
             width: '80px',
             height: '4px',
-            background: 'var(--primary-blue)',
+            background: 'linear-gradient(90deg, #14b8a6 0%, #5eead4 100%)',
             margin: '0 auto',
             borderRadius: '2px'
           }}></div>
@@ -61,13 +61,14 @@ export default function AboutSection() {
               borderRadius: '1rem',
               padding: 'var(--space-8)',
               textAlign: 'center',
-              border: '1px solid var(--gray-100)',
+              border: '2px solid rgba(20, 184, 166, 0.1)',
+              transition: 'all 0.3s ease'
             }}
           >
             <div className="icon-wrapper" style={{
               width: '80px',
               height: '80px',
-              background: 'rgba(37, 99, 235, 0.1)',
+              background: 'linear-gradient(135deg, rgba(20, 184, 166, 0.15), rgba(94, 234, 212, 0.15))',
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
@@ -77,7 +78,7 @@ export default function AboutSection() {
               <svg style={{
                 width: '40px',
                 height: '40px',
-                color: 'var(--primary-blue)'
+                color: '#14b8a6'
               }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
               </svg>
@@ -92,7 +93,7 @@ export default function AboutSection() {
               color: 'var(--gray-500)',
               lineHeight: '1.6'
             }}>
-              At our Stone Mountain research center, <strong>Dr. Maria E. Johnson</strong> and her team are studying a new treatment that may help lift the weight of <strong>bipolar depression</strong>. We’re looking for people who feel stuck in the fog of depression despite trying other treatment options.
+              This is a Phase 3 global research study testing <strong>olpasiran</strong>, an investigational medication that targets Lp(a) production in the liver. With <strong>1 in 5 people</strong> having elevated Lp(a)—often without knowing it—this study aims to see if lowering Lp(a) can help prevent first major heart attacks, strokes, or urgent heart procedures.
             </p>
           </div>
           
@@ -101,13 +102,14 @@ export default function AboutSection() {
               borderRadius: '1rem',
               padding: 'var(--space-8)',
               textAlign: 'center',
-              border: '1px solid var(--gray-100)',
+              border: '2px solid rgba(20, 184, 166, 0.1)',
+              transition: 'all 0.3s ease'
             }}
           >
             <div className="icon-wrapper" style={{
               width: '80px',
               height: '80px',
-              background: 'rgba(37, 99, 235, 0.1)',
+              background: 'linear-gradient(135deg, rgba(20, 184, 166, 0.15), rgba(94, 234, 212, 0.15))',
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
@@ -117,7 +119,7 @@ export default function AboutSection() {
               <svg style={{
                 width: '40px',
                 height: '40px',
-                color: 'var(--primary-blue)'
+                color: '#14b8a6'
               }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
@@ -127,12 +129,12 @@ export default function AboutSection() {
               color: 'var(--gray-900)',
               marginBottom: 'var(--space-4)',
               fontWeight: '600'
-            }}>Compensation & Transport</h3>
+            }}>What Is Lp(a)?</h3>
             <p style={{
               color: 'var(--gray-500)',
               lineHeight: '1.6'
             }}>
-              You’ll receive <strong>up to $1,500 total compensation</strong> for completing study visits. We also provide <strong>free round‑trip Uber transportation</strong> to all visits so you don’t need to drive or arrange a ride.
+              Lipoprotein(a), or Lp(a), is a <strong>genetic protein in your blood that builds up regardless of diet or exercise</strong>. Unlike other cholesterol, you can't control it with lifestyle changes. High Lp(a) increases stroke risk by <strong>60%</strong>, yet <strong>90% of doctors don't regularly check it</strong>. It's typically not included in standard cholesterol tests.
             </p>
           </div>
           
@@ -141,13 +143,14 @@ export default function AboutSection() {
               borderRadius: '1rem',
               padding: 'var(--space-8)',
               textAlign: 'center',
-              border: '1px solid var(--gray-100)',
+              border: '2px solid rgba(20, 184, 166, 0.1)',
+              transition: 'all 0.3s ease'
             }}
           >
             <div className="icon-wrapper" style={{
               width: '80px',
               height: '80px',
-              background: 'rgba(37, 99, 235, 0.1)',
+              background: 'linear-gradient(135deg, rgba(20, 184, 166, 0.15), rgba(94, 234, 212, 0.15))',
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
@@ -157,7 +160,7 @@ export default function AboutSection() {
               <svg style={{
                 width: '40px',
                 height: '40px',
-                color: 'var(--primary-blue)'
+                color: '#14b8a6'
               }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -168,12 +171,12 @@ export default function AboutSection() {
               color: 'var(--gray-900)',
               marginBottom: 'var(--space-4)',
               fontWeight: '600'
-            }}>Who We’re Looking For</h3>
+            }}>Who We're Looking For</h3>
             <p style={{
               color: 'var(--gray-500)',
               lineHeight: '1.6'
             }}>
-              People with <strong>bipolar I or II</strong> currently in a depressive episode lasting at least 4 weeks, especially if joy feels distant and motivation is hard. If you’re ready to try something different, we’d love to talk.
+              Adults with <strong>elevated Lp(a) levels</strong> and risk factors like high blood pressure, high cholesterol, diabetes, family history of heart disease, or smoking. If you have high Lp(a) and want to contribute to critical research that could help future generations, we'd like to hear from you.
             </p>
           </div>
         </div>
@@ -213,7 +216,7 @@ export default function AboutSection() {
           }}>
             {/* SMS/Text Message */}
             <a
-              href={`sms:?body=${encodeURIComponent('There\'s a bipolar depression research study in Stone Mountain offering up to $1,500 and free Uber transportation. If this could help you or someone you know, take a look:\n\n' + (pageUrl || ''))}`}
+              href={`sms:?body=${encodeURIComponent('There\'s a heart health research study for people with high Lp(a). Compensation and travel reimbursement provided. If this could help you or someone you know, take a look:\n\n' + (pageUrl || ''))}`}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -245,7 +248,7 @@ export default function AboutSection() {
 
             {/* WhatsApp */}
             <a
-              href={`https://wa.me/?text=${encodeURIComponent('Bipolar depression research study in Stone Mountain: up to $1,500 + free Uber rides to visits. Learn more:\n\n' + (pageUrl || ''))}`}
+              href={`https://wa.me/?text=${encodeURIComponent('Heart health research study for people with high Lp(a). Compensation provided. Learn more:\n\n' + (pageUrl || ''))}`}
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -316,7 +319,7 @@ export default function AboutSection() {
             <button
               onClick={() => {
                 if (typeof window !== 'undefined') {
-                  const message = `Bipolar depression research study in Stone Mountain: up to $1,500 + free Uber rides to visits. Learn more: ${typeof window !== 'undefined' ? window.location.href : ''}`;
+                  const message = `Heart health research study for people with high Lp(a). Compensation provided. Learn more: ${typeof window !== 'undefined' ? window.location.href : ''}`;
                   navigator.clipboard.writeText(message);
                   alert('Message copied to clipboard! You can now paste it in any app.');
                 }
@@ -373,7 +376,7 @@ export default function AboutSection() {
             }}
           >
             <FontAwesomeIcon icon={faClipboardCheck} style={{ width: '20px', height: '20px' }} />
-            <span>Get Help Today</span>
+            <span>Get your Lp(a) Tested</span>
           </button>
         </div>
       </div>
@@ -381,14 +384,14 @@ export default function AboutSection() {
       <style jsx>{`
         .info-card:hover {
           transform: translateY(-4px);
-          box-shadow: var(--shadow-lg);
-          border-color: var(--primary-light);
+          box-shadow: 0 12px 40px rgba(20, 184, 166, 0.15);
+          border-color: #14b8a6;
         }
         
         .btn-primary:hover {
-          background: var(--primary-dark);
+          background: #991b1b;
           transform: translateY(-2px);
-          box-shadow: var(--shadow-lg);
+          box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
         }
         
         @media (max-width: 768px) {
