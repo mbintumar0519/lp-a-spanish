@@ -113,7 +113,7 @@ export default function MeetPISection() {
               className="btn-primary inline-flex items-center justify-center px-5 py-3 md:px-6 md:py-3 text-sm md:text-base font-medium text-white rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 duration-300 w-full sm:w-auto"
             >
               <FontAwesomeIcon icon={faCalendarCheck} className="h-4 w-4 md:h-5 md:w-5 mr-2" />
-              Get your Lp(a) Tested
+              Get your lp(a) Tested
             </button>
           </div>
         </div>

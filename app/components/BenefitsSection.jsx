@@ -42,7 +42,7 @@ export default function BenefitsSection() {
             margin: '0 auto',
             fontFamily: 'var(--font-primary)'
           }}>
-            No insurance required. All study care, monitoring, and Lp(a) testing provided free. Compensation and travel support included.
+            No insurance required. All study care, monitoring, and lp(a) testing provided free. Compensation and travel support included.
           </p>
         </div>
         
@@ -191,7 +191,7 @@ export default function BenefitsSection() {
                 lineHeight: '1.5',
                 fontSize: 'var(--text-sm)'
               }}>
-                All study-related care is provided at no cost. Study medication (or placebo), Lp(a) testing, blood work, ECGs, physical exams, and monitoring — all free. No insurance needed, no charges for any study visits or procedures.
+                All study-related care is provided at no cost. Study medication (or placebo), lp(a) testing, blood work, ECGs, physical exams, and monitoring — all free. No insurance needed, no charges for any study visits or procedures.
               </p>
             </div>
           </div>
@@ -267,7 +267,7 @@ export default function BenefitsSection() {
             }}
           >
             <FontAwesomeIcon icon={faUserCheck} style={{ width: '20px', height: '20px' }} />
-            Get your Lp(a) Tested
+            Get your lp(a) Tested
           </button>
         </div>
       </div>

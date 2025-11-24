@@ -102,7 +102,7 @@ export default function EnrollmentSection() {
                 color: 'var(--gray-600)',
                 lineHeight: '1.6'
               }}>
-                We'll review your medical history, measure your Lp(a) levels, and perform health assessments including blood work, ECG, and vital signs to ensure the study is safe for you. About 2 screening visits.
+                We'll review your medical history, measure your lp(a) levels, and perform health assessments including blood work, ECG, and vital signs to ensure the study is safe for you. About 2 screening visits.
               </p>
             </div>
           </div>

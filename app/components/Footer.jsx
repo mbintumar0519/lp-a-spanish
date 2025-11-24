@@ -21,9 +21,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 mb-8 md:mb-12">
           <div>
-            <h3 className="text-xl md:text-2xl font-heading font-bold text-white mb-4 md:mb-6">Lp(a) Heart Health Study</h3>
+            <h3 className="text-xl md:text-2xl font-heading font-bold text-white mb-4 md:mb-6">lp(a) Heart Health Study</h3>
             <p className="text-white/90 text-sm md:text-base font-body leading-relaxed">
-              A cardiovascular research study for people with elevated Lp(a). Compensation provided and travel expenses reimbursed.
+              A cardiovascular research study for people with elevated lp(a). Compensation provided and travel expenses reimbursed.
             </p>
           </div>
           

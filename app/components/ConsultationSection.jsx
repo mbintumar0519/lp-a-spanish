@@ -162,7 +162,7 @@ export default function ConsultationSection() {
                     color: 'var(--gray-600)',
                     fontSize: 'var(--text-sm)',
                     fontFamily: 'var(--font-primary)'
-                  }}>Your consultation, Lp(a) testing, and all study-related care are provided at no cost. No insurance required for qualified participants.</p>
+                  }}>Your consultation, lp(a) testing, and all study-related care are provided at no cost. No insurance required for qualified participants.</p>
                 </div>
               </div>
               
@@ -249,7 +249,7 @@ export default function ConsultationSection() {
                   marginBottom: 'var(--space-2)',
                   textAlign: 'center',
                   color: 'var(--gray-900)'
-                }}>Get your Lp(a) Tested</h3>
+                }}>Get your lp(a) Tested</h3>
                 <p style={{
                   textAlign: 'center',
                   color: 'var(--gray-600)',
@@ -265,7 +265,7 @@ export default function ConsultationSection() {
                     onClick={scrollToHeroForm}
                     className="inline-block bg-white hover:bg-gray-50 text-navy-900 font-bold py-4 px-8 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl border-2 border-navy-900"
                   >
-                    Get your Lp(a) Tested
+                    Get your lp(a) Tested
                   </button>
                 </div>
               </div>

@@ -15,8 +15,8 @@ const SITE_URL = process.env.SITE_URL || 'https://amariuc.netlify.app';
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Lp(a) Heart Health Research Study | Plant City, FL",
-  description: "A cardiovascular research study for people with elevated Lp(a). Compensation provided for visits and travel expenses reimbursed. Help advance heart disease prevention research.",
+  title: "lp(a) Heart Health Research Study | Plant City, FL",
+  description: "A cardiovascular research study for people with elevated lp(a). Compensation provided for visits and travel expenses reimbursed. Help advance heart disease prevention research.",
   icons: {
     icon: '/icon.png',
     shortcut: '/icon.png',
@@ -26,8 +26,8 @@ export const metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "Lp(a) Heart Health Research Study | Plant City, FL",
-    description: "A cardiovascular study for people with elevated Lp(a). Compensation provided and travel expenses reimbursed.",
+    title: "lp(a) Heart Health Research Study | Plant City, FL",
+    description: "A cardiovascular study for people with elevated lp(a). Compensation provided and travel expenses reimbursed.",
     url: '/',
     siteName: 'Plant City Heart Health Research',
     images: [
@@ -43,8 +43,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Lp(a) Heart Health Research Study | Plant City, FL",
-    description: "Compensation provided and travel reimbursed. A study for elevated Lp(a) and cardiovascular risk.",
+    title: "lp(a) Heart Health Research Study | Plant City, FL",
+    description: "Compensation provided and travel reimbursed. A study for elevated lp(a) and cardiovascular risk.",
     images: ['/og-image.png'],
   },
   robots: {
@@ -63,8 +63,8 @@ export const metadata = {
   structuredData: {
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
-    "name": "Lp(a) Heart Health Research Study | Plant City, FL",
-    "description": "A cardiovascular research study for people with elevated Lp(a). Compensation provided and travel expenses reimbursed.",
+    "name": "lp(a) Heart Health Research Study | Plant City, FL",
+    "description": "A cardiovascular research study for people with elevated lp(a). Compensation provided and travel expenses reimbursed.",
     "url": SITE_URL,
     "publisher": {
       "@type": "Organization",
@@ -155,8 +155,8 @@ export default function RootLayout({ children }) {
                   "@type": "MedicalWebPage",
                   "@id": SITE_URL,
                   "url": SITE_URL,
-                  "name": "Lp(a) Heart Health Research Study | Plant City, FL",
-                  "description": "A cardiovascular research study for people with elevated Lp(a). Compensation provided and travel expenses reimbursed.",
+                  "name": "lp(a) Heart Health Research Study | Plant City, FL",
+                  "description": "A cardiovascular research study for people with elevated lp(a). Compensation provided and travel expenses reimbursed.",
                   "publisher": {
                     "@type": "Organization",
                     "name": "Plant City Heart Health Research"

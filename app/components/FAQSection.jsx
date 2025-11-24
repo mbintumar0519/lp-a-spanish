@@ -10,12 +10,12 @@ export default function FAQSection() {
 
   const faqs = [
     {
-      question: "What is lipoprotein(a) [Lp(a)]?",
-      answer: "20% of the world's population has elevated Lp(a), a very sticky protein (cholesterol) in your blood that is affected by genetics instead of lifestyle. Unlike other cholesterol, you cannot control it with diet or exercise. A lipoprotein(a) test can help determine your Lp(a) levels, however, it is typically not covered by insurance and not included in standard cholesterol tests."
+      question: "What is lipoprotein(a) [lp(a)]?",
+      answer: "20% of the world's population has elevated lp(a), a very sticky protein (cholesterol) in your blood that is affected by genetics instead of lifestyle. Unlike other cholesterol, you cannot control it with diet or exercise. A lipoprotein(a) test can help determine your lp(a) levels, however, it is typically not covered by insurance and not included in standard cholesterol tests."
     },
     {
-      question: "Are there any treatments for high Lp(a)?",
-      answer: "Currently, there are no approved Lp(a) treatments on the market. This is why this research study is so important—participants have the opportunity to access investigational treatments that may help lower Lp(a) and reduce cardiovascular risk."
+      question: "Are there any treatments for high lp(a)?",
+      answer: "Currently, there are no approved lp(a) treatments on the market. This is why this research study is so important—participants have the opportunity to access investigational treatments that may help lower lp(a) and reduce cardiovascular risk."
     },
     {
       question: "Why would I join a study instead of just seeing my regular doctor?",
@@ -31,7 +31,7 @@ export default function FAQSection() {
     },
     {
       question: "Will this cost me anything? Do I need insurance?",
-      answer: "No cost to you, and no insurance is required. All study-related care, Lp(a) testing, lab work, ECGs, and procedures are provided free of charge. You'll receive $100 compensation per completed visit, and reasonable travel expenses will be reimbursed when you submit receipts."
+      answer: "No cost to you, and no insurance is required. All study-related care, lp(a) testing, lab work, ECGs, and procedures are provided free of charge. You'll receive $100 compensation per completed visit, and reasonable travel expenses will be reimbursed when you submit receipts."
     },
     {
       question: "Can I leave the study later if I change my mind?",
@@ -217,7 +217,7 @@ export default function FAQSection() {
                 d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" 
               />
             </svg>
-            <span>Get your Lp(a) Tested</span>
+            <span>Get your lp(a) Tested</span>
           </a>
         </div>
       </div>

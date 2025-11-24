@@ -61,7 +61,7 @@ export default function StatisticsSection() {
               marginBottom: 'var(--space-2)',
               fontFamily: 'var(--font-heading)'
             }}>
-              People Have High Lp(a)
+              People Have High lp(a)
             </h3>
             <p style={{
               color: 'var(--gray-600)',
@@ -112,7 +112,7 @@ export default function StatisticsSection() {
               lineHeight: '1.6',
               fontFamily: 'var(--font-primary)'
             }}>
-              Elevated Lp(a) significantly increases your risk of stroke and heart disease
+              Elevated lp(a) significantly increases your risk of stroke and heart disease
             </p>
           </div>
 
@@ -155,7 +155,7 @@ export default function StatisticsSection() {
               lineHeight: '1.6',
               fontFamily: 'var(--font-primary)'
             }}>
-              Most doctors don't regularly test for Lp(a), and it's rarely covered by insurance
+              Most doctors don't regularly test for lp(a), and it's rarely covered by insurance
             </p>
           </div>
         </div>
