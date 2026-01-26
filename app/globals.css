@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import "./styles/buttons.css";
 
 /* Prevent CLS from font loading */
 @font-face {
@@ -15,7 +16,6 @@
 @tailwind base;
 @tailwind components; 
 @tailwind utilities;
-@import "./styles/buttons.css";
 
 /* Skip link styles */
 .skip-link {
