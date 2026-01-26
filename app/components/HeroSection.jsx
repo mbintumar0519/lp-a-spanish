@@ -22,7 +22,7 @@ export default function HeroSection() {
       </div>
 
       {/* Content container */}
-      <div className="hero-content max-w-7xl mx-auto px-6 pb-20 relative z-10" style={{ paddingTop: '96px', paddingLeft: 'var(--space-6)', paddingRight: 'var(--space-6)', paddingBottom: 'var(--space-20)' }}>
+      <div className="hero-content max-w-7xl mx-auto px-6 pb-20 relative z-10" style={{ paddingTop: '120px', paddingLeft: 'var(--space-6)', paddingRight: 'var(--space-6)', paddingBottom: 'var(--space-20)' }}>
         {/* Mobile: Text first, then image */}
         <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
           {/* Text content - appears first on mobile */}
@@ -46,7 +46,7 @@ export default function HeroSection() {
                 marginBottom: 'var(--space-8)',
                 fontFamily: 'var(--font-primary)'
               }}>
-               If you have elevated Lp(a)—a genetic cholesterol that builds up regardless of diet or exercise—you may be at 3x higher risk. Join a  study testing a new treatment that could help prevent your first major heart event.
+               <strong>High Lp(a)</strong> is a genetic cholesterol that diet and exercise can't fix—potentially tripling your risk of a heart attack. Get tested today to see if you qualify for a research study evaluating an investigational treatment designed to help prevent a first major heart event.
               </p>
 
               {/* Balanced benefits - larger and higher contrast */}

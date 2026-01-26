@@ -3,9 +3,9 @@
 import Image from "next/image";
 import { scrollToHeroForm } from '../utils/scrollToForm';
 
-export default function ConsultationSection() {
+export default function Lp(a) testingSection() {
   return (
-    <section id="schedule" className="consultation-section" style={{
+    <section id="schedule" className="Lp(a) testing-section" style={{
       background: 'linear-gradient(135deg, #991b1b 0%, #dc2626 50%, #991b1b 100%)',
       padding: 'var(--space-20) 0',
       position: 'relative',
@@ -46,7 +46,7 @@ export default function ConsultationSection() {
         padding: '0 var(--space-6)',
         position: 'relative'
       }}>
-        <div className="consultation-content" style={{
+        <div className="Lp(a) testing-content" style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
           gap: 'var(--space-8)',
@@ -162,7 +162,7 @@ export default function ConsultationSection() {
                     color: 'var(--gray-600)',
                     fontSize: 'var(--text-sm)',
                     fontFamily: 'var(--font-primary)'
-                  }}>Your consultation, Lp(a) testing, and all study-related care are provided at no cost. No insurance required for qualified participants.</p>
+                  }}>Your Lp(a) testing, Lp(a) testing, and all study-related care are provided at no cost. No insurance required for qualified participants.</p>
                 </div>
               </div>
               
@@ -195,7 +195,7 @@ export default function ConsultationSection() {
                     color: 'var(--gray-600)',
                     fontSize: 'var(--text-sm)',
                     fontFamily: 'var(--font-primary)'
-                  }}>The consultation is informational only - you decide if this investigational study is right for you.</p>
+                  }}>The Lp(a) testing is informational only - you decide if this investigational study is right for you.</p>
                 </div>
               </div>
             </div>
@@ -290,7 +290,7 @@ export default function ConsultationSection() {
       
       <style jsx>{`
         @media (max-width: 768px) {
-          .consultation-content {
+          .Lp(a) testing-content {
             grid-template-columns: 1fr !important;
             gap: var(--space-6) !important;
           }

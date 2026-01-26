@@ -361,7 +361,7 @@ export default function SchedulePage() {
           width="100%"
           height="100%"
           className="w-full h-full border-0"
-          title="Schedule Appointment"
+          title="Schedule Lp(a) Testing"
           onLoad={() => {
             console.log('GoHighLevel booking widget loaded');
             setTimeout(() => {

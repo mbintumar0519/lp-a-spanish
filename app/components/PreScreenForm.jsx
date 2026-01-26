@@ -14,14 +14,24 @@ const questions = [
     guidanceMessage: 'This study is for people with elevated Lp(a) levels.'
   },
   {
+    id: 'age_50_plus',
+    question: (
+      <>
+        Are you above the age of <span className="key-term">50</span>?
+      </>
+    ),
+    icon: '📅',
+    guidanceMessage: 'This study is looking for participants who are 50 years of age or older.'
+  },
+  {
     id: 'heart_risk_factors',
     question: (
       <>
-        Do you have <span className="key-term">risk factors</span> for heart disease?
+        Are you taking a <span className="key-term">lipid lowering medication</span>?
       </>
     ),
     icon: '💓',
-    subtext: <em>Such as high cholesterol, high blood pressure, diabetes, family history, or smoking history.</em>,
+    subtext: <em>Such as statins, ezetimibe, PCSK9 inhibitors, or other cholesterol-lowering medications.</em>,
     guidanceMessage: 'This study is looking for people with elevated Lp(a) and cardiovascular risk factors.'
   },
   {
@@ -149,6 +159,33 @@ export default function PreScreeningForm() {
         throw new Error(data.error || 'Failed to submit form');
       }
 
+      // Generate booking link
+      let bookingLink = null;
+      try {
+        const bookingResponse = await fetch('/api/gohighlevel/generate-booking-link', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            firstName: firstName || '',
+            lastName: lastName || '',
+            email: contactInfo.email,
+            phone: contactInfo.phone,
+          }),
+        });
+
+        if (bookingResponse.ok) {
+          const bookingData = await bookingResponse.json();
+          if (bookingData.success && bookingData.bookingLink) {
+            bookingLink = bookingData.bookingLink;
+          }
+        }
+      } catch (bookingError) {
+        console.warn('Failed to generate booking link:', bookingError);
+        // Continue even if booking link generation fails
+      }
+
       // Store user data in sessionStorage for Facebook Lead tracking on thank-you page
       sessionStorage.setItem('leadData', JSON.stringify({
         email: contactInfo.email,
@@ -157,7 +194,8 @@ export default function PreScreeningForm() {
         lastName: lastName || '',
         city: data.locationData?.city || '',
         state: data.locationData?.state || '',
-        zipCode: data.locationData?.postalCode || data.locationData?.zipCode || ''
+        zipCode: data.locationData?.postalCode || data.locationData?.zipCode || '',
+        bookingLink: bookingLink
       }));
 
       // Redirect to thank you page
@@ -492,6 +530,38 @@ export default function PreScreeningForm() {
             🔒 Your information is secure and will never be shared with third parties
           </p>
 
+        </div>
+
+        {/* Booking Link Section */}
+        <div className="mt-6 sm:mt-8 animate-in slide-in-from-bottom duration-300 delay-800">
+          <div className="bg-gradient-to-br from-emerald-50/40 via-teal-50/40 to-emerald-50/40 rounded-xl p-4 sm:p-6 border border-emerald-200/50 shadow-sm">
+            <div className="text-center">
+              <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <span className="text-2xl sm:text-3xl">📅</span>
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-800" style={{ fontWeight: '600' }}>
+                  Prefer to Schedule Directly?
+                </h3>
+              </div>
+              <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-5">
+                You can schedule your lp(a) test today! 
+              </p>
+              <a
+                href={`https://api.leadconnectorhq.com/widget/booking/${process.env.NEXT_PUBLIC_GOHIGHLEVEL_CALENDAR_ID || 'oCJUF0iOMFKJBd4fpZS6'}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 font-semibold rounded-xl hover:from-emerald-700 hover:to-teal-700 transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
+                style={{ fontSize: '16px', color: 'white' }}
+              >
+                <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                Schedule Lp(a) Testing
+              </a>
+              <p className="text-xs text-gray-500 mt-3 sm:mt-4">
+                Or complete the form above to receive a personalized booking link
+              </p>
+            </div>
+          </div>
         </div>
       </form>
 

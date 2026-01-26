@@ -39,7 +39,7 @@ Add these actions in sequence:
 #### Action 2: Send Email with Booking Link
 - **Action Type**: "Send Email"
 - **To**: {{contact.email}}
-- **Subject**: "Schedule Your UC Study Consultation - Personalized Link Inside"
+- **Subject**: "Schedule Your UC Study Lp(a) testing - Personalized Link Inside"
 - **Template**: Create a custom email template (see below)
 
 #### Action 3: Send SMS with Booking Link (Optional)
@@ -55,30 +55,30 @@ Create a custom email template with the following content:
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Schedule Your UC Study Consultation</title>
+    <title>Schedule Your UC Study Lp(a) testing</title>
 </head>
 <body>
     <h2>Hi {{contact.first_name}},</h2>
     
     <p>Thank you for completing our UC study eligibility form!</p>
     
-    <p>Based on your responses, you may be eligible for our clinical trial. The next step is to schedule a consultation with our team.</p>
+    <p>Based on your responses, you may be eligible for our clinical trial. The next step is to schedule a Lp(a) testing with our team.</p>
     
     <div style="background-color: #f0f8ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
-        <h3 style="color: #2c3e50;">📅 Schedule Your Consultation</h3>
+        <h3 style="color: #2c3e50;">📅 Schedule Your Lp(a) testing</h3>
         <p>We've created a personalized booking link just for you. This link will expire after you book your appointment to ensure your privacy.</p>
         
         <div style="text-align: center; margin: 20px 0;">
             <a href="{{contact.custom_fields.booking_link}}" 
                style="background-color: #3498db; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold;">
-                Schedule My Consultation
+                Schedule My Lp(a) testing
             </a>
         </div>
     </div>
     
     <p><strong>What to expect:</strong></p>
     <ul>
-        <li>A 15-30 minute consultation to discuss your eligibility</li>
+        <li>A 15-30 minute Lp(a) testing to discuss your eligibility</li>
         <li>Information about the study procedures</li>
         <li>Answers to any questions you may have</li>
         <li>Next steps if you qualify</li>
@@ -105,7 +105,7 @@ Create a custom field to store the booking link:
    - **Name**: "Booking Link"
    - **API Name**: "booking_link"
    - **Type**: "Text"
-   - **Description**: "One-time booking link for UC study consultation"
+   - **Description**: "One-time booking link for UC study Lp(a) testing"
 
 ### 6. Test the Workflow
 

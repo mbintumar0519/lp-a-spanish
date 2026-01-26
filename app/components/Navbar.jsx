@@ -28,6 +28,7 @@ export default function Navbar() {
         className={(isScrolled || !isHomePage) ? 'bg-white' : ''}
         style={{
         position: 'fixed',
+        top: '40px', // Position below the ribbon (ribbon height is ~40px)
         width: '100%',
         height: '80px', // Fixed height prevents CLS
         zIndex: 40,

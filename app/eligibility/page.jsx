@@ -49,7 +49,7 @@ export default function EligibilityPage() {
                   icon={faPhone} 
                   className="text-3xl text-primary-600 mb-3"
                 />
-                <h3 className="font-semibold text-text-main mb-2">Phone Consultation</h3>
+                <h3 className="font-semibold text-text-main mb-2">Phone Lp(a) testing</h3>
                 <p className="text-sm text-text-secondary">
                   A study coordinator will call to discuss the research in detail.
                 </p>

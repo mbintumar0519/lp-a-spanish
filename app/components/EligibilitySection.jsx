@@ -14,7 +14,7 @@ export default function EligibilitySection() {
           <div>
             <h3 className="text-xl font-semibold text-gray-900 mb-3">You May Qualify If:</h3>
             <ul className="list-disc pl-5 space-y-2 text-gray-800">
-              <li>You are an adult (18 years or older)</li>
+              <li>You are an adult (50 years or older) </li>
               <li>You have been told you have <strong>high Lp(a) levels</strong></li>
               <li>You have <strong>cardiovascular risk factors</strong> such as:
                 <ul className="list-circle pl-5 mt-1 space-y-1 text-gray-700">

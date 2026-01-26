@@ -29,7 +29,7 @@ export default function PrivacyPolicy() {
       <ul className="list-disc ml-8 mb-4">
         <li>Contact you regarding your interest in our study</li>
         <li>Determine your eligibility for the study</li>
-        <li>Schedule appointments and provide follow-up care</li>
+        <li>Schedule Lp(a) Testings and provide follow-up care</li>
         <li>Maintain and improve our website</li>
         <li>Analyze website usage and trends</li>
       </ul>

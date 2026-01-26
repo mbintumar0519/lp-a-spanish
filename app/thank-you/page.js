@@ -13,6 +13,7 @@ import {
 
 export default function ThankYouPage() {
   const [crioFormLoaded, setCrioFormLoaded] = useState(false);
+  const [bookingLink, setBookingLink] = useState(null);
 
   useEffect(() => {
     // Scroll to top when page loads
@@ -48,6 +49,11 @@ export default function ThankYouPage() {
     // Retrieve user data from sessionStorage
     const leadDataStr = sessionStorage.getItem('leadData');
     const leadData = leadDataStr ? JSON.parse(leadDataStr) : {};
+    
+    // Set booking link if available
+    if (leadData.bookingLink) {
+      setBookingLink(leadData.bookingLink);
+    }
 
     // Generate unique event ID for deduplication between pixel and CAPI
     const eventId = `lead-${Date.now()}-${Math.random()
@@ -249,112 +255,48 @@ export default function ThankYouPage() {
                 </div>
               </motion.div>
 
-              {/* Clean Questions Section */}
+              {/* Booking Link Section */}
               <motion.div
                 className="text-center mb-4 sm:mb-8"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.4, duration: 0.5 }}
+                transition={{ delay: 1.3, duration: 0.5 }}
+                whileHover={{ scale: 1.02 }}
               >
-                <h3 className="text-base sm:text-lg font-medium text-gray-700 mb-2 sm:mb-4">
-                  Questions? Call us anytime
-                </h3>
-                <motion.a
-                  href="tel:+14049992734"
-                  className="inline-flex items-center text-lg sm:text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors group"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <FontAwesomeIcon
-                    icon={faPhone}
-                    className="mr-2 sm:mr-3 group-hover:animate-pulse"
-                  />
-                  +1(813) 796-6716
-                </motion.a>
-                <p className="text-xs sm:text-sm text-gray-500 mt-2 sm:mt-3">
-                  Mon-Fri, 8 AM - 5 PM EST
-                </p>
-                <div className="mt-3 sm:mt-6 text-xs text-gray-400 space-y-1">
-                  <p>
-                    Participation is voluntary and free • We never spam or share
-                    your number
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-teal-500/5"></div>
+                <div className="relative">
+                  <div className="flex items-center justify-center mb-4 sm:mb-5">
+                    <FontAwesomeIcon
+                      icon={faCalendarCheck}
+                      className="text-3xl sm:text-4xl text-emerald-600 mr-3 sm:mr-4"
+                    />
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-800">
+                      Schedule your Lp(a) testing
+                    </h3>
+                  </div>
+                  <p className="text-base sm:text-lg text-gray-700 mb-4 sm:mb-6">
+                    {bookingLink 
+                      ? 'Book your appointment now using your personalized scheduling link'
+                      : 'Book your appointment now to schedule your Lp(a) testing'
+                    }
                   </p>
-                </div>
-              </motion.div>
-
-              {/* Clinical Research IO Form */}
-              <motion.div
-                className="mb-6 sm:mb-8"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.5, duration: 0.5 }}
-              >
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4 text-center">
-                  Complete Your Information
-                </h3>
-                <div 
-                  id="crio-form" 
-                  className="bg-gray-50 rounded-xl p-4 sm:p-6"
-                >
-                  <form 
-                    action="https://app.clinicalresearch.io/web-form-save" 
-                    method="post"
+                  <motion.a
+                    href={bookingLink || `https://api.leadconnectorhq.com/widget/booking/${process.env.NEXT_PUBLIC_GOHIGHLEVEL_CALENDAR_ID || 'oCJUF0iOMFKJBd4fpZS6'}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 font-bold rounded-xl hover:from-emerald-700 hover:to-teal-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+                    style={{ color: 'white' }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <input type="hidden" name="id" value="14681" />
-                    
-                    <input 
-                      type="text" 
-                      name="first_name" 
-                      defaultValue=""
-                      placeholder="First Name"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors mb-4"
-                    />
-                    
-                    <input 
-                      type="text" 
-                      name="middle_name" 
-                      defaultValue=""
-                      placeholder="Middle Name"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors mb-4"
-                    />
-                    
-                    <input 
-                      type="text" 
-                      name="last_name" 
-                      defaultValue=""
-                      placeholder="Last Name"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors mb-4"
-                    />
-                    
-                    <input 
-                      type="text" 
-                      name="email" 
-                      defaultValue=""
-                      placeholder="Email"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors mb-4"
-                    />
-                    
-                    <input 
-                      type="text" 
-                      name="mobile_phone" 
-                      defaultValue=""
-                      placeholder="Mobile Phone"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors mb-4"
-                    />
-                    
-                    <input 
-                      type="button" 
-                      onClick={(e) => {
-                        if (typeof window !== 'undefined' && window.reloadSectionWithForm) {
-                          window.reloadSectionWithForm('crio-form', e.target.form);
-                        } else {
-                          console.error('CRIO reloadSectionWithForm function not available');
-                        }
-                      }}
-                      value="Submit" 
-                      className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 cursor-pointer hover:scale-[1.02] transform"
-                    />
-                  </form>
+                    <FontAwesomeIcon icon={faCalendarCheck} className="mr-2 sm:mr-3" style={{ color: 'white' }} />
+                    Book Your Appointment
+                  </motion.a>
+                  {bookingLink && (
+                    <p className="text-xs sm:text-sm text-gray-600 mt-4 sm:mt-5">
+                      This link is personalized for you and expires after use
+                    </p>
+                  )}
                 </div>
               </motion.div>
 
