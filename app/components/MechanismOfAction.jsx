@@ -7,23 +7,23 @@ const MechanismOfAction = () => {
   const steps = [
     {
       icon: <FaDna className="w-12 h-12" />,
-      title: "Targets Lp(a) at Its Source",
-      description: "Olpasiran is a small interfering RNA (siRNA) that works by blocking the production of Lp(a) in your liver."
+      title: "Se Enfoca en Lp(a) en Su Origen",
+      description: "Olpasiran es un ARN de interferencia pequeño (siRNA) que funciona bloqueando la producción de Lp(a) en su hígado."
     },
     {
       icon: <FaBullseye className="w-12 h-12" />,
-      title: "Preventing First Major Heart Events",
-      description: "The study aims to see if lowering Lp(a) can help prevent heart attacks, urgent heart procedures, or death from heart disease."
+      title: "Prevención de Primeros Eventos Cardíacos Importantes",
+      description: "El estudio busca determinar si bajar Lp(a) puede ayudar a prevenir infartos, procedimientos cardíacos urgentes o muerte por enfermedad cardíaca."
     },
     {
       icon: <FaShieldAlt className="w-12 h-12" />,
-      title: "Close Monitoring & Safety",
-      description: "You'll receive regular health monitoring, blood tests, heart checks (ECGs), and safety assessments throughout the study."
+      title: "Monitoreo Cercano y Seguridad",
+      description: "Recibirá monitoreo de salud regular, análisis de sangre, controles cardíacos (ECG) y evaluaciones de seguridad durante todo el estudio."
     },
     {
       icon: <FaAtom className="w-12 h-12" />,
-      title: "Simple Treatment Schedule",
-      description: "The study drug is given as an injection under the skin about every 3 months (every 12 weeks)."
+      title: "Calendario de Tratamiento Simple",
+      description: "El medicamento del estudio se administra como una inyección bajo la piel aproximadamente cada 3 meses (cada 12 semanas)."
     }
   ];
 
@@ -50,7 +50,7 @@ const MechanismOfAction = () => {
             marginBottom: 'var(--space-3)',
             fontFamily: 'var(--font-heading)'
           }}>
-            How Olpasiran Works
+            Cómo Funciona Olpasiran
           </h2>
           <div className="underline" style={{
             width: '80px',
@@ -66,7 +66,7 @@ const MechanismOfAction = () => {
             margin: '0 auto',
             fontFamily: 'var(--font-primary)'
           }}>
-            An investigational approach to lowering Lp(a) and reducing cardiovascular risk
+            Un enfoque investigacional para bajar Lp(a) y reducir el riesgo cardiovascular
           </p>
         </div>
 
@@ -86,7 +86,7 @@ const MechanismOfAction = () => {
               fontFamily: 'var(--font-primary)',
               fontSize: 'var(--text-base)'
             }}>
-              Olpasiran (AMG 890) is an investigational medication using RNA interference technology to block Lp(a) production in your liver. Since Lp(a) is genetic and <strong>not affected by diet or exercise</strong>, this targeted approach may help reduce cardiovascular risk for people with elevated Lp(a). High Lp(a) can't be controlled with lifestyle changes or standard cholesterol medications, and there are currently <strong>no approved Lp(a) treatments</strong> on the market. <em>Olpasiran is not yet FDA-approved.</em>
+              Olpasiran (AMG 890) es un medicamento investigacional que utiliza tecnología de interferencia de ARN para bloquear la producción de Lp(a) en su hígado. Dado que Lp(a) es genético y <strong>no se ve afectado por la dieta o el ejercicio</strong>, este enfoque dirigido puede ayudar a reducir el riesgo cardiovascular para personas con Lp(a) elevado. Lp(a) alto no puede ser controlado con cambios de estilo de vida o medicamentos estándar para el colesterol, y actualmente <strong>no hay tratamientos aprobados para Lp(a)</strong> en el mercado. <em>Olpasiran aún no está aprobado por la FDA.</em>
             </p>
           </div>
 

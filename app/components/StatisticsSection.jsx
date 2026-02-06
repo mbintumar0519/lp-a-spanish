@@ -21,7 +21,7 @@ export default function StatisticsSection() {
           textAlign: 'center',
           fontFamily: 'var(--font-heading)'
         }}>
-          The Hidden Risk Most Doctors Don't Check
+          El Riesgo Oculto Que la Mayoría de los Médicos No Revisan
         </h2>
         
         <div style={{
@@ -61,7 +61,7 @@ export default function StatisticsSection() {
               marginBottom: 'var(--space-2)',
               fontFamily: 'var(--font-heading)'
             }}>
-              People Have High Lp(a)
+              Personas Tienen Lp(a) Elevado
             </h3>
             <p style={{
               color: 'var(--gray-600)',
@@ -69,7 +69,7 @@ export default function StatisticsSection() {
               lineHeight: '1.6',
               fontFamily: 'var(--font-primary)'
             }}>
-              And most don't know it because it's not included in standard cholesterol tests
+              Y la mayoría no lo sabe porque no está incluido en las pruebas de colesterol estándar
             </p>
           </div>
 
@@ -104,7 +104,7 @@ export default function StatisticsSection() {
               marginBottom: 'var(--space-2)',
               fontFamily: 'var(--font-heading)'
             }}>
-              Increased Stroke Risk
+              Aumento del Riesgo de Derrame Cerebral
             </h3>
             <p style={{
               color: 'var(--gray-600)',
@@ -112,7 +112,7 @@ export default function StatisticsSection() {
               lineHeight: '1.6',
               fontFamily: 'var(--font-primary)'
             }}>
-              Elevated Lp(a) significantly increases your risk of stroke and heart disease
+              Lp(a) elevado aumenta significativamente su riesgo de derrame cerebral y enfermedad cardíaca
             </p>
           </div>
 
@@ -147,7 +147,7 @@ export default function StatisticsSection() {
               marginBottom: 'var(--space-2)',
               fontFamily: 'var(--font-heading)'
             }}>
-              Doctors Don't Check
+              Médicos No Lo Revisan
             </h3>
             <p style={{
               color: 'var(--gray-600)',
@@ -155,7 +155,7 @@ export default function StatisticsSection() {
               lineHeight: '1.6',
               fontFamily: 'var(--font-primary)'
             }}>
-              Most doctors don't regularly test for Lp(a), and it's rarely covered by insurance
+              La mayoría de los médicos no revisan regularmente Lp(a), y rara vez está cubierto por el seguro
             </p>
           </div>
         </div>

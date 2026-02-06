@@ -7,43 +7,43 @@ const questions = [
     id: 'high_lpa',
     question: (
       <>
-        Have you been told you have <span className="key-term">high lipoprotein(a)</span> or <strong>Lp(a)</strong> levels?
+        ¿Le han dicho que tiene <span className="key-term">lipoproteína(a) elevada</span> o niveles altos de <strong>Lp(a)</strong>?
       </>
     ),
     icon: '🫀',
-    guidanceMessage: 'This study is for people with elevated Lp(a) levels.'
+    guidanceMessage: 'Este estudio es para personas con niveles elevados de Lp(a).'
   },
   {
     id: 'age_50_plus',
     question: (
       <>
-        Are you above the age of <span className="key-term">50</span>?
+        ¿Tiene más de <span className="key-term">50</span> años?
       </>
     ),
     icon: '📅',
-    guidanceMessage: 'This study is looking for participants who are 50 years of age or older.'
+    guidanceMessage: 'Este estudio busca participantes de 50 años o más.'
   },
   {
     id: 'heart_risk_factors',
     question: (
       <>
-        Are you taking a <span className="key-term">lipid lowering medication</span>?
+        ¿Está tomando un <span className="key-term">medicamento para bajar lípidos</span>?
       </>
     ),
     icon: '💓',
-    subtext: <em>Such as statins, ezetimibe, PCSK9 inhibitors, or other cholesterol-lowering medications.</em>,
-    guidanceMessage: 'This study is looking for people with elevated Lp(a) and cardiovascular risk factors.'
+    subtext: <em>Tales como estatinas, ezetimibe, inhibidores PCSK9 u otros medicamentos para bajar el colesterol.</em>,
+    guidanceMessage: 'Este estudio busca personas con Lp(a) elevado y factores de riesgo cardiovascular.'
   },
   {
     id: 'can_travel',
     question: (
       <>
-        Can you travel to <span className="key-term">Plant City, FL</span> for regular study visits?
+        ¿Puede viajar a <span className="key-term">Plant City, FL</span> para visitas regulares del estudio?
       </>
     ),
     icon: '🚗',
-    subtext: <em>Travel expenses will be reimbursed.</em>,
-    guidanceMessage: 'Travel expenses are reimbursed. If travel is difficult, let us know — our team can help.'
+    subtext: <em>Los gastos de viaje serán reembolsados.</em>,
+    guidanceMessage: 'Los gastos de viaje son reembolsados. Si viajar es difícil, déjenos saber — nuestro equipo puede ayudar.'
   }
 ];
 
@@ -87,26 +87,26 @@ export default function PreScreeningForm() {
 
     // Name validation
     if (!contactInfo.name?.trim()) {
-      errors.name = 'Full name is required';
+      errors.name = 'El nombre completo es requerido';
     } else if (contactInfo.name.trim().length < 2) {
-      errors.name = 'Name must be at least 2 characters';
-    } else if (!/^[a-zA-Z\s'-]+$/.test(contactInfo.name.trim())) {
-      errors.name = 'Name can only contain letters, spaces, hyphens, and apostrophes';
+      errors.name = 'El nombre debe tener al menos 2 caracteres';
+    } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s'-]+$/.test(contactInfo.name.trim())) {
+      errors.name = 'El nombre solo puede contener letras, espacios, guiones y apóstrofes';
     }
 
     // Phone validation
     if (!contactInfo.phone?.trim()) {
-      errors.phone = 'Phone number is required';
+      errors.phone = 'El número de teléfono es requerido';
     } else if (!/^[\d\s()+-]+$/.test(contactInfo.phone.trim()) || contactInfo.phone.replace(/[^\d]/g, '').length < 10) {
-      errors.phone = 'Please enter a valid phone number with at least 10 digits';
+      errors.phone = 'Por favor ingrese un número de teléfono válido con al menos 10 dígitos';
     }
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!contactInfo.email?.trim()) {
-      errors.email = 'Email address is required';
+      errors.email = 'La dirección de correo electrónico es requerida';
     } else if (!emailRegex.test(contactInfo.email.trim())) {
-      errors.email = 'Please enter a valid email address';
+      errors.email = 'Por favor ingrese una dirección de correo electrónico válida';
     }
 
     // Age removed
@@ -156,7 +156,7 @@ export default function PreScreeningForm() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to submit form');
+        throw new Error(data.error || 'Error al enviar el formulario');
       }
 
       // Generate booking link
@@ -203,7 +203,7 @@ export default function PreScreeningForm() {
 
     } catch (err) {
       console.error('Submission error:', err);
-      setValidationErrors({ submit: 'Something went wrong. Please try again.' });
+      setValidationErrors({ submit: 'Algo salió mal. Por favor intente de nuevo.' });
     } finally {
       setIsSubmitting(false);
     }
@@ -231,11 +231,11 @@ export default function PreScreeningForm() {
           className="font-bold mb-3 text-gray-900 text-2xl sm:text-3xl"
           style={{ fontWeight: '700', lineHeight: '1.2', letterSpacing: '-0.02em' }}
         >
-          Get Your Lp(a) Tested
+          Hágase la Prueba de Lp(a)
         </h2>
 
         <p className="text-gray-600 leading-relaxed max-w-lg mx-auto text-sm sm:text-base" style={{ lineHeight: '1.6' }}>
-          Complete this quick form to see if you may qualify for free Lp(a) testing and the research study.
+          Complete este breve formulario para ver si puede calificar para la prueba gratuita de Lp(a) y el estudio de investigación.
         </p>
       </div>
 
@@ -251,7 +251,7 @@ export default function PreScreeningForm() {
                 1
               </div>
               <h3 className="font-medium text-gray-800 text-base sm:text-lg" style={{ fontWeight: '500', letterSpacing: '-0.005em' }}>
-                Quick questions
+                Preguntas rápidas
               </h3>
             </div>
             <div className="h-px bg-gradient-to-r from-red-200 via-orange-200 to-transparent ml-9"></div>
@@ -304,7 +304,7 @@ export default function PreScreeningForm() {
                           boxShadow: answers[question.id] === 'Yes' ? '0 8px 20px rgba(220, 38, 38, 0.25)' : undefined
                         }}
                       >
-                        Yes
+                        Sí
                       </div>
                     </label>
                     <label className="flex-1 cursor-pointer">
@@ -371,7 +371,7 @@ export default function PreScreeningForm() {
                 2
               </div>
               <h3 className="font-medium text-gray-800 text-base sm:text-lg" style={{ fontWeight: '500', letterSpacing: '-0.005em' }}>
-                Your contact info
+                Su información de contacto
               </h3>
             </div>
             <div className="h-px bg-gradient-to-r from-red-200 via-orange-200 to-transparent ml-9"></div>
@@ -382,7 +382,7 @@ export default function PreScreeningForm() {
               {/* Full Name */}
               <div>
                 <label htmlFor="name" className="block text-gray-900 font-semibold mb-2" style={{ fontSize: '14px' }}>
-                  Full name
+                  Nombre completo
                 </label>
                 <input
                   type="text"
@@ -405,7 +405,7 @@ export default function PreScreeningForm() {
                     background: validationErrors.name ? '' : 'linear-gradient(135deg, #FEFEFE 0%, #FFFBFA 100%)',
                     boxShadow: validationErrors.name ? '' : '0 1px 3px rgba(220, 38, 38, 0.05), inset 0 1px 2px rgba(0, 0, 0, 0.02)'
                   }}
-                  placeholder="John Doe"
+                  placeholder="Juan Pérez"
                 />
                 {validationErrors.name && (
                   <p className="text-red-600 mt-2 animate-in slide-in-from-top-2 duration-200" style={{ fontSize: '13px' }}>
@@ -418,7 +418,7 @@ export default function PreScreeningForm() {
               <div>
                 <div className="flex-1">
                   <label htmlFor="phone" className="block text-gray-900 font-semibold mb-2" style={{ fontSize: '14px' }}>
-                    Phone
+                    Teléfono
                   </label>
                   <input
                     type="tel"
@@ -455,7 +455,7 @@ export default function PreScreeningForm() {
               {/* Email */}
               <div>
                 <label htmlFor="email" className="block text-gray-900 font-semibold mb-2" style={{ fontSize: '14px' }}>
-                  Email
+                  Correo electrónico
                 </label>
                 <input
                   type="email"
@@ -478,7 +478,7 @@ export default function PreScreeningForm() {
                     background: validationErrors.email ? '' : 'linear-gradient(135deg, #FEFEFE 0%, #FFFBFA 100%)',
                     boxShadow: validationErrors.email ? '' : '0 1px 3px rgba(220, 38, 38, 0.05), inset 0 1px 2px rgba(0, 0, 0, 0.02)'
                   }}
-                  placeholder="john@example.com"
+                  placeholder="juan@ejemplo.com"
                 />
                 {validationErrors.email && (
                   <p className="text-red-600 mt-2 animate-in slide-in-from-top-2 duration-200" style={{ fontSize: '13px' }}>
@@ -513,10 +513,10 @@ export default function PreScreeningForm() {
             {isSubmitting ? (
               <div className="flex items-center justify-center gap-3">
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                Submitting...
+                Enviando...
               </div>
             ) : (
-              'Get Your Lp(a) Tested'
+              'Hágase la Prueba de Lp(a)'
             )}
           </button>
 
@@ -527,7 +527,7 @@ export default function PreScreeningForm() {
           )}
 
           <p className="text-gray-600 text-center mt-3 sm:mt-4 text-xs sm:text-sm leading-relaxed">
-            🔒 Your information is secure and will never be shared with third parties
+            🔒 Su información es segura y nunca será compartida con terceros
           </p>
 
         </div>
@@ -539,11 +539,11 @@ export default function PreScreeningForm() {
               <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
                 <span className="text-2xl sm:text-3xl">📅</span>
                 <h3 className="text-lg sm:text-xl font-semibold text-gray-800" style={{ fontWeight: '600' }}>
-                  Prefer to Schedule Directly?
+                  ¿Prefiere Agendar Directamente?
                 </h3>
               </div>
               <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-5">
-                You can schedule your lp(a) test today! 
+                ¡Puede agendar su prueba de Lp(a) hoy! 
               </p>
               <a
                 href={`https://api.leadconnectorhq.com/widget/booking/${process.env.NEXT_PUBLIC_GOHIGHLEVEL_CALENDAR_ID || 'oCJUF0iOMFKJBd4fpZS6'}`}
@@ -555,10 +555,10 @@ export default function PreScreeningForm() {
                 <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                Schedule Lp(a) Testing
+                Agendar Prueba de Lp(a)
               </a>
               <p className="text-xs text-gray-500 mt-3 sm:mt-4">
-                Or complete the form above to receive a personalized booking link
+                O complete el formulario arriba para recibir un enlace de reserva personalizado
               </p>
             </div>
           </div>

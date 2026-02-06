@@ -39,7 +39,7 @@ export default function AboutSection() {
             marginBottom: 'var(--space-4)',
             fontFamily: 'var(--font-heading)'
           }}>
-            About the Lipoprotein(a) Heart Health Study
+            Sobre el Estudio de Salud Cardíaca con Lipoproteína(a)
           </h2>
           <div className="underline" style={{
             width: '80px',
@@ -88,12 +88,12 @@ export default function AboutSection() {
               color: 'var(--gray-900)',
               marginBottom: 'var(--space-4)',
               fontWeight: '600'
-            }}>About the Study</h3>
+            }}>Sobre el Estudio</h3>
             <p style={{
               color: 'var(--gray-500)',
               lineHeight: '1.6'
             }}>
-              This is a Phase 3 global research study testing <strong>olpasiran</strong>, an investigational medication that targets Lp(a) production in the liver. With <strong>1 in 5 people</strong> having elevated Lp(a)—often without knowing it—this study aims to see if lowering Lp(a) can help prevent first major heart attacks, strokes, or urgent heart procedures.
+              Este es un estudio de investigación global de Fase 3 que evalúa <strong>olpasiran</strong>, un medicamento investigacional que se enfoca en la producción de Lp(a) en el hígado. Con <strong>1 de cada 5 personas</strong> teniendo Lp(a) elevado—frecuentemente sin saberlo—este estudio busca determinar si reducir Lp(a) puede ayudar a prevenir primeros infartos importantes, derrames cerebrales o procedimientos cardíacos urgentes.
             </p>
           </div>
           
@@ -129,12 +129,12 @@ export default function AboutSection() {
               color: 'var(--gray-900)',
               marginBottom: 'var(--space-4)',
               fontWeight: '600'
-            }}>What Is Lp(a)?</h3>
+            }}>¿Qué es Lp(a)?</h3>
             <p style={{
               color: 'var(--gray-500)',
               lineHeight: '1.6'
             }}>
-              Lipoprotein(a), or Lp(a), is a <strong>genetic protein in your blood that builds up regardless of diet or exercise</strong>. Unlike other cholesterol, you can't control it with lifestyle changes. High Lp(a) increases stroke risk by <strong>60%</strong>, yet <strong>90% of doctors don't regularly check it</strong>. It's typically not included in standard cholesterol tests.
+              La lipoproteína(a), o Lp(a), es una <strong>proteína genética en su sangre que se acumula sin importar la dieta o el ejercicio</strong>. A diferencia de otro colesterol, no puede controlarla con cambios de estilo de vida. Lp(a) elevado aumenta el riesgo de derrame cerebral en <strong>60%</strong>, sin embargo <strong>90% de los médicos no la revisan regularmente</strong>. Típicamente no está incluida en pruebas de colesterol estándar.
             </p>
           </div>
           
@@ -171,12 +171,12 @@ export default function AboutSection() {
               color: 'var(--gray-900)',
               marginBottom: 'var(--space-4)',
               fontWeight: '600'
-            }}>Who We're Looking For</h3>
+            }}>A Quién Buscamos</h3>
             <p style={{
               color: 'var(--gray-500)',
               lineHeight: '1.6'
             }}>
-              Adults with <strong>elevated Lp(a) levels</strong> and risk factors like high blood pressure, high cholesterol, diabetes, family history of heart disease, or smoking. If you have high Lp(a) and want to contribute to critical research that could help future generations, we'd like to hear from you.
+              Adultos con <strong>niveles elevados de Lp(a)</strong> y factores de riesgo como presión arterial alta, colesterol alto, diabetes, historial familiar de enfermedades cardíacas o tabaquismo. Si tiene Lp(a) elevado y desea contribuir a investigación crítica que podría ayudar a futuras generaciones, nos gustaría saber de usted.
             </p>
           </div>
         </div>
@@ -197,14 +197,14 @@ export default function AboutSection() {
             fontWeight: '600',
             marginBottom: 'var(--space-3)'
           }}>
-            Share This Study
+            Comparta Este Estudio
           </h3>
           <p style={{
             color: 'var(--gray-500)',
             fontSize: 'var(--text-base)',
             marginBottom: 'var(--space-4)'
           }}>
-            Know someone who might benefit? Share this research opportunity
+            ¿Conoce a alguien que pueda beneficiarse? Comparta esta oportunidad de investigación
           </p>
           
           {/* Share Buttons Grid */}
@@ -216,7 +216,7 @@ export default function AboutSection() {
           }}>
             {/* SMS/Text Message */}
             <a
-              href={`sms:?body=${encodeURIComponent('There\'s a heart health research study for people with high Lp(a). Compensation and travel reimbursement provided. If this could help you or someone you know, take a look:\n\n' + (pageUrl || ''))}`}
+              href={`sms:?body=${encodeURIComponent('Hay un estudio de investigación de salud cardíaca para personas con Lp(a) elevado. Se proporciona compensación y reembolso de viaje. Si esto podría ayudarte a ti o a alguien que conoces, échale un vistazo:\n\n' + (pageUrl || ''))}`}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -243,12 +243,12 @@ export default function AboutSection() {
               <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
               </svg>
-              Text
+              Texto
             </a>
 
             {/* WhatsApp */}
             <a
-              href={`https://wa.me/?text=${encodeURIComponent('Heart health research study for people with high Lp(a). Compensation provided. Learn more:\n\n' + (pageUrl || ''))}`}
+              href={`https://wa.me/?text=${encodeURIComponent('Estudio de investigación de salud cardíaca para personas con Lp(a) elevado. Se proporciona compensación. Aprende más:\n\n' + (pageUrl || ''))}`}
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -319,9 +319,9 @@ export default function AboutSection() {
             <button
               onClick={() => {
                 if (typeof window !== 'undefined') {
-                  const message = `Heart health research study for people with high Lp(a). Compensation provided. Learn more: ${typeof window !== 'undefined' ? window.location.href : ''}`;
+                  const message = `Estudio de investigación de salud cardíaca para personas con Lp(a) elevado. Se proporciona compensación. Aprende más: ${typeof window !== 'undefined' ? window.location.href : ''}`;
                   navigator.clipboard.writeText(message);
-                  alert('Message copied to clipboard! You can now paste it in any app.');
+                  alert('¡Mensaje copiado al portapapeles! Ahora puedes pegarlo en cualquier aplicación.');
                 }
               }}
               style={{
@@ -350,7 +350,7 @@ export default function AboutSection() {
               <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
               </svg>
-              Copy
+              Copiar
             </button>
           </div>
         </div>
@@ -376,7 +376,7 @@ export default function AboutSection() {
             }}
           >
             <FontAwesomeIcon icon={faClipboardCheck} style={{ width: '20px', height: '20px' }} />
-            <span>Get your Lp(a) Tested</span>
+            <span>Hágase la Prueba de Lp(a)</span>
           </button>
         </div>
       </div>

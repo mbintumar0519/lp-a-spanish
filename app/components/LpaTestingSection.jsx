@@ -52,7 +52,7 @@ export default function LpaTestingSection() {
             marginBottom: 'var(--space-4)',
             fontFamily: 'var(--font-heading)'
           }}>
-            Get Your Lp(a) Test Results in 3 Easy Steps!
+            ¡Obtenga Sus Resultados de Prueba de Lp(a) en 3 Pasos Fáciles!
           </h2>
           <p style={{
             fontSize: 'var(--text-xl)',
@@ -62,7 +62,7 @@ export default function LpaTestingSection() {
             lineHeight: '1.6',
             fontFamily: 'var(--font-primary)'
           }}>
-            Most people don't know their Lp(a) levels. Join our research study and get comprehensive testing—completely free, no insurance required.
+            La mayoría de las personas no conoce sus niveles de Lp(a). Únase a nuestro estudio de investigación y obtenga pruebas completas—completamente gratis, sin seguro requerido.
           </p>
         </div>
 
@@ -130,7 +130,7 @@ export default function LpaTestingSection() {
               marginBottom: 'var(--space-3)',
               fontFamily: 'var(--font-heading)'
             }}>
-              Step 1: Schedule
+              Paso 1: Agende
             </h3>
             <p style={{
               color: 'var(--gray-600)',
@@ -138,7 +138,7 @@ export default function LpaTestingSection() {
               fontSize: 'var(--text-base)',
               fontFamily: 'var(--font-primary)'
             }}>
-              Fill out our quick pre-screening form. Tell us a little about yourself and your cardiovascular health history. Our team will contact you within 24 hours.
+              Complete nuestro breve formulario de pre-evaluación. Cuéntenos un poco sobre usted y su historial de salud cardiovascular. Nuestro equipo se comunicará con usted dentro de 24 horas.
             </p>
           </div>
 
@@ -199,7 +199,7 @@ export default function LpaTestingSection() {
               marginBottom: 'var(--space-3)',
               fontFamily: 'var(--font-heading)'
             }}>
-              Step 2: Get Tested
+              Paso 2: Hágase la Prueba
             </h3>
             <p style={{
               color: 'var(--gray-600)',
@@ -207,7 +207,7 @@ export default function LpaTestingSection() {
               fontSize: 'var(--text-base)',
               fontFamily: 'var(--font-primary)'
             }}>
-              Visit our Plant City clinic for a simple blood draw. You'll receive comprehensive testing including Lp(a), lipid panel, A1c, and more. Plus, $100 compensation for your time.
+              Visite nuestra clínica en Plant City para una extracción de sangre simple. Recibirá pruebas completas incluyendo Lp(a), panel de lípidos, A1c y más. Además, $100 de compensación por su tiempo.
             </p>
           </div>
 
@@ -268,7 +268,7 @@ export default function LpaTestingSection() {
               marginBottom: 'var(--space-3)',
               fontFamily: 'var(--font-heading)'
             }}>
-              Step 3: Get Results
+              Paso 3: Obtenga Resultados
             </h3>
             <p style={{
               color: 'var(--gray-600)',
@@ -276,7 +276,7 @@ export default function LpaTestingSection() {
               fontSize: 'var(--text-base)',
               fontFamily: 'var(--font-primary)'
             }}>
-              Within a few weeks, our team will share your results, explain what they mean for your heart health, and provide a copy for your doctor. If eligible, learn about the study.
+              En unas pocas semanas, nuestro equipo compartirá sus resultados, explicará lo que significan para su salud cardíaca y proporcionará una copia para su médico. Si es elegible, conozca sobre el estudio.
             </p>
           </div>
         </div>
@@ -303,7 +303,7 @@ export default function LpaTestingSection() {
             }}
             className="cta-button"
           >
-            Get Your Lp(a) Tested
+            Hágase la Prueba de Lp(a)
             <svg style={{ width: '24px', height: '24px' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
@@ -315,7 +315,7 @@ export default function LpaTestingSection() {
             fontSize: 'var(--text-sm)',
             fontFamily: 'var(--font-primary)'
           }}>
-            ✓ No insurance required  •  ✓ Free comprehensive testing  •  ✓ $100 compensation
+            ✓ Sin seguro requerido  •  ✓ Pruebas completas gratuitas  •  ✓ $100 de compensación
           </p>
         </div>
       </div>

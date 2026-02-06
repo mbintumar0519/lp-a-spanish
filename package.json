@@ -48,5 +48,18 @@
     "eslint-config-next": "^16.1.5",
     "sharp": "^0.34.3",
     "typescript": "5.9.3"
-  }
+  },
+  "description": "This is a Next.js project for a clinical trial landing page for Ulcerative Colitis.",
+  "main": "tailwind.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbintumar0519/lp-a-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mbintumar0519/lp-a-/issues"
+  },
+  "homepage": "https://github.com/mbintumar0519/lp-a-#readme"
 }

@@ -27,7 +27,7 @@ export default function BenefitsSection() {
             fontWeight: '700',
             marginBottom: 'var(--space-4)',
             fontFamily: 'var(--font-heading)'
-          }}>Everything We Provide</h2>
+          }}>Todo Lo Que Proporcionamos</h2>
           <div className="underline" style={{
             width: '80px',
             height: '4px',
@@ -42,7 +42,7 @@ export default function BenefitsSection() {
             margin: '0 auto',
             fontFamily: 'var(--font-primary)'
           }}>
-            No insurance required. All study care, monitoring, and Lp(a) testing provided free. Compensation and travel support included.
+            No se requiere seguro. Toda la atención del estudio, monitoreo y prueba de Lp(a) proporcionados gratis. Compensación y apoyo de viaje incluidos.
           </p>
         </div>
         
@@ -89,13 +89,13 @@ export default function BenefitsSection() {
                 marginBottom: 'var(--space-2)',
                 fontWeight: '600',
                 lineHeight: '1.3'
-              }}>Compensation for Your Time</h3>
+              }}>Compensación por Su Tiempo</h3>
               <p style={{
                 color: 'var(--gray-600)',
                 lineHeight: '1.5',
                 fontSize: 'var(--text-sm)'
               }}>
-                You'll receive $100 for each completed study visit. Payments are provided for your time and commitment, whether you receive the study medication or placebo.
+                Recibirá $100 por cada visita del estudio completada. Los pagos se proporcionan por su tiempo y compromiso, ya sea que reciba el medicamento del estudio o placebo.
               </p>
             </div>
           </div>
@@ -137,13 +137,13 @@ export default function BenefitsSection() {
                 marginBottom: 'var(--space-2)',
                 fontWeight: '600',
                 lineHeight: '1.3'
-              }}>Travel Expenses Reimbursed</h3>
+              }}>Gastos de Viaje Reembolsados</h3>
               <p style={{
                 color: 'var(--gray-600)',
                 lineHeight: '1.5',
                 fontSize: 'var(--text-sm)'
               }}>
-                Reasonable travel costs including mileage, parking, and other out-of-pocket expenses are reimbursed when you submit receipts to the study staff.
+                Los costos de viaje razonables incluyendo millaje, estacionamiento y otros gastos de bolsillo son reembolsados cuando presenta recibos al personal del estudio.
               </p>
             </div>
           </div>
@@ -185,13 +185,13 @@ export default function BenefitsSection() {
                 marginBottom: 'var(--space-2)',
                 fontWeight: '600',
                 lineHeight: '1.3'
-              }}>No Insurance Required</h3>
+              }}>No Se Requiere Seguro</h3>
               <p style={{
                 color: 'var(--gray-600)',
                 lineHeight: '1.5',
                 fontSize: 'var(--text-sm)'
               }}>
-                All study-related care is provided at no cost. Study medication (or placebo), Lp(a) testing, blood work, ECGs, physical exams, and monitoring — all free. No insurance needed, no charges for any study visits or procedures.
+                Toda la atención relacionada con el estudio se proporciona sin costo. Medicamento del estudio (o placebo), prueba de Lp(a), análisis de sangre, ECG, exámenes físicos y monitoreo — todo gratis. No se necesita seguro, sin cargos por ninguna visita o procedimiento del estudio.
               </p>
             </div>
           </div>
@@ -233,13 +233,13 @@ export default function BenefitsSection() {
                 marginBottom: 'var(--space-2)',
                 fontWeight: '600',
                 lineHeight: '1.3'
-              }}>Expert Team</h3>
+              }}>Equipo Experto</h3>
               <p style={{
                 color: 'var(--gray-600)',
                 lineHeight: '1.5',
                 fontSize: 'var(--text-sm)'
               }}>
-                Experienced research team providing careful monitoring and safety assessments throughout screening, treatment, and follow‑up periods.
+                Equipo de investigación experimentado que proporciona monitoreo cuidadoso y evaluaciones de seguridad durante los períodos de detección, tratamiento y seguimiento.
               </p>
             </div>
           </div>
@@ -267,7 +267,7 @@ export default function BenefitsSection() {
             }}
           >
             <FontAwesomeIcon icon={faUserCheck} style={{ width: '20px', height: '20px' }} />
-            Get your Lp(a) Tested
+            Hágase la Prueba de Lp(a)
           </button>
         </div>
       </div>

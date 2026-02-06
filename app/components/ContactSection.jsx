@@ -28,7 +28,7 @@ export default function ContactSection() {
             marginBottom: 'var(--space-4)',
             fontFamily: 'var(--font-heading)'
           }}>
-            Take the First Step Today
+            Dé el Primer Paso Hoy
           </h2>
           <div className="underline" style={{
             width: '80px',
@@ -44,7 +44,7 @@ export default function ContactSection() {
             margin: '0 auto',
             fontFamily: 'var(--font-primary)'
           }}>
-            Call or text +1 (813) 796‑6716. Or email info@denali-health.com. Travel expenses reimbursed to help you get here.
+            Llame o envíe mensaje de texto al +1 (813) 796‑6716. O envíe correo electrónico a info@denali-health.com. Gastos de viaje reembolsados para ayudarle a llegar aquí.
           </p>
         </div>
         
@@ -66,7 +66,7 @@ export default function ContactSection() {
               fontWeight: '700',
               marginBottom: 'var(--space-6)',
               color: 'var(--gray-900)'
-            }}>Office Location</h3>
+            }}>Ubicación de la Oficina</h3>
             
             <div className="map-container" style={{
               width: '100%',
@@ -122,7 +122,7 @@ export default function ContactSection() {
                   fontWeight: '600',
                   color: 'var(--gray-900)',
                   marginBottom: 'var(--space-2)'
-                }}>Address</h4>
+                }}>Dirección</h4>
                 <p style={{
                   fontSize: 'var(--text-sm)',
                   color: 'var(--gray-600)',
@@ -158,12 +158,12 @@ export default function ContactSection() {
                   fontWeight: '600',
                   color: 'var(--gray-900)',
                   marginBottom: 'var(--space-2)'
-                }}>Hours</h4>
+                }}>Horario</h4>
                 <p style={{
                   fontSize: 'var(--text-sm)',
                   color: 'var(--gray-600)',
                   lineHeight: '1.4'
-                }}>Mon–Fri: 8am–5pm<br />Sat: 9am–1pm (by appt)</p>
+                }}>Lun–Vie: 8am–5pm<br />Sáb: 9am–1pm (con cita)</p>
               </div>
               
               <div className="detail-item" style={{
@@ -195,12 +195,12 @@ export default function ContactSection() {
                   fontWeight: '600',
                   color: 'var(--gray-900)',
                   marginBottom: 'var(--space-2)'
-                }}>Transportation</h4>
+                }}>Transporte</h4>
                 <p style={{
                   fontSize: 'var(--text-sm)',
                   color: 'var(--gray-600)',
                   lineHeight: '1.4'
-                }}>Travel expenses reimbursed<br />Free parking available</p>
+                }}>Gastos de viaje reembolsados<br />Estacionamiento gratuito disponible</p>
               </div>
             </div>
             
@@ -233,7 +233,7 @@ export default function ContactSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span>Get Directions</span>
+                <span>Obtener Direcciones</span>
               </a>
               
               <a 
@@ -253,7 +253,7 @@ export default function ContactSection() {
                 <svg style={{ width: '20px', height: '20px' }} fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                 </svg>
-                <span>Call or Text</span>
+                <span>Llamar o Enviar Texto</span>
               </a>
             </div>
 
@@ -266,7 +266,7 @@ export default function ContactSection() {
                 fontWeight: '600',
                 color: 'var(--gray-900)',
                 marginBottom: 'var(--space-3)'
-              }}>Book Online</h4>
+              }}>Reservar en Línea</h4>
               <div style={{
                 background: 'var(--gray-50)',
                 border: '1px solid var(--gray-100)',

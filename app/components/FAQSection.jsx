@@ -10,44 +10,44 @@ export default function FAQSection() {
 
   const faqs = [
     {
-      question: "What is lipoprotein(a) [Lp(a)]?",
-      answer: "20% of the world's population has elevated Lp(a), a very sticky protein (cholesterol) in your blood that is affected by genetics instead of lifestyle. Unlike other cholesterol, you cannot control it with diet or exercise. A lipoprotein(a) test can help determine your Lp(a) levels, however, it is typically not covered by insurance and not included in standard cholesterol tests."
+      question: "¿Qué es la lipoproteína(a) [Lp(a)]?",
+      answer: "El 20% de la población mundial tiene Lp(a) elevado, una proteína muy pegajosa (colesterol) en su sangre que es afectada por la genética en lugar del estilo de vida. A diferencia de otro colesterol, no puede controlarla con dieta o ejercicio. Una prueba de lipoproteína(a) puede ayudar a determinar sus niveles de Lp(a), sin embargo, típicamente no está cubierta por el seguro y no está incluida en las pruebas de colesterol estándar."
     },
     {
-      question: "Are there any treatments for high Lp(a)?",
-      answer: "Currently, there are no approved Lp(a) treatments on the market. This is why this research study is so important—participants have the opportunity to access investigational treatments that may help lower Lp(a) and reduce cardiovascular risk."
+      question: "¿Hay algún tratamiento para Lp(a) elevado?",
+      answer: "Actualmente, no hay tratamientos de Lp(a) aprobados en el mercado. Por esto este estudio de investigación es tan importante—los participantes tienen la oportunidad de acceder a tratamientos investigacionales que pueden ayudar a bajar Lp(a) y reducir el riesgo cardiovascular."
     },
     {
-      question: "Why would I join a study instead of just seeing my regular doctor?",
-      answer: "Participating gives you access to a potential new treatment not yet available to the public, close monitoring by cardiovascular research specialists, and the opportunity to contribute to critical research that could help future generations. You can continue seeing your regular doctor for non-study care."
+      question: "¿Por qué me uniría a un estudio en lugar de solo ver a mi médico regular?",
+      answer: "Participar le da acceso a un posible nuevo tratamiento que aún no está disponible al público, monitoreo cercano por especialistas en investigación cardiovascular, y la oportunidad de contribuir a investigación crítica que podría ayudar a futuras generaciones. Puede continuar viendo a su médico regular para atención no relacionada con el estudio."
     },
     {
-      question: "What are the risks?",
-      answer: "As with any investigational treatment, there may be risks including injection site reactions, allergic reactions, and other side effects. The most common side effects seen with olpasiran have been injection site reactions like redness, pain, or swelling. All known risks will be discussed with you in detail before you decide to participate."
+      question: "¿Cuáles son los riesgos?",
+      answer: "Como con cualquier tratamiento investigacional, puede haber riesgos incluyendo reacciones en el sitio de inyección, reacciones alérgicas y otros efectos secundarios. Los efectos secundarios más comunes vistos con olpasiran han sido reacciones en el sitio de inyección como enrojecimiento, dolor o hinchazón. Todos los riesgos conocidos serán discutidos con usted en detalle antes de que decida participar."
     },
     {
-      question: "What if I get placebo?",
-      answer: "The study is designed to compare the investigational medication to placebo to assess its effectiveness. You have an equal chance of receiving either olpasiran or placebo. Regardless of which you receive, your health will be closely monitored throughout the study, and you'll receive compensation for your time."
+      question: "¿Qué pasa si recibo placebo?",
+      answer: "El estudio está diseñado para comparar el medicamento investigacional con placebo para evaluar su efectividad. Tiene la misma oportunidad de recibir olpasiran o placebo. Sin importar cuál reciba, su salud será monitoreada de cerca durante todo el estudio, y recibirá compensación por su tiempo."
     },
     {
-      question: "Will this cost me anything? Do I need insurance?",
-      answer: "No cost to you, and no insurance is required. All study-related care, Lp(a) testing, lab work, ECGs, and procedures are provided free of charge. You'll receive $100 compensation per completed visit, and reasonable travel expenses will be reimbursed when you submit receipts."
+      question: "¿Esto me costará algo? ¿Necesito seguro?",
+      answer: "Sin costo para usted, y no se requiere seguro. Toda la atención relacionada con el estudio, pruebas de Lp(a), análisis de laboratorio, ECG y procedimientos se proporcionan sin cargo. Recibirá $100 de compensación por visita completada, y los gastos de viaje razonables serán reembolsados cuando presente recibos."
     },
     {
-      question: "Can I leave the study later if I change my mind?",
-      answer: "Yes, participation is completely voluntary. You can withdraw from the study at any time without any penalty or loss of benefits. Your regular medical care will not be affected by your decision."
+      question: "¿Puedo dejar el estudio más tarde si cambio de opinión?",
+      answer: "Sí, la participación es completamente voluntaria. Puede retirarse del estudio en cualquier momento sin ninguna penalidad o pérdida de beneficios. Su atención médica regular no se verá afectada por su decisión."
     },
     {
-      question: "Will I still see my regular doctor?",
-      answer: "Yes, you should continue to see your regular doctor for non-study-related care. The study team will inform your personal doctor that you are participating in this study if you give permission."
+      question: "¿Todavía veré a mi médico regular?",
+      answer: "Sí, debe continuar viendo a su médico regular para atención no relacionada con el estudio. El equipo del estudio informará a su médico personal que está participando en este estudio si usted da permiso."
     },
     {
-      question: "Who sees my information?",
-      answer: "Your privacy is important. Only authorized study personnel, the sponsor (Amgen), regulatory agencies like the FDA, and ethics review boards will have access to your information. Your information will be kept confidential as allowed by law."
+      question: "¿Quién ve mi información?",
+      answer: "Su privacidad es importante. Solo personal autorizado del estudio, el patrocinador (Amgen), agencias reguladoras como la FDA, y juntas de revisión ética tendrán acceso a su información. Su información se mantendrá confidencial según lo permitido por la ley."
     },
     {
-      question: "How long does the study last?",
-      answer: "You are expected to be in the study for approximately 3.5 to 5.5 years total, including screening (up to 2 months), treatment (3.5-5 years with injections every 12 weeks), and a safety follow-up about 30 days after your last injection."
+      question: "¿Cuánto dura el estudio?",
+      answer: "Se espera que esté en el estudio por aproximadamente 3.5 a 5.5 años en total, incluyendo la revisión inicial (hasta 2 meses), tratamiento (3.5-5 años con inyecciones cada 12 semanas), y un seguimiento de seguridad aproximadamente 30 días después de su última inyección."
     },
   ];
 
@@ -79,7 +79,7 @@ export default function FAQSection() {
             marginBottom: 'var(--space-4)',
             fontFamily: 'var(--font-heading)'
           }}>
-            Frequently Asked Questions
+            Preguntas Frecuentes
           </h2>
           <div className="underline" style={{
             width: '80px',
@@ -95,7 +95,7 @@ export default function FAQSection() {
             margin: '0 auto',
             fontFamily: 'var(--font-primary)'
           }}>
-            Find answers to common questions about our clinical research study.
+            Encuentre respuestas a preguntas comunes sobre nuestro estudio de investigación clínica.
           </p>
         </div>
         
@@ -185,7 +185,7 @@ export default function FAQSection() {
             fontWeight: '500',
             fontFamily: 'var(--font-heading)'
           }}>
-            Have more questions about the study?
+            ¿Tiene más preguntas sobre el estudio?
           </p>
           <a
             href="tel:+18137966716"
@@ -217,7 +217,7 @@ export default function FAQSection() {
                 d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" 
               />
             </svg>
-            <span>Get your Lp(a) Tested</span>
+            <span>Hágase la Prueba de Lp(a)</span>
           </a>
         </div>
       </div>

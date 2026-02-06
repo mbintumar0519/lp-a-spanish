@@ -37,7 +37,7 @@ export default function HeroSection() {
                 textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
                 fontFamily: 'var(--font-heading)'
               }}>
-                Concerned About Your Risk for a Heart Attack?
+                ¿Preocupado por su Riesgo de Infarto?
               </h1>
               <p style={{
                 color: 'rgba(255, 255, 255, 0.95)',
@@ -46,7 +46,7 @@ export default function HeroSection() {
                 marginBottom: 'var(--space-8)',
                 fontFamily: 'var(--font-primary)'
               }}>
-               <strong>High Lp(a)</strong> is a genetic cholesterol that diet and exercise can't fix—potentially tripling your risk of a heart attack. Get tested today to see if you qualify for a research study evaluating an investigational treatment designed to help prevent a first major heart event.
+               <strong>Lp(a) elevado</strong> es un colesterol genético que la dieta y el ejercicio no pueden corregir—potencialmente triplicando su riesgo de infarto. Hágase la prueba hoy para ver si califica para un estudio de investigación que evalúa un tratamiento investigacional diseñado para ayudar a prevenir un primer evento cardíaco importante.
               </p>
 
               {/* Balanced benefits - larger and higher contrast */}
@@ -57,28 +57,28 @@ export default function HeroSection() {
                   <svg className="w-4 h-4 lg:w-5 lg:h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
-                  Study Care
+                  Atención del Estudio
                 </div>
 
                 <div className="benefit-pill flex items-center justify-center gap-3 lg:gap-4 px-4 py-3 lg:px-6 lg:py-4 bg-white/20 rounded-3xl border border-white/30 text-base lg:text-lg text-white font-semibold shadow-[0_6px_24px_rgba(0,0,0,0.25)] backdrop-blur-sm">
                   <svg className="w-4 h-4 lg:w-5 lg:h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
-                  Expert Care
+                  Atención Experta
                 </div>
 
                 <div className="benefit-pill flex items-center justify-center gap-3 lg:gap-4 px-4 py-3 lg:px-6 lg:py-4 bg-white/30 rounded-3xl border border-white/40 text-base lg:text-lg text-white font-semibold shadow-[0_8px_28px_rgba(0,0,0,0.28)] backdrop-blur">
                   <svg className="w-4 h-4 lg:w-5 lg:h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  Compensation
+                  Compensación
                 </div>
 
                 <div className="benefit-pill flex items-center justify-center gap-3 lg:gap-4 px-4 py-3 lg:px-6 lg:py-4 bg-white/30 rounded-3xl border border-white/40 text-base lg:text-lg text-white font-semibold shadow-[0_8px_28px_rgba(0,0,0,0.28)] backdrop-blur">
                   <svg className="w-4 h-4 lg:w-5 lg:h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
-                  Travel Reimbursed
+                  Viaje Reembolsado
                 </div>
               </div>
             </div>

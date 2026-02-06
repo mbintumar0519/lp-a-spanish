@@ -24,7 +24,7 @@ export default function EnrollmentSection() {
             fontWeight: '700',
             marginBottom: 'var(--space-4)',
             fontFamily: 'var(--font-heading)'
-          }}>What to Expect</h2>
+          }}>Qué Esperar</h2>
           <div className="underline" style={{
             width: '80px',
             height: '4px',
@@ -39,7 +39,7 @@ export default function EnrollmentSection() {
             margin: '0 auto',
             fontFamily: 'var(--font-primary)'
           }}>
-            From screening to follow‑up, we'll support you every step. Travel expenses reimbursed.
+            Desde la evaluación inicial hasta el seguimiento, lo apoyaremos en cada paso. Gastos de viaje reembolsados.
           </p>
         </div>
         
@@ -97,12 +97,12 @@ export default function EnrollmentSection() {
                 color: 'var(--gray-900)',
                 marginBottom: 'var(--space-3)',
                 fontWeight: '600'
-              }}>Screening Period (Up to 2 Months)</h3>
+              }}>Período de Evaluación Inicial (Hasta 2 Meses)</h3>
               <p style={{
                 color: 'var(--gray-600)',
                 lineHeight: '1.6'
               }}>
-                We'll review your medical history, measure your Lp(a) levels, and perform health assessments including blood work, ECG, and vital signs to ensure the study is safe for you. About 2 screening visits.
+                Revisaremos su historial médico, mediremos sus niveles de Lp(a) y realizaremos evaluaciones de salud incluyendo análisis de sangre, ECG y signos vitales para asegurar que el estudio sea seguro para usted. Aproximadamente 2 visitas de evaluación.
               </p>
             </div>
           </div>
@@ -145,12 +145,12 @@ export default function EnrollmentSection() {
                 color: 'var(--gray-900)',
                 marginBottom: 'var(--space-3)',
                 fontWeight: '600'
-              }}>Treatment Period (3.5 to 5 Years)</h3>
+              }}>Período de Tratamiento (3.5 a 5 Años)</h3>
               <p style={{
                 color: 'var(--gray-600)',
                 lineHeight: '1.6'
               }}>
-                You'll receive study medication or placebo as an injection under the skin about every 3 months (every 12 weeks). Regular visits include health monitoring, blood tests, ECGs, and safety checks. Compensation provided for each visit.
+                Recibirá medicamento del estudio o placebo como una inyección bajo la piel aproximadamente cada 3 meses (cada 12 semanas). Las visitas regulares incluyen monitoreo de salud, análisis de sangre, ECG y controles de seguridad. Se proporciona compensación por cada visita.
               </p>
             </div>
           </div>
@@ -193,12 +193,12 @@ export default function EnrollmentSection() {
                 color: 'var(--gray-900)',
                 marginBottom: 'var(--space-3)',
                 fontWeight: '600'
-              }}>Safety Follow‑up (About 30 Days)</h3>
+              }}>Seguimiento de Seguridad (Aproximadamente 30 Días)</h3>
               <p style={{
                 color: 'var(--gray-600)',
                 lineHeight: '1.6'
               }}>
-                About 30 days after your last study drug injection, we'll check in with you to make sure you're doing well. This may be a visit or phone call depending on timing.
+                Aproximadamente 30 días después de su última inyección del medicamento del estudio, nos comunicaremos con usted para asegurarnos de que esté bien. Esto puede ser una visita o una llamada telefónica dependiendo del momento.
               </p>
             </div>
           </div>
@@ -241,12 +241,12 @@ export default function EnrollmentSection() {
                 color: 'var(--gray-900)',
                 marginBottom: 'var(--space-3)',
                 fontWeight: '600'
-              }}>Total Study Duration</h3>
+              }}>Duración Total del Estudio</h3>
               <p style={{
                 color: 'var(--gray-600)',
                 lineHeight: '1.6'
               }}>
-                You are expected to be in the study for approximately 3.5 to 5.5 years total, based on when you start. You can choose to stop at any time without penalty. Visits are scheduled around your availability.
+                Se espera que esté en el estudio por aproximadamente 3.5 a 5.5 años en total, según cuando comience. Puede elegir dejar de participar en cualquier momento sin penalización. Las visitas se programan según su disponibilidad.
               </p>
             </div>
           </div>

@@ -176,7 +176,7 @@ export default function ThankYouPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.5 }}
               >
-                Thank You!
+                ¡Gracias!
               </motion.h1>
 
               {/* Clean Phone Alert with Animation */}
@@ -201,10 +201,10 @@ export default function ThankYouPage() {
                   📱
                 </motion.div>
                 <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-1 sm:mb-2">
-                  Check your phone!
+                  ¡Revise su teléfono!
                 </h2>
                 <p className="text-base sm:text-lg text-gray-600">
-                  We just sent you a text message
+                  Le acabamos de enviar un mensaje de texto
                 </p>
               </motion.div>
 
@@ -216,8 +216,8 @@ export default function ThankYouPage() {
                 transition={{ delay: 1.0, duration: 0.5 }}
               >
                 <p className="text-lg sm:text-2xl text-gray-700 leading-relaxed">
-                  We will contact you in{" "}
-                  <strong className="text-blue-600">shortly</strong>
+                  Nos comunicaremos con usted{" "}
+                  <strong className="text-blue-600">en breve</strong>
                 </p>
               </motion.div>
 
@@ -240,7 +240,7 @@ export default function ThankYouPage() {
                       ✓
                     </motion.span>
                     <span className="text-lg sm:text-xl font-semibold text-gray-800">
-                      Save our number:
+                      Guarde nuestro número:
                     </span>
                   </div>
                   <motion.div
@@ -250,7 +250,7 @@ export default function ThankYouPage() {
                     +1(813) 796-6716
                   </motion.div>
                   <p className="text-xs sm:text-sm text-gray-600 mt-2 sm:mt-3">
-                    So you'll recognize our call
+                    Para que reconozca nuestra llamada
                   </p>
                 </div>
               </motion.div>
@@ -271,13 +271,13 @@ export default function ThankYouPage() {
                       className="text-3xl sm:text-4xl text-emerald-600 mr-3 sm:mr-4"
                     />
                     <h3 className="text-xl sm:text-2xl font-bold text-gray-800">
-                      Schedule your Lp(a) testing
+                      Programe su prueba de Lp(a)
                     </h3>
                   </div>
                   <p className="text-base sm:text-lg text-gray-700 mb-4 sm:mb-6">
                     {bookingLink 
-                      ? 'Book your appointment now using your personalized scheduling link'
-                      : 'Book your appointment now to schedule your Lp(a) testing'
+                      ? 'Reserve su cita ahora usando su enlace de programación personalizado'
+                      : 'Reserve su cita ahora para programar su prueba de Lp(a)'
                     }
                   </p>
                   <motion.a
@@ -290,11 +290,11 @@ export default function ThankYouPage() {
                     whileTap={{ scale: 0.95 }}
                   >
                     <FontAwesomeIcon icon={faCalendarCheck} className="mr-2 sm:mr-3" style={{ color: 'white' }} />
-                    Book Your Appointment
+                    Reserve Su Cita
                   </motion.a>
                   {bookingLink && (
                     <p className="text-xs sm:text-sm text-gray-600 mt-4 sm:mt-5">
-                      This link is personalized for you and expires after use
+                      Este enlace está personalizado para usted y expira después del uso
                     </p>
                   )}
                 </div>
@@ -312,7 +312,7 @@ export default function ThankYouPage() {
                   style={{ color: "white" }}
                 >
                   <FontAwesomeIcon icon={faHome} className="mr-2" />
-                  Return to Home
+                  Volver al Inicio
                 </Link>
               </motion.div>
             </motion.div>
