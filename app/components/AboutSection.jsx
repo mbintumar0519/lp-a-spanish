@@ -93,7 +93,7 @@ export default function AboutSection() {
               color: 'var(--gray-500)',
               lineHeight: '1.6'
             }}>
-              Este es un estudio de investigación global de Fase 3 que evalúa <strong>olpasiran</strong>, un medicamento investigacional que se enfoca en la producción de Lp(a) en el hígado. Con <strong>1 de cada 5 personas</strong> teniendo Lp(a) elevado—frecuentemente sin saberlo—este estudio busca determinar si reducir Lp(a) puede ayudar a prevenir primeros infartos importantes, derrames cerebrales o procedimientos cardíacos urgentes.
+              Este es un estudio de investigación global de Fase 3 que evalúa <strong>olpasiran</strong>, un medicamento investigacional que se enfoca en la producción de Lp(a) en el hígado. Con <strong>1 de cada 5 personas</strong> teniendo Lp(a) elevadofrecuentemente sin saberloeste estudio busca determinar si reducir Lp(a) puede ayudar a prevenir primeros infartos importantes, derrames cerebrales o procedimientos cardíacos urgentes.
             </p>
           </div>
           
@@ -176,7 +176,7 @@ export default function AboutSection() {
               color: 'var(--gray-500)',
               lineHeight: '1.6'
             }}>
-              Adultos con <strong>niveles elevados de Lp(a)</strong> y factores de riesgo como presión arterial alta, colesterol alto, diabetes, historial familiar de enfermedades cardíacas o tabaquismo. Si tiene Lp(a) elevado y desea contribuir a investigación crítica que podría ayudar a futuras generaciones, nos gustaría saber de usted.
+              Adultos con <strong>niveles elevados de Lp(a)</strong> y factores de riesgo como presión arterial alta, colesterol alto, diabetes, historial familiar de enfermedades cardíacas o tabaquismo. Si tiene Lp(a) elevado  que podría ayudar a futuras generaciones, nos gustaría saber de usted.
             </p>
           </div>
         </div>
@@ -204,7 +204,7 @@ export default function AboutSection() {
             fontSize: 'var(--text-base)',
             marginBottom: 'var(--space-4)'
           }}>
-            ¿Conoce a alguien que pueda beneficiarse? Comparta esta oportunidad de investigación
+            ¿Conoce a alguien que pueda beneficiarse? Comparta esta información para prevenir infartos en sus seres queridos.
           </p>
           
           {/* Share Buttons Grid */}
@@ -376,7 +376,7 @@ export default function AboutSection() {
             }}
           >
             <FontAwesomeIcon icon={faClipboardCheck} style={{ width: '20px', height: '20px' }} />
-            <span>Hágase la Prueba de Lp(a)</span>
+            <span>Programe Su Cita Hoy!</span>
           </button>
         </div>
       </div>

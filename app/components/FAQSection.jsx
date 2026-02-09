@@ -15,7 +15,7 @@ export default function FAQSection() {
     },
     {
       question: "¿Hay algún tratamiento para Lp(a) elevado?",
-      answer: "Actualmente, no hay tratamientos de Lp(a) aprobados en el mercado. Por esto este estudio de investigación es tan importante—los participantes tienen la oportunidad de acceder a tratamientos investigacionales que pueden ayudar a bajar Lp(a) y reducir el riesgo cardiovascular."
+      answer: "Actualmente, no hay tratamientos de Lp(a) aprobados en el mercado. Por esto este estudio de investigación es tan importantelos participantes tienen la oportunidad de acceder a tratamientos investigacionales que pueden ayudar a bajar Lp(a) y reducir el riesgo cardiovascular."
     },
     {
       question: "¿Por qué me uniría a un estudio en lugar de solo ver a mi médico regular?",
@@ -217,7 +217,7 @@ export default function FAQSection() {
                 d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" 
               />
             </svg>
-            <span>Hágase la Prueba de Lp(a)</span>
+            <span>Programe Su Cita Hoy!</span>
           </a>
         </div>
       </div>

@@ -62,7 +62,7 @@ export default function LpaTestingSection() {
             lineHeight: '1.6',
             fontFamily: 'var(--font-primary)'
           }}>
-            La mayoría de las personas no conoce sus niveles de Lp(a). Únase a nuestro estudio de investigación y obtenga pruebas completas—completamente gratis, sin seguro requerido.
+            La mayoría de las personas no conoce sus niveles de Lp(a). Únase a nuestro estudio de investigación y obtenga pruebas  gratis, sin seguro requerido.
           </p>
         </div>
 
@@ -207,7 +207,7 @@ export default function LpaTestingSection() {
               fontSize: 'var(--text-base)',
               fontFamily: 'var(--font-primary)'
             }}>
-              Visite nuestra clínica en Plant City para una extracción de sangre simple. Recibirá pruebas completas incluyendo Lp(a), panel de lípidos, A1c y más. Además, $100 de compensación por su tiempo.
+              Visite nuestra clínica en Plant City para una extracción de sangre simple. Recibirá pruebas completas incluyendo Lp(a), panel de el colesterol, A1c y más. Además, $100 de compensación por su tiempo.
             </p>
           </div>
 
@@ -276,7 +276,7 @@ export default function LpaTestingSection() {
               fontSize: 'var(--text-base)',
               fontFamily: 'var(--font-primary)'
             }}>
-              En unas pocas semanas, nuestro equipo compartirá sus resultados, explicará lo que significan para su salud cardíaca y proporcionará una copia para su médico. Si es elegible, conozca sobre el estudio.
+              En unas pocas semanas, nuestro equipo compartirá sus resultados, explicará lo que significan para su salud cardíaca y proporcionará una copia para su médico. 
             </p>
           </div>
         </div>
@@ -303,7 +303,7 @@ export default function LpaTestingSection() {
             }}
             className="cta-button"
           >
-            Hágase la Prueba de Lp(a)
+            Programe Su Cita Hoy!
             <svg style={{ width: '24px', height: '24px' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>

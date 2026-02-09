@@ -122,7 +122,7 @@ export default function Navbar() {
                 }}
                 className="nav-link"
               >
-                Investigador
+                Médico
               </Link>
               <Link 
                 href="/#enroll" 
@@ -307,7 +307,7 @@ export default function Navbar() {
                     }}
                   className="mobile-nav-link"
                 >
-                  Investigador
+                  Médico
                 </Link>
                 <Link 
                   href="/#enroll" 

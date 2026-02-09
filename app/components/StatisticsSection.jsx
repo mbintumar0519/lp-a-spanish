@@ -52,7 +52,7 @@ export default function StatisticsSection() {
               lineHeight: '1.2',
               display: 'inline-block'
             }}>
-              1 in 5
+              1 en 5
             </div>
             <h3 style={{
               fontSize: 'var(--text-xl)',
@@ -112,7 +112,7 @@ export default function StatisticsSection() {
               lineHeight: '1.6',
               fontFamily: 'var(--font-primary)'
             }}>
-              Lp(a) elevado aumenta significativamente su riesgo de derrame cerebral y enfermedad cardíaca
+              Lp(a) elevado aumenta significativamente el riesgo de derrame cerebral y enfermedad cardíaca
             </p>
           </div>
 

@@ -7,7 +7,7 @@ const questions = [
     id: 'high_lpa',
     question: (
       <>
-        ¿Le han dicho que tiene <span className="key-term">lipoproteína(a) elevada</span> o niveles altos de <strong>Lp(a)</strong>?
+        ¿Le han dicho que tiene <span className="key-term">lipoproteína(a) elevada?</span>
       </>
     ),
     icon: '🫀',
@@ -27,7 +27,7 @@ const questions = [
     id: 'heart_risk_factors',
     question: (
       <>
-        ¿Está tomando un <span className="key-term">medicamento para bajar lípidos</span>?
+        ¿Está tomando un <span className="key-term">medicamento para bajar el colesterol</span>?
       </>
     ),
     icon: '💓',
@@ -43,7 +43,7 @@ const questions = [
     ),
     icon: '🚗',
     subtext: <em>Los gastos de viaje serán reembolsados.</em>,
-    guidanceMessage: 'Los gastos de viaje son reembolsados. Si viajar es difícil, déjenos saber — nuestro equipo puede ayudar.'
+    guidanceMessage: 'Los gastos de viaje son reembolsados. Si viajar es difícil, déjenos saber  nuestro equipo puede ayudar.'
   }
 ];
 
@@ -231,7 +231,7 @@ export default function PreScreeningForm() {
           className="font-bold mb-3 text-gray-900 text-2xl sm:text-3xl"
           style={{ fontWeight: '700', lineHeight: '1.2', letterSpacing: '-0.02em' }}
         >
-          Hágase la Prueba de Lp(a)
+          Programe Su Cita Hoy!
         </h2>
 
         <p className="text-gray-600 leading-relaxed max-w-lg mx-auto text-sm sm:text-base" style={{ lineHeight: '1.6' }}>
@@ -516,7 +516,7 @@ export default function PreScreeningForm() {
                 Enviando...
               </div>
             ) : (
-              'Hágase la Prueba de Lp(a)'
+              'Programe Su Cita Hoy!'
             )}
           </button>
 

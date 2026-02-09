@@ -37,7 +37,7 @@ export default function MeetPISection() {
               <div className="w-24 h-1 mb-6 md:mb-8 mx-auto md:mx-0" style={{
                 background: 'linear-gradient(90deg, #14b8a6 0%, #5eead4 100%)'
               }}></div>
-              <h3 className="text-xl md:text-2xl font-heading font-bold text-text-primary mb-4">Investigador Principal</h3>
+              <h3 className="text-xl md:text-2xl font-heading font-bold text-text-primary mb-4">Médico Principal</h3>
             </div>
             
             <div className="space-y-5 md:space-y-6">
@@ -45,7 +45,7 @@ export default function MeetPISection() {
                 borderLeft: '4px solid #14b8a6'
               }}>
                 <p className="text-text-secondary text-base md:text-lg font-body">
-                  El Dr. Powell es un médico investigador dedicado a avanzar el cuidado cardiovascular a través de ensayos clínicos. "La enfermedad cardíaca sigue siendo una preocupación de salud primordial", dice. "Estamos comprometidos a encontrar nuevas formas de proteger a las personas con mayor riesgo."
+                  El Dr. Powell es un médico Médico dedicado a avanzar el cuidado cardiovascular a través de ensayos clínicos. "La enfermedad cardíaca sigue siendo una preocupación de salud primordial", dice. "Estamos comprometidos a encontrar nuevas formas de proteger a las personas con mayor riesgo."
                 </p>
               </div>
               
@@ -61,7 +61,7 @@ export default function MeetPISection() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                     </svg>
                   </div>
-                  <h4 className="font-bold text-lg md:text-xl mb-1 font-heading" style={{ color: '#14b8a6' }}>Médico Investigador</h4>
+                  <h4 className="font-bold text-lg md:text-xl mb-1 font-heading" style={{ color: '#14b8a6' }}>Médico Médico</h4>
                   <p className="text-base md:text-lg text-text-secondary font-body font-semibold">MPH, MD</p>
                 </div>
                 
@@ -113,7 +113,7 @@ export default function MeetPISection() {
               className="btn-primary inline-flex items-center justify-center px-5 py-3 md:px-6 md:py-3 text-sm md:text-base font-medium text-white rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 duration-300 w-full sm:w-auto"
             >
               <FontAwesomeIcon icon={faCalendarCheck} className="h-4 w-4 md:h-5 md:w-5 mr-2" />
-              Hágase la Prueba de Lp(a)
+              Programe Su Cita Hoy!
             </button>
           </div>
         </div>

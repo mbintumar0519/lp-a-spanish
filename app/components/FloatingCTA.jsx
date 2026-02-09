@@ -47,7 +47,7 @@ export default function FloatingCTA() {
               }}
             >
               <FontAwesomeIcon icon={faCalendarCheck} className="h-4 w-4 md:h-5 md:w-5 opacity-90 text-white" />
-              <span className="hidden sm:inline text-white">Hágase la Prueba de Lp(a)</span>
+              <span className="hidden sm:inline text-white">Programe Su Cita Hoy!</span>
               <span className="sm:hidden text-white">Hágase la Prueba</span>
             </button>
         </div>

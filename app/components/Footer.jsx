@@ -43,7 +43,7 @@ export default function Footer() {
                   href="/#pi" 
                   className="text-white/90 hover:text-white transition-colors duration-200 text-sm md:text-base font-body footer-link"
                 >
-                  Conozca al Investigador
+                  Conozca al Médico
                 </Link>
               </li>
               <li>

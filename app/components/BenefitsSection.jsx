@@ -191,7 +191,7 @@ export default function BenefitsSection() {
                 lineHeight: '1.5',
                 fontSize: 'var(--text-sm)'
               }}>
-                Toda la atención relacionada con el estudio se proporciona sin costo. Medicamento del estudio (o placebo), prueba de Lp(a), análisis de sangre, ECG, exámenes físicos y monitoreo — todo gratis. No se necesita seguro, sin cargos por ninguna visita o procedimiento del estudio.
+                Toda la atención relacionada con el estudio se proporciona sin costo. Medicamento del estudio (o placebo), prueba de Lp(a), análisis de sangre, ECG, exámenes físicos y monitoreo  todo gratis. No se necesita seguro, sin cargos por ninguna visita o procedimiento del estudio.
               </p>
             </div>
           </div>
@@ -267,7 +267,7 @@ export default function BenefitsSection() {
             }}
           >
             <FontAwesomeIcon icon={faUserCheck} style={{ width: '20px', height: '20px' }} />
-            Hágase la Prueba de Lp(a)
+            Programe Su Cita Hoy!
           </button>
         </div>
       </div>
