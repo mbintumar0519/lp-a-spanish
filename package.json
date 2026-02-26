@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "ghl:setup": "node setup-env.js",
-    "ghl:test": "node test-ghl-system.js",
+    "ghl:test": "node test-ghl-connection.js",
+    "ghl:test-form": "node test-form-submission.js",
     "ghl:check-leads": "node check-local-leads.js"
   },
   "dependencies": {
