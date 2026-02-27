@@ -195,7 +195,7 @@ ${answerLines.join("\n") || "- None"}
 `;
 
     // --- Build contact tags - all leads are qualified ---
-    const tags = ["website-lead", "Lp(a)", "qualified"];
+    const tags = ["website-lead", "Lp(a)", "qualified", "lp-a-spanish"];
 
     // Apply proper name capitalization
     const { firstName, lastName } = splitAndCapitalizeName(formData.name || "");
@@ -225,10 +225,10 @@ ${answerLines.join("\n") || "- None"}
       postalCode: locationData.postalCode,
       country: locationData.country,
       source: isPreScreening
-        ? "Pre-Screening Form - Website"
-        : "Website Eligibility Form",
+        ? "Pre-Screening Form - Spanish Website"
+        : "Spanish Website Eligibility Form",
       tags, // ONLY these tags
-      companyName: "Lp(a) - Website Lead",
+      companyName: "Lp(a) - Spanish Website Lead",
     };
 
     // --- Send to Google Sheets (non-blocking) ---

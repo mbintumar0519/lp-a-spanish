@@ -23,7 +23,7 @@ Your GoHighLevel integration has been successfully configured and tested. All fo
 ### 3. Form Integration
 - ✅ Form already connected to GoHighLevel API
 - ✅ All CTAs on landing page submit to GHL
-- ✅ Automatic tagging: `website-lead`, `Lp(a)`, `qualified`
+- ✅ Automatic tagging: `website-lead`, `Lp(a)`, `qualified`, `lp-a-spanish`
 - ✅ Location tracking via IP geolocation
 - ✅ Google Sheets backup (parallel, non-blocking)
 - ✅ CRIO integration (parallel, non-blocking)
@@ -68,8 +68,8 @@ Simulates a real form submission from your landing page.
    - Phone (E.164 format: +1...)
    - Email (lowercase, trimmed)
    - Location (city, state, postal code from IP)
-   - Tags: `website-lead`, `Lp(a)`, `qualified`
-   - Source: "Pre-Screening Form - Website"
+   - Tags: `website-lead`, `Lp(a)`, `qualified`, `lp-a-spanish`
+   - Source: "Pre-Screening Form - Spanish Website"
 
 4. **Two notes are added to the contact:**
    - Qualification Status
@@ -113,7 +113,7 @@ All these components submit leads to your GHL account:
   postalCode: "33563",
   country: "US",
   source: "Pre-Screening Form - Website",
-  tags: ["website-lead", "Lp(a)", "qualified"],
+  tags: ["website-lead", "Lp(a)", "qualified", "lp-a-spanish"],
   companyName: "Lp(a) - Website Lead"
 }
 ```
@@ -148,7 +148,7 @@ Location: Plant City, FL, 33563, US
 
 1. Log into your GoHighLevel account
 2. Go to **Contacts**
-3. Filter by tags: `website-lead`, `Lp(a)`, or `qualified`
+3. Filter by tags: `website-lead`, `Lp(a)`, `qualified`, or `lp-a-spanish`
 4. Each lead will have:
    - Complete contact information
    - Geographic location

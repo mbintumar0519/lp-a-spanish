@@ -41,9 +41,9 @@ GOHIGHLEVEL_LOCATION_ID=QIjU06ElWLhQKKXOVKZT
   state: "FL",
   postalCode: "33563",
   country: "US",
-  source: "Pre-Screening Form - Website",
-  tags: ["website-lead", "Lp(a)", "qualified"],
-  companyName: "Lp(a) - Website Lead"
+  source: "Pre-Screening Form - Spanish Website",
+  tags: ["website-lead", "Lp(a)", "qualified", "lp-a-spanish"],
+  companyName: "Lp(a) - Spanish Website Lead"
 }
 ```
 
