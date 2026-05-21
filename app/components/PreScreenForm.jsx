@@ -546,7 +546,7 @@ export default function PreScreeningForm() {
                 ¡Puede agendar su prueba de Lp(a) hoy! 
               </p>
               <a
-                href={`https://api.leadconnectorhq.com/widget/booking/${process.env.NEXT_PUBLIC_GOHIGHLEVEL_CALENDAR_ID || 'oCJUF0iOMFKJBd4fpZS6'}`}
+                href={`https://api.leadconnectorhq.com/widget/booking/${process.env.NEXT_PUBLIC_GOHIGHLEVEL_CALENDAR_ID || '5tFnVrBbAfETptz6sPZ8'}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 font-semibold rounded-xl hover:from-emerald-700 hover:to-teal-700 transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"

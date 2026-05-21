@@ -281,7 +281,7 @@ export default function ThankYouPage() {
                     }
                   </p>
                   <motion.a
-                    href={bookingLink || `https://api.leadconnectorhq.com/widget/booking/${process.env.NEXT_PUBLIC_GOHIGHLEVEL_CALENDAR_ID || 'oCJUF0iOMFKJBd4fpZS6'}`}
+                    href={bookingLink || `https://api.leadconnectorhq.com/widget/booking/${process.env.NEXT_PUBLIC_GOHIGHLEVEL_CALENDAR_ID || '5tFnVrBbAfETptz6sPZ8'}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 font-bold rounded-xl hover:from-emerald-700 hover:to-teal-700 transition-all duration-200 shadow-lg hover:shadow-xl"

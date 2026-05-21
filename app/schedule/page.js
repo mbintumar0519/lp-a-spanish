@@ -357,7 +357,7 @@ export default function SchedulePage() {
       <div className={`absolute inset-0 pt-16 w-full h-full transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
         <iframe
           ref={iframeRef}
-          src={`https://api.leadconnectorhq.com/widget/booking/${process.env.NEXT_PUBLIC_GOHIGHLEVEL_CALENDAR_ID || 'n97n9pl3ix3LDmHTmLM8'}`}
+          src={`https://api.leadconnectorhq.com/widget/booking/${process.env.NEXT_PUBLIC_GOHIGHLEVEL_CALENDAR_ID || '5tFnVrBbAfETptz6sPZ8'}`}
           width="100%"
           height="100%"
           className="w-full h-full border-0"
