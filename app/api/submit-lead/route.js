@@ -311,34 +311,29 @@ ${answerLines.join("\n") || "- None"}
         });
       } catch (e) {
         console.warn("[GHL v1] CRM integration failed:", e.message);
-        if (isDev) {
-          // In development, accept the lead even if CRM fails
-          return NextResponse.json({
-            success: true,
-            message: "Lead received (development mode; CRM integration failed)",
-            tagsApplied: tags,
-            locationData,
-          });
-        }
-        throw e;
+        // Never block user submissions because of downstream CRM issues.
+        // The lead has already been captured client-side and can still be recovered.
+        return NextResponse.json({
+          success: true,
+          message: "Lead received (CRM integration temporarily unavailable)",
+          tagsApplied: tags,
+          locationData,
+        });
       }
     }
 
-    // No GHL key configured
-    if (isDev) {
-      console.warn("[submit-lead] GOHIGHLEVEL_API_KEY not set. Accepting lead without CRM (development mode).");
-      return NextResponse.json({
-        success: true,
-        message: "Lead received (development mode; no CRM integration configured)",
-        tagsApplied: tags,
-        locationData,
-      });
-    }
-    return NextResponse.json({ success: false, message: 'Server configuration error: GOHIGHLEVEL_API_KEY missing' }, { status: 500 });
+    // No GHL key configured: accept lead without CRM rather than failing the form.
+    console.warn("[submit-lead] GOHIGHLEVEL_API_KEY not set. Accepting lead without CRM integration.");
+    return NextResponse.json({
+      success: true,
+      message: "Lead received (CRM not configured)",
+      tagsApplied: tags,
+      locationData,
+    });
   } catch (error) {
     console.error("submit-lead error:", error);
     return NextResponse.json(
-      { success: false, message: error.message },
+      { success: false, error: error.message, message: error.message },
       { status: 500 }
     );
   }

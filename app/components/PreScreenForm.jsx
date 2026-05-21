@@ -156,7 +156,7 @@ export default function PreScreeningForm() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Error al enviar el formulario');
+        throw new Error(data.error || data.message || 'Error al enviar el formulario');
       }
 
       // Generate booking link
@@ -203,7 +203,7 @@ export default function PreScreeningForm() {
 
     } catch (err) {
       console.error('Submission error:', err);
-      setValidationErrors({ submit: 'Algo salió mal. Por favor intente de nuevo.' });
+      setValidationErrors({ submit: err?.message || 'Algo salió mal. Por favor intente de nuevo.' });
     } finally {
       setIsSubmitting(false);
     }
