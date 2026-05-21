@@ -2,18 +2,17 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Script from "next/script";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCheckCircle,
   faHome,
   faPhone,
-  faCalendarCheck,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function ThankYouPage() {
   const [crioFormLoaded, setCrioFormLoaded] = useState(false);
-  const [bookingLink, setBookingLink] = useState(null);
 
   useEffect(() => {
     // Scroll to top when page loads
@@ -50,11 +49,6 @@ export default function ThankYouPage() {
     const leadDataStr = sessionStorage.getItem('leadData');
     const leadData = leadDataStr ? JSON.parse(leadDataStr) : {};
     
-    // Set booking link if available
-    if (leadData.bookingLink) {
-      setBookingLink(leadData.bookingLink);
-    }
-
     // Generate unique event ID for deduplication between pixel and CAPI
     const eventId = `lead-${Date.now()}-${Math.random()
       .toString(36)
@@ -265,38 +259,22 @@ export default function ThankYouPage() {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-teal-500/5"></div>
                 <div className="relative">
-                  <div className="flex items-center justify-center mb-4 sm:mb-5">
-                    <FontAwesomeIcon
-                      icon={faCalendarCheck}
-                      className="text-3xl sm:text-4xl text-emerald-600 mr-3 sm:mr-4"
-                    />
-                    <h3 className="text-xl sm:text-2xl font-bold text-gray-800">
-                      Programe su prueba de Lp(a)
-                    </h3>
-                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-5">
+                    Programe su prueba de Lp(a)
+                  </h3>
                   <p className="text-base sm:text-lg text-gray-700 mb-4 sm:mb-6">
-                    {bookingLink 
-                      ? 'Reserve su cita ahora usando su enlace de programación personalizado'
-                      : 'Reserve su cita ahora para programar su prueba de Lp(a)'
-                    }
+                    Reserve su cita ahora usando su enlace de programación personalizado
                   </p>
-                  <motion.a
-                    href={bookingLink || `https://api.leadconnectorhq.com/widget/booking/${process.env.NEXT_PUBLIC_GOHIGHLEVEL_CALENDAR_ID || '5tFnVrBbAfETptz6sPZ8'}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 font-bold rounded-xl hover:from-emerald-700 hover:to-teal-700 transition-all duration-200 shadow-lg hover:shadow-xl"
-                    style={{ color: 'white' }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <FontAwesomeIcon icon={faCalendarCheck} className="mr-2 sm:mr-3" style={{ color: 'white' }} />
-                    Reserve Su Cita
-                  </motion.a>
-                  {bookingLink && (
-                    <p className="text-xs sm:text-sm text-gray-600 mt-4 sm:mt-5">
-                      Este enlace está personalizado para usted y expira después del uso
-                    </p>
-                  )}
+                  <div className="rounded-xl border border-emerald-100 shadow-sm overflow-hidden bg-white">
+                    <iframe
+                      src="https://api.leadconnectorhq.com/widget/booking/5tFnVrBbAfETptz6sPZ8"
+                      style={{ width: "100%", border: "none", overflow: "hidden", minHeight: "700px" }}
+                      scrolling="no"
+                      id="5tFnVrBbAfETptz6sPZ8_1779367284304"
+                      title="Reserva de cita"
+                    ></iframe>
+                  </div>
+                  <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="afterInteractive" />
                 </div>
               </motion.div>
 
