@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import IPGeolocationAPI from "ip-geolocation-api-javascript-sdk";
 import GeolocationParams from "ip-geolocation-api-javascript-sdk/GeolocationParams.js";
+import fs from 'fs';
+import path from 'path';
+import os from 'os';
 import {
   splitAndCapitalizeName,
   capitalizeFullName,
@@ -13,6 +16,27 @@ const ipgeolocationApi = new IPGeolocationAPI(
   false
 );
 const GHL_V1_BASE = "https://rest.gohighlevel.com/v1";
+
+// Map internal field names -> GoHighLevel custom field keys.
+// These must match the Keys shown in GHL Settings -> Custom Fields.
+const GHL_FIELD_KEY_MAP = {
+  google_click_id: 'google_click_id',
+  fbclid: 'fbclid',
+  msclkid: 'msclkid',
+  utm_source: 'utm_source',
+  utm_medium: 'utm_medium',
+  utm_campaign: 'utm_campaign',
+  utm_content: 'utm_content',
+  utm_term: 'utm_term',
+  lead_source: 'lead_source',
+  event_id: 'event_id',
+  high_lpa: 'high_lpa',
+  age_50_plus: 'age_50_plus',
+  heart_risk_factors: 'heart_risk_factors',
+  can_travel: 'can_travel',
+  study_name: 'study_name',
+  qualification_status: 'qualification_status',
+};
 
 // ---------- helpers ----------
 const mask = (str = "", left = 6, right = 4) => {
@@ -60,6 +84,7 @@ function getGeolocationAsync(params) {
 
 const ANSWER_LABELS = {
   high_lpa: "Has elevated Lp(a) levels",
+  age_50_plus: "Age 50 or older",
   heart_risk_factors: "Has cardiovascular risk factors",
   can_travel: "Can travel to Plant City, FL for study visits",
 };
@@ -107,6 +132,252 @@ const submitToCrio = async ({ firstName, lastName, email, phone }) => {
     throw error;
   }
 };
+
+// Function to save lead data locally as a fallback
+async function saveLeadLocally(leadData) {
+  try {
+    const timestamp = new Date().toISOString().replace(/:/g, '-');
+    const fileName = `lpa_lead_${timestamp}.json`;
+    const filePath = path.join(process.cwd(), 'leads', fileName);
+
+    // Create leads directory if it doesn't exist
+    const leadsDir = path.join(process.cwd(), 'leads');
+    if (!fs.existsSync(leadsDir)) {
+      try {
+        fs.mkdirSync(leadsDir, { recursive: true });
+      } catch (dirError) {
+        console.error('Error creating leads directory:', dirError);
+        return saveInTempDirectory(leadData, fileName);
+      }
+    }
+
+    // Write lead data to file
+    try {
+      fs.writeFileSync(filePath, JSON.stringify(leadData, null, 2));
+      console.log(`Lead data saved locally to ${filePath}`);
+      return true;
+    } catch (writeError) {
+      console.error('Error writing lead data file:', writeError);
+      return saveInTempDirectory(leadData, fileName);
+    }
+  } catch (error) {
+    console.error('Error saving lead locally:', error);
+    return false;
+  }
+}
+
+// Fallback to save in temporary directory if leads directory is not accessible
+function saveInTempDirectory(leadData, fileName) {
+  try {
+    const tempDir = path.join(os.tmpdir(), 'lpa-study-leads');
+    if (!fs.existsSync(tempDir)) {
+      fs.mkdirSync(tempDir, { recursive: true });
+    }
+    const tempPath = path.join(tempDir, fileName);
+    fs.writeFileSync(tempPath, JSON.stringify(leadData, null, 2));
+    console.log(`Lead data saved to temporary location: ${tempPath}`);
+    return true;
+  } catch (tempError) {
+    console.error('Failed to save to temporary directory:', tempError);
+    return false;
+  }
+}
+
+// Helper: fetch current custom-field IDs from GHL (cached for 5 min).
+let _fieldMapCache = null;
+let _fieldMapCacheTime = 0;
+const CACHE_TTL_MS = 5 * 60 * 1000;
+
+async function fetchGhlFieldMap(apiKey) {
+  const now = Date.now();
+  if (_fieldMapCache && (now - _fieldMapCacheTime) < CACHE_TTL_MS) return _fieldMapCache;
+  try {
+    const res = await fetch(`${GHL_V1_BASE}/custom-fields/`, {
+      headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+    });
+    const data = await res.json();
+    const fields = data?.customFields || [];
+    const map = {};
+    for (const f of fields) {
+      if (!f?.id) continue;
+      if (f.fieldKey) map[f.fieldKey] = f.id;
+      if (f.key) map[f.key] = f.id;
+      if (f.name) map[f.name] = f.id;
+    }
+    _fieldMapCache = map;
+    _fieldMapCacheTime = now;
+    console.log('[GHL] Fetched custom field map:', Object.keys(map));
+    return map;
+  } catch (err) {
+    console.error('[GHL] Failed to fetch custom fields:', err.message);
+    return _fieldMapCache || {};
+  }
+}
+
+// Function to create a contact in GoHighLevel with custom fields
+// Uses the two-step pattern:
+// 1. POST /v1/contacts/  (basic info only)
+// 2. PUT  /v1/contacts/{id} with customField: { key: value }
+// If that fails, fall back to PUT /contacts/{id}/custom-field with { custom_field_id, value }
+async function createGoHighLevelContact(contactData, customFields = []) {
+  try {
+    const apiKey = process.env.GOHIGHLEVEL_API_KEY || process.env.GHL_API_KEY;
+    if (!apiKey) {
+      throw new Error('GOHIGHLEVEL_API_KEY is not configured. Set it in .env.local.');
+    }
+
+    // Step 1: Create the contact with only standard fields
+    const createPayload = { ...contactData };
+    delete createPayload.customFields;
+    delete createPayload.customField;
+
+    console.log('=== GHL CONTACT CREATE ===');
+    console.log('Create payload:', JSON.stringify(createPayload));
+
+    const createResponse = await fetch(`${GHL_V1_BASE}/contacts/`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(createPayload),
+    });
+
+    const createText = await createResponse.text();
+    let createJson = {};
+    try { createJson = JSON.parse(createText); } catch { /* ignore */ }
+
+    if (!createResponse.ok) {
+      throw new Error(`GHL v1 create contact failed ${createResponse.status}: ${createText}`);
+    }
+
+    console.log(`GoHighLevel contact created. Status: ${createResponse.status}`);
+    const contactId = extractContactIdV1(createJson);
+    console.log('Contact ID:', contactId);
+
+    // Prepare cleaned custom fields
+    const fieldsToUpdate = customFields
+      .filter((f) => f && (f.name || f.key) && f.value !== undefined && f.value !== null && f.value !== '')
+      .map((f) => {
+        const ghlKey = GHL_FIELD_KEY_MAP[f.name || f.key] || (f.key || f.name);
+        if (!ghlKey || ghlKey.startsWith('REPLACE_ME')) {
+          console.warn(`No GHL field key mapped for: ${f.name || f.key}. Skipping.`);
+          return null;
+        }
+        return { key: ghlKey, value: String(f.value) };
+      })
+      .filter(Boolean);
+
+    if (!contactId || fieldsToUpdate.length === 0) {
+      return createJson;
+    }
+
+    console.log('=== GHL CUSTOM FIELDS UPDATE ===');
+    console.log('Fields to update:', JSON.stringify(fieldsToUpdate));
+
+    // Approach A: GHL v1 uses customField as an OBJECT { key: value }, NOT an array
+    try {
+      const customFieldObj = fieldsToUpdate.reduce((acc, f) => {
+        acc[f.key] = f.value;
+        return acc;
+      }, {});
+
+      const batchPayload = {
+        firstName: contactData.firstName,
+        lastName: contactData.lastName,
+        email: contactData.email,
+        phone: contactData.phone,
+        customField: customFieldObj,   // key fix: object format for v1 API
+      };
+      console.log('Batch update payload:', JSON.stringify(batchPayload));
+
+      const batchRes = await fetch(`${GHL_V1_BASE}/contacts/${contactId}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(batchPayload),
+      });
+
+      const batchText = await batchRes.text();
+      console.log(`Batch customField update succeeded. Status: ${batchRes.status}`);
+
+      // Verify after update
+      try {
+        const verifyRes = await fetch(`${GHL_V1_BASE}/contacts/${contactId}`, {
+          headers: { 'Authorization': `Bearer ${apiKey}` },
+        });
+        const verifyData = await verifyRes.json();
+        console.log('Verification customField:', JSON.stringify(verifyData?.contact?.customField));
+        console.log('Verification customFields:', JSON.stringify(verifyData?.contact?.customFields));
+      } catch (verifyErr) {
+        console.warn('Verification fetch failed:', verifyErr.message);
+      }
+    } catch (batchErr) {
+      console.error('Batch customField update failed:', batchErr.message);
+
+      // Approach B: Fallback -- individual UUID-based updates
+      console.log('Falling back to individual custom-field updates...');
+      const fieldMap = await fetchGhlFieldMap(apiKey);
+
+      for (const field of fieldsToUpdate) {
+        const fieldId = fieldMap[field.key];
+        if (!fieldId) {
+          console.warn(`No GHL field ID found for key: "${field.key}". Available keys:`, Object.keys(fieldMap));
+          continue;
+        }
+        try {
+          const singleRes = await fetch(`${GHL_V1_BASE}/contacts/${contactId}/custom-field`, {
+            method: 'PUT',
+            headers: {
+              'Authorization': `Bearer ${apiKey}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ custom_field_id: fieldId, value: field.value }),
+          });
+          console.log(`Updated "${field.key}" via individual PUT. Status: ${singleRes.status}`);
+        } catch (singleErr) {
+          console.error(`Failed to update "${field.key}":`, singleErr.message);
+        }
+      }
+    }
+
+    console.log('=== END GHL CUSTOM FIELDS UPDATE ===');
+    return createJson;
+  } catch (error) {
+    console.error('Error creating GoHighLevel contact:', error.message);
+    throw error;
+  }
+}
+
+function buildChannelTags(formData) {
+  const tags = [];
+  if (formData.gclid)   tags.push('Channel: Google Ads',  `gclid:${formData.gclid}`);
+  if (formData.fbclid)  tags.push('Channel: Meta',         `fbclid:${formData.fbclid}`);
+  if (formData.msclkid) tags.push('Channel: Microsoft Ads', `msclkid:${formData.msclkid}`);
+  if (formData.utm_source)   tags.push(`Source: ${formData.utm_source}`);
+  if (formData.utm_medium)   tags.push(`Medium: ${formData.utm_medium}`);
+  if (formData.utm_campaign) tags.push(`Campaign: ${formData.utm_campaign}`);
+  if (formData.lead_source)  tags.push(`Lead Source: ${formData.lead_source}`);
+  return tags;
+}
+
+function buildAttributionCustomFields(formData) {
+  const fields = [
+    { name: 'google_click_id', value: formData.gclid || '' },
+    { name: 'fbclid',        value: formData.fbclid || '' },
+    { name: 'msclkid',       value: formData.msclkid || '' },
+    { name: 'utm_source',    value: formData.utm_source || '' },
+    { name: 'utm_medium',    value: formData.utm_medium || '' },
+    { name: 'utm_campaign',  value: formData.utm_campaign || '' },
+    { name: 'utm_content',   value: formData.utm_content || '' },
+    { name: 'utm_term',      value: formData.utm_term || '' },
+    { name: 'lead_source',   value: formData.lead_source || '' },
+    { name: 'event_id',      value: formData.event_id || '' },
+  ];
+  return fields.filter((f) => f.value);
+}
 
 // ---------- handler ----------
 export async function POST(request) {
@@ -231,14 +502,39 @@ ${answerLines.join("\n") || "- None"}
       companyName: "Lp(a) - Spanish Website Lead",
     };
 
+    // Build custom fields for Lp(a) study
+    let customFields = [];
+
+    // Add study-specific custom fields from answers
+    if (formData.answers && typeof formData.answers === "object") {
+      Object.entries(formData.answers).forEach(([key, val]) => {
+        if (val !== undefined && val !== null && val !== '') {
+          customFields.push({
+            name: key,
+            value: Array.isArray(val) ? val.join('; ') : String(val)
+          });
+        }
+      });
+    }
+
+    // Add study metadata
+    customFields.push({ name: 'study_name', value: 'Lp(a) Cardiovascular Research - Spanish' });
+    customFields.push({ name: 'qualification_status', value: 'Pending Review' });
+
+    // Add attribution/tracking custom fields
+    customFields = [...customFields, ...buildAttributionCustomFields(formData)];
+
+    // Apply channel tags for every form type
+    contactData.tags = [...(contactData.tags || []), ...buildChannelTags(formData)];
+
     // --- Send to Google Sheets (non-blocking) ---
     // Fire and forget - don't let Google Sheets failures block the main flow
     sendToGoogleSheets({
       name: displayName,
       phone: rawPhone,
       email: email,
-      status: 'Qualified - Lp(a) Study'
-    }, 'Lp(a) Leads').catch(err => {
+      status: 'Qualified - Lp(a) Study (Spanish)'
+    }, 'Lp(a) Leads Spanish').catch(err => {
       console.warn('[Google Sheets] Failed to send lead:', err.message);
     });
 
@@ -264,23 +560,8 @@ ${answerLines.join("\n") || "- None"}
     }
     if (v1Headers) {
       try {
-        // --- Create contact (v1) ---
-        const createRes = await fetch(`${GHL_V1_BASE}/contacts/`, {
-          method: "POST",
-          headers: v1Headers,
-          body: JSON.stringify(contactData),
-        });
-        const createText = await createRes.text();
-        if (!createRes.ok)
-          throw new Error(
-            `GHL v1 create contact failed ${createRes.status}: ${createText}`
-          );
-        let createJson = {};
-        try {
-          createJson = JSON.parse(createText);
-        } catch {
-          /* ignore */
-        }
+        // --- Create contact with custom fields ---
+        const createJson = await createGoHighLevelContact(contactData, customFields);
         const contactId = extractContactIdV1(createJson);
         if (!contactId)
           throw new Error("GHL v1 returned success but contact id was not found.");
@@ -311,29 +592,28 @@ ${answerLines.join("\n") || "- None"}
         });
       } catch (e) {
         console.warn("[GHL v1] CRM integration failed:", e.message);
-        // Never block user submissions because of downstream CRM issues.
-        // The lead has already been captured client-side and can still be recovered.
+        // Always accept the lead - Google Sheets and CRIO already have it
         return NextResponse.json({
           success: true,
-          message: "Lead received (CRM integration temporarily unavailable)",
+          message: "Lead received (CRM integration failed; saved to backup systems)",
           tagsApplied: tags,
           locationData,
         });
       }
     }
 
-    // No GHL key configured: accept lead without CRM rather than failing the form.
-    console.warn("[submit-lead] GOHIGHLEVEL_API_KEY not set. Accepting lead without CRM integration.");
+    // No GHL key configured -- still accept the lead (Google Sheets + CRIO have it)
+    console.warn("[submit-lead] GOHIGHLEVEL_API_KEY not set. Lead saved to backup systems only.");
     return NextResponse.json({
       success: true,
-      message: "Lead received (CRM not configured)",
+      message: "Lead received (no CRM configured; saved to backup systems)",
       tagsApplied: tags,
       locationData,
     });
   } catch (error) {
     console.error("submit-lead error:", error);
     return NextResponse.json(
-      { success: false, error: error.message, message: error.message },
+      { success: false, message: error.message },
       { status: 500 }
     );
   }

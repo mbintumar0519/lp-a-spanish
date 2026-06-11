@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { getAttribution, deriveLeadSource, generateEventId, persistAttribution } from '../utils/attribution';
 
 const questions = [
   {
@@ -66,8 +67,11 @@ export default function PreScreeningForm() {
   const [validationErrors, setValidationErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // CRIO Impression Tracking
+  // CRIO Impression Tracking + Attribution persistence
   useEffect(() => {
+    // Persist UTM / click-id attribution from URL to localStorage + cookie
+    persistAttribution();
+
     try {
       fetch('https://app.clinicalresearch.io/web-form-impression?id=14681', {
         method: 'GET',
@@ -137,6 +141,11 @@ export default function PreScreeningForm() {
     const [firstName, ...lastNameParts] = formattedName.split(' ');
     const lastName = lastNameParts.join(' ');
 
+    // Capture attribution / tracking data
+    const attr = getAttribution();
+    const eventId = generateEventId();
+    const leadSource = deriveLeadSource(attr);
+
     try {
       const response = await fetch('/api/submit-lead', {
         method: 'POST',
@@ -150,6 +159,18 @@ export default function PreScreeningForm() {
           source: 'pre-screening-form',
           qualificationStatus: 'pending',
           answers: answers,
+          event_id: eventId,
+          lead_source: leadSource,
+          gclid: attr.gclid || null,
+          fbclid: attr.fbclid || null,
+          msclkid: attr.msclkid || null,
+          utm_source: attr.utm_source || null,
+          utm_medium: attr.utm_medium || null,
+          utm_campaign: attr.utm_campaign || null,
+          utm_content: attr.utm_content || null,
+          utm_term: attr.utm_term || null,
+          page_url: typeof window !== 'undefined' ? window.location.href : null,
+          referrer: typeof document !== 'undefined' ? document.referrer : null,
         }),
       });
 
