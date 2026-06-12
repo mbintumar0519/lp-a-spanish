@@ -3,7 +3,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Ribbon from "./components/Ribbon";
 import Script from 'next/script';
-import Image from 'next/image';
+
 import { Suspense } from 'react';
 import BrowserExtensionCleanup from './components/BrowserExtensionCleanup';
 import ClarityTracking from './components/ClarityTracking';
@@ -80,11 +80,22 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <body className="antialiased bg-white-soft text-text-main font-body scroll-smooth" suppressHydrationWarning>
         <link rel="preload" as="image" href="/hero.png" fetchPriority="high" />
-        {/* Google Tag Manager */}
-        <script
+        <link rel="icon" href="/icon.png?v=2" type="image/png" />
+        <link rel="shortcut icon" href="/icon.png?v=2" type="image/png" />
+        <link rel="apple-touch-icon" href="/icon.png?v=2" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        />
+
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -93,38 +104,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PWC5KMWV');`
           }}
         />
-        <link rel="icon" href="/icon.png?v=2" type="image/png" />
-        <link rel="shortcut icon" href="/icon.png?v=2" type="image/png" />
-        <link rel="apple-touch-icon" href="/icon.png?v=2" />
-        <link
-          rel="stylesheet" 
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
-          crossOrigin="anonymous" 
-          referrerPolicy="no-referrer" 
-        />
-        
-        {/* Facebook Pixel */}
+
         {process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID && (
-          <>
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  !function(f,b,e,v,n,t,s)
-                  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-                  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-                  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-                  n.queue=[];t=b.createElement(e);t.async=!0;
-                  t.src=v;s=b.getElementsByTagName(e)[0];
-                  s.parentNode.insertBefore(t,s)}(window, document,'script',
-                  'https://connect.facebook.net/en_US/fbevents.js');
-                  fbq('init', '${process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID}');
-                `
-              }}
-            />
-          </>
+          <Script
+            id="fb-pixel"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                !function(f,b,e,v,n,t,s)
+                {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t,s)}(window, document,'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+                fbq('init', '${process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID}');
+              `
+            }}
+          />
         )}
-        
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -161,8 +161,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             }),
           }}
         />
-      </head>
-      <body className="antialiased bg-white-soft text-text-main font-body scroll-smooth" suppressHydrationWarning>
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
