@@ -137,6 +137,18 @@ export default function PreScreeningForm() {
     const [firstName, ...lastNameParts] = formattedName.split(' ');
     const lastName = lastNameParts.join(' ');
 
+    // Capture attribution from URL params and storage
+    const urlParams = new URLSearchParams(window.location.search);
+    const attrKeys = ['gclid', 'fbclid', 'msclkid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+    const attribution = {};
+    attrKeys.forEach((key) => {
+      const val = urlParams.get(key) || localStorage.getItem(`attr_${key}`);
+      if (val) {
+        attribution[key] = val;
+        try { localStorage.setItem(`attr_${key}`, val); } catch {}
+      }
+    });
+
     try {
       const response = await fetch('/api/submit-lead', {
         method: 'POST',
@@ -150,6 +162,8 @@ export default function PreScreeningForm() {
           source: 'pre-screening-form',
           qualificationStatus: 'pending',
           answers: answers,
+          ...attribution,
+          page_url: typeof window !== 'undefined' ? window.location.href : null,
         }),
       });
 
