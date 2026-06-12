@@ -3,7 +3,6 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Ribbon from "./components/Ribbon";
 import Script from 'next/script';
-
 import { Suspense } from 'react';
 import BrowserExtensionCleanup from './components/BrowserExtensionCleanup';
 import ClarityTracking from './components/ClarityTracking';
@@ -60,21 +59,6 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
-  structuredData: {
-    "@context": "https://schema.org",
-    "@type": "MedicalWebPage",
-    "name": "Lp(a) Heart Health Research Study | Plant City, FL",
-    "description": "A cardiovascular research study for people with elevated Lp(a). Compensation provided and travel expenses reimbursed.",
-    "url": SITE_URL,
-    "publisher": {
-      "@type": "Organization",
-      "name": "Plant City Heart Health Research",
-      "logo": {
-        "@type": "ImageObject",
-        "url": `${SITE_URL}/logo.png`
-      }
-    }
-  }
 };
 
 export default function RootLayout({ children }) {
@@ -161,7 +145,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             }),
           }}
         />
-        {/* Google Tag Manager (noscript) */}
+
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-PWC5KMWV"
