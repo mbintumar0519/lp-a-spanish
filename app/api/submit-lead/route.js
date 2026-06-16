@@ -335,7 +335,7 @@ ${answerLines.join("\n") || "- None"}
     const email = (formData.email || "").trim().toLowerCase();
 
     // --- Build tags ---
-    const baseTags = ["website-lead", "Lp(a)", "qualified", "lp-a-spanish"];
+    const baseTags = ["website-lead", "lp(a)", "qualified", "lp-a-spanish"];
     const attributionTags = buildChannelTags(formData);
     const tags = [...baseTags, ...attributionTags];
 
