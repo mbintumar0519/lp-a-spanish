@@ -1,5 +1,4 @@
 'use client';
-import Script from 'next/script';
 
 export default function ContactSection() {
 
@@ -255,33 +254,6 @@ export default function ContactSection() {
                 </svg>
                 <span>Llamar o Enviar Texto</span>
               </a>
-            </div>
-
-            {/* Online Booking */}
-            <div style={{
-              marginTop: 'var(--space-8)'
-            }}>
-              <h4 style={{
-                fontSize: 'var(--text-base)',
-                fontWeight: '600',
-                color: 'var(--gray-900)',
-                marginBottom: 'var(--space-3)'
-              }}>Reservar en Línea</h4>
-              <div style={{
-                background: 'var(--gray-50)',
-                border: '1px solid var(--gray-100)',
-                borderRadius: '1rem',
-                padding: 'var(--space-4)'
-              }}>
-                <iframe
-                  src="https://api.leadconnectorhq.com/widget/booking/5tFnVrBbAfETptz6sPZ8"
-                  style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '780px' }}
-                  scrolling="no"
-                  id="5tFnVrBbAfETptz6sPZ8_1779366193676"
-                  title="Online Booking"
-                ></iframe>
-                <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="afterInteractive" />
-              </div>
             </div>
           </div>
         </div>

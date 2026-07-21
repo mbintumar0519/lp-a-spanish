@@ -545,38 +545,6 @@ export default function PreScreeningForm() {
           </p>
 
         </div>
-
-        {/* Booking Link Section */}
-        <div className="mt-6 sm:mt-8 animate-in slide-in-from-bottom duration-300 delay-800">
-          <div className="bg-gradient-to-br from-emerald-50/40 via-teal-50/40 to-emerald-50/40 rounded-xl p-4 sm:p-6 border border-emerald-200/50 shadow-sm">
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                <span className="text-2xl sm:text-3xl">📅</span>
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-800" style={{ fontWeight: '600' }}>
-                  ¿Prefiere Agendar Directamente?
-                </h3>
-              </div>
-              <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-5">
-                ¡Puede agendar su prueba de Lp(a) hoy! 
-              </p>
-              <a
-                href={`https://api.leadconnectorhq.com/widget/booking/${process.env.NEXT_PUBLIC_GOHIGHLEVEL_CALENDAR_ID || '5tFnVrBbAfETptz6sPZ8'}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 font-semibold rounded-xl hover:from-emerald-700 hover:to-teal-700 transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
-                style={{ fontSize: '16px', color: 'white' }}
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                Agendar Prueba de Lp(a)
-              </a>
-              <p className="text-xs text-gray-500 mt-3 sm:mt-4">
-                O complete el formulario arriba para recibir un enlace de reserva personalizado
-              </p>
-            </div>
-          </div>
-        </div>
       </form>
 
       <style jsx>{`
