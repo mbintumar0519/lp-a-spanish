@@ -10,7 +10,7 @@ export default function LoadingScreen({ message = "Checking your eligibility..."
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-white bg-opacity-95 backdrop-blur-sm flex items-center justify-center z-50"
+      className="fixed inset-0 bg-white/95 backdrop-blur-sm flex items-center justify-center z-50"
     >
       <div className="text-center max-w-md mx-auto p-8">
         <motion.div

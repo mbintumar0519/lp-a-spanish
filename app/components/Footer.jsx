@@ -4,17 +4,10 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer style={{
-      background: 'linear-gradient(135deg, #0d9488 0%, #14b8a6 50%, #0d9488 100%)',
-      position: 'relative',
-      overflow: 'hidden'
-    }} className="py-10 md:py-16">
-      {/* Decorative elements */}
+    <footer className="bg-gradient-to-br from-red-800 via-red-600 to-red-800 relative overflow-hidden py-10 md:py-16">
       <div className="absolute inset-0 opacity-10">
-        <div style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          width: '100%',
-          height: '100%'
+        <div className="w-full h-full" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
         }}></div>
       </div>
       
@@ -23,7 +16,7 @@ export default function Footer() {
           <div>
             <h3 className="text-xl md:text-2xl font-heading font-bold text-white mb-4 md:mb-6">Salud Cardíaca Lp(a)</h3>
             <p className="text-white/90 text-sm md:text-base font-body leading-relaxed">
-              Un estudio de investigación cardiovascular para personas con Lp(a) elevado. Se proporciona compensación y se reembolsan gastos de viaje.
+              Un estudio de investigación cardiovascular para personas con Lp(a) elevado. Compensación proporcionada y gastos de viaje reembolsados.
             </p>
           </div>
           
@@ -33,7 +26,7 @@ export default function Footer() {
               <li>
                 <Link 
                   href="/#about" 
-                  className="text-white/90 hover:text-white transition-colors duration-200 text-sm md:text-base font-body footer-link"
+                  className="text-white hover:underline hover:underline-offset-4 transition-all duration-200 text-sm md:text-base font-body footer-link"
                 >
                   Sobre el Estudio
                 </Link>
@@ -41,15 +34,15 @@ export default function Footer() {
               <li>
                 <Link 
                   href="/#pi" 
-                  className="text-white/90 hover:text-white transition-colors duration-200 text-sm md:text-base font-body footer-link"
+                  className="text-white hover:underline hover:underline-offset-4 transition-all duration-200 text-sm md:text-base font-body footer-link"
                 >
-                  Conozca al Médico
+                  Conozca al Investigador
                 </Link>
               </li>
               <li>
                 <Link 
                   href="/#benefits" 
-                  className="text-white/90 hover:text-white transition-colors duration-200 text-sm md:text-base font-body footer-link"
+                  className="text-white hover:underline hover:underline-offset-4 transition-all duration-200 text-sm md:text-base font-body footer-link"
                 >
                   Beneficios
                 </Link>
@@ -57,7 +50,7 @@ export default function Footer() {
               <li>
                 <Link 
                   href="/#enroll" 
-                  className="text-white/90 hover:text-white transition-colors duration-200 text-sm md:text-base font-body footer-link"
+                  className="text-white hover:underline hover:underline-offset-4 transition-all duration-200 text-sm md:text-base font-body footer-link"
                 >
                   Qué Esperar
                 </Link>
@@ -65,7 +58,7 @@ export default function Footer() {
               <li>
                 <Link 
                   href="/#faq" 
-                  className="text-white/90 hover:text-white transition-colors duration-200 text-sm md:text-base font-body footer-link"
+                  className="text-white hover:underline hover:underline-offset-4 transition-all duration-200 text-sm md:text-base font-body footer-link"
                 >
                   Preguntas Frecuentes
                 </Link>
@@ -80,12 +73,12 @@ export default function Footer() {
             </p>
             <Link 
               href="/#contact" 
-              className="inline-flex items-center text-white/90 hover:text-white transition-colors duration-200 text-sm md:text-base font-body footer-link"
+              className="inline-flex items-center text-white hover:underline hover:underline-offset-4 transition-all duration-200 text-sm md:text-base font-body whitespace-nowrap footer-link"
             >
-              <span>Póngase en contacto con nuestro equipo</span>
+              <span className="whitespace-nowrap">Póngase en contacto con nuestro equipo</span>
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
-                className="h-4 w-4 md:h-5 md:w-5 ml-2" 
+                className="h-4 w-4 md:h-5 md:w-5 ml-2 shrink-0" 
                 viewBox="0 0 20 20" 
                 fill="currentColor"
               >
@@ -107,23 +100,24 @@ export default function Footer() {
             <div className="flex space-x-4 md:space-x-6">
               <Link 
                 href="/privacy" 
-                className="text-white/90 hover:text-white transition-colors duration-200 text-xs md:text-sm font-body footer-link"
+                className="text-white hover:underline hover:underline-offset-4 transition-all duration-200 text-xs md:text-sm font-body footer-link"
               >
                 Política de Privacidad
               </Link>
               <Link 
                 href="/terms" 
-                className="text-white/90 hover:text-white transition-colors duration-200 text-xs md:text-sm font-body footer-link"
+                className="text-white hover:underline hover:underline-offset-4 transition-all duration-200 text-xs md:text-sm font-body footer-link"
               >
                 Términos de Servicio
               </Link>
             </div>
           </div>
           <p className="text-white/80 text-[11px] leading-relaxed mt-4 font-body">
-            Este estudio de investigación (Protocolo 20230222) se lleva a cabo según las regulaciones de la FDA y pautas éticas estrictas. La compensación y el reembolso de viaje se proporcionan para reducir las barreras de participación, no como pago por asumir riesgos. El estudio es supervisado por una junta de revisión independiente para garantizar su seguridad y que sus derechos sean protegidos.
+            Este estudio de investigación (Protocolo 20230222) se realiza de acuerdo con las regulaciones de la FDA y estrictas pautas éticas. La compensación y el reembolso de viaje se proporcionan para reducir las barreras a la participación, no como pago por asumir riesgos. El estudio es supervisado por una junta de revisión independiente para garantizar que su seguridad y derechos estén protegidos.
           </p>
         </div>
       </div>
+
     </footer>
   );
-} 
+}

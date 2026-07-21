@@ -1,15 +1,15 @@
 'use client';
 
+import SectionHeader from './SectionHeader';
+
 export default function EligibilitySection() {
   return (
-    <section id="eligibility" className="py-16" style={{ 
-      background: 'linear-gradient(180deg, rgba(20, 184, 166, 0.03) 0%, rgba(255, 255, 255, 1) 50%, rgba(20, 184, 166, 0.03) 100%)' 
-    }}>
+    <section id="eligibility" className="py-16 bg-[linear-gradient(180deg,rgba(220,38,38,0.03)_0%,rgba(255,255,255,1)_50%,rgba(220,38,38,0.03)_100%)]">
       <div className="max-w-5xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">¿Podría Este Estudio Ser Adecuado para Usted?</h2>
-        <p className="text-lg text-gray-600 mb-8 text-center max-w-3xl mx-auto">
-          Si tiene Lp(a) elevado y factores de riesgo cardiovascular, puede calificar para este estudio.
-        </p>
+        <SectionHeader
+          title="¿Podría Este Estudio Ser Adecuado para Usted?"
+          description="Si tiene Lp(a) elevado y factores de riesgo cardiovascular, puede calificar para este estudio."
+        />
         <div className="grid gap-8 md:grid-cols-2">
           <div>
             <h3 className="text-xl font-semibold text-gray-900 mb-3">Puede Calificar Si:</h3>
@@ -17,7 +17,7 @@ export default function EligibilitySection() {
               <li>Es un adulto (de 50 años o más) </li>
               <li>Le han dicho que tiene <strong>niveles elevados de Lp(a)</strong></li>
               <li>Tiene <strong>factores de riesgo cardiovascular</strong> tales como:
-                <ul className="list-circle pl-5 mt-1 space-y-1 text-gray-700">
+                <ul className="list-[circle] pl-5 mt-1 space-y-1 text-gray-700">
                   <li>Presión arterial alta</li>
                   <li>Colesterol alto</li>
                   <li>Diabetes tipo 2</li>
@@ -45,5 +45,3 @@ export default function EligibilitySection() {
     </section>
   );
 }
-
-

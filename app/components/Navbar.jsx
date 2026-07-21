@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import CTAButton from './CTAButton';
 import { scrollToHeroForm } from '../utils/scrollToForm';
 
 export default function Navbar() {
@@ -25,211 +25,93 @@ export default function Navbar() {
   return (
     <>
       <nav 
-        className={(isScrolled || !isHomePage) ? 'bg-white' : ''}
-        style={{
-        position: 'fixed',
-        top: '40px', // Position below the ribbon (ribbon height is ~40px)
-        width: '100%',
-        height: '80px', // Fixed height prevents CLS
-        zIndex: 40,
-        background: (isScrolled || !isHomePage) ? 'white' : 'transparent',
-        boxShadow: (isScrolled || !isHomePage) ? 'var(--shadow-lg)' : 'none',
-        display: 'flex',
-        alignItems: 'center'
-      }}>
-        <div style={{
-          maxWidth: '1280px',
-          margin: '0 auto',
-          padding: '0 var(--space-6)',
-          position: 'relative',
-          width: '100%'
-        }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            position: 'relative'
-          }}>
+        className="bg-white fixed top-10 w-full h-20 z-40 shadow-lg flex items-center"
+      >
+        <div className="max-w-7xl mx-auto px-6 relative w-full">
+          <div className="flex items-center justify-between relative">
             {/* Logo - centered on mobile */}
-            <div style={{
-              position: 'absolute',
-              left: '50%',
-              top: '50%',
-              transform: 'translate(-50%, -50%)',
-              zIndex: 1,
-              width: 'fit-content'
-            }} className="logo-container">
-              <a href="#main" style={{ display: 'flex', alignItems: 'center' }}>
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[1] w-fit lg:static lg:left-auto lg:top-auto lg:translate-x-0 lg:translate-y-0 lg:w-auto">
+              <a href="#main" className="flex items-center">
                 <img
-                  src={(isScrolled || !isHomePage) ? "/logo.png" : "/logo-white.png"}
+                  src="/logo.png"
                   alt="Denali Health – Stone Mountain"
-                  width="220"
-                  height="60"
-                  style={{
-                    height: 'auto',
-                    width: 'auto',
-                    maxWidth: '200px',
-                    maxHeight: '60px',
-                    transition: 'opacity 0.3s ease'
-                  }}
+                  width="200"
+                  height="55"
+                  className="h-[55px] w-[200px] object-contain transition-opacity duration-300 ease-in-out"
                 />
               </a>
             </div>
             
             {/* Desktop Navigation */}
-            <div className="nav-links" style={{
-              display: 'none',
-              alignItems: 'center',
-              gap: 'var(--space-6)'
-            }}>
+            <div className="hidden lg:flex items-center gap-6">
               <Link 
                 href="/#about" 
-                style={{
-                  color: (isScrolled || !isHomePage) ? 'var(--gray-900)' : 'white',
-                  fontSize: 'var(--text-base)',
-                  fontFamily: 'var(--font-heading)',
-                  fontWeight: '600',
-                  textDecoration: 'none',
-                  whiteSpace: 'nowrap'
-                }}
-                className="nav-link"
+                className="text-gray-900 text-base font-sans font-semibold no-underline whitespace-nowrap hover:text-red-600 hover:underline hover:underline-offset-4"
               >
                 Sobre
               </Link>
               <Link 
                 href="/#benefits" 
-                style={{
-                  color: (isScrolled || !isHomePage) ? 'var(--gray-900)' : 'white',
-                  fontSize: 'var(--text-base)',
-                  fontFamily: 'var(--font-heading)',
-                  fontWeight: '600',
-                  textDecoration: 'none',
-                  whiteSpace: 'nowrap'
-                }}
-                className="nav-link"
+                className="text-gray-900 text-base font-sans font-semibold no-underline whitespace-nowrap hover:text-red-600 hover:underline hover:underline-offset-4"
               >
                 Beneficios
               </Link>
               <Link 
                 href="/#pi" 
-                style={{
-                  color: (isScrolled || !isHomePage) ? 'var(--gray-900)' : 'white',
-                  fontSize: 'var(--text-base)',
-                  fontFamily: 'var(--font-heading)',
-                  fontWeight: '600',
-                  textDecoration: 'none',
-                  whiteSpace: 'nowrap'
-                }}
-                className="nav-link"
+                className="text-gray-900 text-base font-sans font-semibold no-underline whitespace-nowrap hover:text-red-600 hover:underline hover:underline-offset-4"
               >
-                Médico
+                Conozca al Investigador
               </Link>
               <Link 
                 href="/#enroll" 
-                style={{
-                  color: (isScrolled || !isHomePage) ? 'var(--gray-900)' : 'white',
-                  fontSize: 'var(--text-base)',
-                  fontFamily: 'var(--font-heading)',
-                  fontWeight: '600',
-                  textDecoration: 'none',
-                  whiteSpace: 'nowrap'
-                }}
-                className="nav-link"
+                className="text-gray-900 text-base font-sans font-semibold no-underline whitespace-nowrap hover:text-red-600 hover:underline hover:underline-offset-4"
               >
                 Cómo Participar
               </Link>
               <Link 
                 href="/#contact" 
-                style={{
-                  color: (isScrolled || !isHomePage) ? 'var(--gray-900)' : 'white',
-                  fontSize: 'var(--text-base)',
-                  fontFamily: 'var(--font-heading)',
-                  fontWeight: '600',
-                  textDecoration: 'none',
-                  whiteSpace: 'nowrap'
-                }}
-                className="nav-link"
+                className="text-gray-900 text-base font-sans font-semibold no-underline whitespace-nowrap hover:text-red-600 hover:underline hover:underline-offset-4"
               >
                 Contacto
               </Link>
-              <button 
+              <button
                 onClick={scrollToHeroForm}
-                style={{
-                  color: (isScrolled || !isHomePage) ? 'var(--gray-900)' : 'white',
-                  fontSize: 'var(--text-base)',
-                  fontFamily: 'var(--font-heading)',
-                  fontWeight: '600',
-                  textDecoration: 'none',
-                  whiteSpace: 'nowrap',
-                  background: 'transparent',
-                  border: 'none',
-                  cursor: 'pointer'
-                }}
-                className="nav-link"
+                className="inline-flex items-center gap-1.5 text-gray-900 text-base font-sans font-semibold no-underline whitespace-nowrap bg-transparent border-0 cursor-pointer hover:text-red-600 hover:underline hover:underline-offset-4"
               >
-                Hágase la Prueba
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                Agendar Evaluación Gratis
               </button>
               
               <div>
-                <a 
+                <CTAButton
                   href="tel:+18137966716"
-                  style={{
-                    background: 'var(--primary-blue)',
-                    color: 'white',
-                    padding: 'var(--space-3) var(--space-5)',
-                    fontSize: 'var(--text-base)',
-                    borderRadius: '0.75rem',
-                    fontWeight: '600',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 'var(--space-2)',
-                    boxShadow: 'var(--shadow-md)',
-                    textDecoration: 'none',
-                    whiteSpace: 'nowrap'
-                  }}
-                  className="nav-cta-button"
+                  className="px-4 py-2 text-sm"
+                  icon={
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                    </svg>
+                  }
                 >
-                  <svg style={{ width: '20px', height: '20px' }} fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                  </svg>
-                  
-                </a>
+                  Llamar Ahora
+                </CTAButton>
               </div>
             </div>
             
             {/* Invisible placeholder to prevent layout shift */}
-            <div style={{
-              width: '40px',
-              height: '40px',
-              visibility: 'hidden'
-            }} className="mobile-menu-placeholder"></div>
+            <div className="w-10 h-10 invisible lg:hidden"></div>
             
             {/* Mobile menu button */}
             <button 
               onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
-              style={{
-                padding: 'var(--space-2)',
-                borderRadius: '0.5rem',
-                background: (isScrolled || !isHomePage) ? 'var(--gray-100)' : 'rgba(255, 255, 255, 0.2)',
-                color: (isScrolled || !isHomePage) ? 'var(--gray-900)' : 'white',
-                border: 'none',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                position: 'absolute',
-                right: '0',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                zIndex: 2
-              }}
-              className="mobile-menu-button"
+              aria-label="Abrir menú"
+              className="p-2 rounded-lg bg-gray-100 text-gray-900 border-0 cursor-pointer transition-all duration-300 ease-in-out absolute right-0 top-1/2 -translate-y-1/2 z-[2] hover:bg-gray-200 lg:hidden"
             >
               {isOpen ? (
-                <svg style={{ width: '24px', height: '24px' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg style={{ width: '24px', height: '24px' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               )}
@@ -239,225 +121,82 @@ export default function Navbar() {
       </nav>
       
       {/* Mobile menu */}
-      {isOpen && (
-        <div style={{
-              position: 'fixed',
-              top: '80px', // Fixed position based on navbar height
-              left: 0,
-              right: 0,
-              zIndex: 30
-            }}
-            className="mobile-menu"
-          >
-            <div style={{
-                background: 'white',
-                borderBottomLeftRadius: '1rem',
-                borderBottomRightRadius: '1rem',
-                boxShadow: 'var(--shadow-xl)',
-                overflow: 'hidden'
-              }}
+      <div className={`fixed inset-0 z-30 lg:hidden transition-all duration-500 ease-out ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+        {/* Backdrop */}
+        <div className={`absolute inset-0 bg-black/50 transition-opacity duration-500 ease-out ${isOpen ? 'opacity-100' : 'opacity-0'}`} onClick={() => setIsOpen(false)} />
+        
+        {/* Menu panel */}
+        <div className={`absolute top-20 left-0 right-0 bottom-0 bg-white flex flex-col transition-all duration-500 ease-out ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0'}`}>
+          <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-3">
+            <Link 
+              href="/#about" 
+              onClick={() => setIsOpen(false)}
+              className={`py-4 px-4 text-gray-900 text-lg font-sans font-semibold no-underline rounded-lg hover:bg-gray-50 hover:text-red-500 transition-all duration-300 ease-out mt-12 ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'}`}
+              style={{ transitionDelay: '50ms' }}
             >
-              <div style={{
-                display: 'flex',
-                flexDirection: 'column'
-              }}>
-                <Link 
-                  href="/#about" 
-                  onClick={() => setIsOpen(false)}
-                  style={{
-                    padding: 'var(--space-4) var(--space-6)',
-                    color: 'var(--gray-900)',
-                    fontSize: 'var(--text-base)',
-                    fontFamily: 'var(--font-heading)',
-                    fontWeight: '600',
-                    textDecoration: 'none',
-                    borderBottom: '1px solid var(--gray-100)',
-                    }}
-                  className="mobile-nav-link"
-                >
-                  Sobre
-                </Link>
-                <Link 
-                  href="/#benefits" 
-                  onClick={() => setIsOpen(false)}
-                  style={{
-                    padding: 'var(--space-4) var(--space-6)',
-                    color: 'var(--gray-900)',
-                    fontSize: 'var(--text-base)',
-                    fontFamily: 'var(--font-heading)',
-                    fontWeight: '600',
-                    textDecoration: 'none',
-                    borderBottom: '1px solid var(--gray-100)',
-                    }}
-                  className="mobile-nav-link"
-                >
-                  Beneficios
-                </Link>
-                <Link 
-                  href="/#pi" 
-                  onClick={() => setIsOpen(false)}
-                  style={{
-                    padding: 'var(--space-4) var(--space-6)',
-                    color: 'var(--gray-900)',
-                    fontSize: 'var(--text-base)',
-                    fontFamily: 'var(--font-heading)',
-                    fontWeight: '600',
-                    textDecoration: 'none',
-                    borderBottom: '1px solid var(--gray-100)',
-                    }}
-                  className="mobile-nav-link"
-                >
-                  Médico
-                </Link>
-                <Link 
-                  href="/#enroll" 
-                  onClick={() => setIsOpen(false)}
-                  style={{
-                    padding: 'var(--space-4) var(--space-6)',
-                    color: 'var(--gray-900)',
-                    fontSize: 'var(--text-base)',
-                    fontFamily: 'var(--font-heading)',
-                    fontWeight: '600',
-                    textDecoration: 'none',
-                    borderBottom: '1px solid var(--gray-100)',
-                    }}
-                  className="mobile-nav-link"
-                >
-                  Cómo Participar
-                </Link>
-                <Link 
-                  href="/#contact" 
-                  onClick={() => setIsOpen(false)}
-                  style={{
-                    padding: 'var(--space-4) var(--space-6)',
-                    color: 'var(--gray-900)',
-                    fontSize: 'var(--text-base)',
-                    fontFamily: 'var(--font-heading)',
-                    fontWeight: '600',
-                    textDecoration: 'none',
-                    borderBottom: '1px solid var(--gray-100)',
-                    }}
-                  className="mobile-nav-link"
-                >
-                  Contacto
-                </Link>
-                <button 
-                  onClick={(e) => {
-                    scrollToHeroForm(e);
-                    setIsOpen(false);
-                  }}
-                  style={{
-                    padding: 'var(--space-4) var(--space-6)',
-                    color: 'var(--gray-900)',
-                    fontSize: 'var(--text-base)',
-                    fontFamily: 'var(--font-heading)',
-                    fontWeight: '600',
-                    textDecoration: 'none',
-                    background: 'transparent',
-                    border: 'none',
-                    borderBottom: '1px solid var(--gray-100)',
-                    cursor: 'pointer',
-                    width: '100%',
-                    textAlign: 'left'
-                    }}
-                  className="mobile-nav-link"
-                >
-                  Hágase la Prueba
-                </button>
-                <div style={{
-                  padding: 'var(--space-6)',
-                  background: 'var(--gray-50)'
-                }}>
-                  <a 
-                    href="tel:+18137966716" 
-                    onClick={() => setIsOpen(false)}
-                    style={{
-                      background: 'var(--primary-blue)',
-                      color: 'white',
-                      padding: 'var(--space-4)',
-                      fontSize: 'var(--text-base)',
-                      borderRadius: '0.75rem',
-                      fontWeight: '600',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: 'var(--space-2)',
-                        boxShadow: 'var(--shadow-md)',
-                      textDecoration: 'none',
-                      width: '100%'
-                    }}
-                    className="mobile-cta-button"
-                  >
-                    <svg style={{ width: '20px', height: '20px' }} fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                    </svg>
-                    Llamar o Enviar Texto
-                  </a>
-                </div>
-              </div>
-            </div>
+              Sobre
+            </Link>
+            <Link 
+              href="/#benefits" 
+              onClick={() => setIsOpen(false)}
+              className={`py-4 px-4 text-gray-900 text-lg font-sans font-semibold no-underline rounded-lg hover:bg-gray-50 hover:text-red-500 transition-all duration-300 ease-out ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'}`}
+              style={{ transitionDelay: '100ms' }}
+            >
+              Beneficios
+            </Link>
+            <Link 
+              href="/#pi" 
+              onClick={() => setIsOpen(false)}
+              className={`py-4 px-4 text-gray-900 text-lg font-sans font-semibold no-underline rounded-lg hover:bg-gray-50 hover:text-red-500 transition-all duration-300 ease-out ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'}`}
+              style={{ transitionDelay: '150ms' }}
+            >
+              Conozca al Investigador
+            </Link>
+            <Link 
+              href="/#enroll" 
+              onClick={() => setIsOpen(false)}
+              className={`py-4 px-4 text-gray-900 text-lg font-sans font-semibold no-underline rounded-lg hover:bg-gray-50 hover:text-red-500 transition-all duration-300 ease-out ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'}`}
+              style={{ transitionDelay: '200ms' }}
+            >
+              Cómo Participar
+            </Link>
+            <Link 
+              href="/#contact" 
+              onClick={() => setIsOpen(false)}
+              className={`py-4 px-4 text-gray-900 text-lg font-sans font-semibold no-underline rounded-lg hover:bg-gray-50 hover:text-red-500 transition-all duration-300 ease-out ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'}`}
+              style={{ transitionDelay: '250ms' }}
+            >
+              Contacto
+            </Link>
           </div>
-        )}
-      
-      <style jsx>{`
-        .nav-links {
-          display: none;
-        }
-        
-        /* Ensure logo is perfectly centered on mobile */
-        @media (max-width: 767px) {
-          .logo-container {
-            left: 50% !important;
-            top: 50% !important;
-            transform: translate(-50%, -50%) !important;
-            width: fit-content !important;
-          }
-        }
-        
-        @media (min-width: 768px) {
-          .nav-links {
-            display: flex !important;
-          }
           
-          .mobile-menu-button {
-            display: none;
-          }
-          
-          .mobile-menu-placeholder {
-            display: none;
-          }
-          
-          .logo-container {
-            position: static !important;
-            left: auto !important;
-            top: auto !important;
-            transform: none !important;
-            width: auto !important;
-          }
-        }
-        
-        .nav-link:hover {
-          color: var(--primary-blue) !important;
-        }
-        
-        .nav-cta-button:hover {
-          background: var(--primary-dark) !important;
-          box-shadow: var(--shadow-lg) !important;
-        }
-        
-        .mobile-nav-link:hover {
-          background: var(--gray-50);
-          color: var(--primary-blue) !important;
-        }
-        
-        .mobile-cta-button:hover {
-          background: var(--primary-dark) !important;
-        }
-        
-        .mobile-menu-button:hover {
-          background: ${(isScrolled || !isHomePage) ? 'var(--gray-200)' : 'rgba(255, 255, 255, 0.3)'} !important;
-        }
-      `}</style>
+          {/* Bottom buttons */}
+          <div className={`p-6 flex flex-col gap-3 border-t border-gray-100 bg-white transition-all duration-500 ease-out ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} style={{ transitionDelay: '300ms' }}>
+            <button
+              onClick={() => {
+                scrollToHeroForm();
+                setIsOpen(false);
+              }}
+              className="w-full py-4 px-6 bg-red-600 text-white font-bold text-lg rounded-xl shadow-lg hover:bg-red-700 active:scale-[0.97] transition-all duration-200 flex items-center justify-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              Agendar Evaluación Gratis
+            </button>
+            <a
+              href="tel:+18137966716"
+              onClick={() => setIsOpen(false)}
+              className="w-full py-4 px-6 bg-white text-gray-900 font-bold text-lg rounded-xl border-2 border-gray-300 hover:bg-gray-50 hover:border-gray-400 active:scale-[0.97] transition-all duration-200 flex items-center justify-center gap-2 no-underline"
+            >
+              <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+              </svg>
+              Llamar o Enviar Mensaje
+            </a>
+          </div>
+        </div>
+      </div>
     </>
   );
-} 
+}

@@ -9,6 +9,7 @@ import ClarityTracking from './components/ClarityTracking';
 import FacebookPixel from './components/FacebookPixel';
 import MetaProvider from './components/MetaProvider';
 import AccessibilityAxe from './components/AccessibilityAxe';
+import FloatingCTA from './components/FloatingCTA';
 
 const SITE_URL = process.env.SITE_URL || 'https://amariuc.netlify.app';
 
@@ -63,7 +64,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body className="antialiased bg-white-soft text-text-main font-body scroll-smooth" suppressHydrationWarning>
         <link rel="preload" as="image" href="/hero.png" fetchPriority="high" />
         <link rel="icon" href="/icon.png?v=2" type="image/png" />
@@ -168,6 +169,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </main>
         </MetaProvider>
         <AccessibilityAxe />
+        <FloatingCTA />
       </body>
     </html>
   );

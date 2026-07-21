@@ -4,19 +4,20 @@ export const scrollToHeroForm = (e) => {
     e.preventDefault();
   }
   
-  // Find the questionnaire element
-  const questionnaire = document.querySelector('.qualification-questionnaire');
+  // Find the hero form element
+  const heroForm = document.getElementById('hero-form');
   
-  if (questionnaire) {
-    // Calculate the position to scroll to (top of form at top of viewport)
-    const rect = questionnaire.getBoundingClientRect();
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const targetPosition = rect.top + scrollTop;
-    
-    // Smooth scroll to the form
-    window.scrollTo({
-      top: targetPosition,
-      behavior: 'smooth'
+  if (heroForm) {
+    // Smooth scroll to the form, centering it in the viewport
+    heroForm.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
     });
+    
+    // Optional: focus the first input after scrolling
+    setTimeout(() => {
+      const firstInput = heroForm.querySelector('input');
+      if (firstInput) firstInput.focus();
+    }, 800);
   }
 };

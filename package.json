@@ -21,7 +21,7 @@
     "@heroicons/react": "^2.2.0",
     "@microsoft/clarity": "^1.0.0",
     "@next/third-parties": "^16.2.9",
-    "autoprefixer": "^10.4.17",
+    "@tailwindcss/postcss": "^4.3.3",
     "axios": "^1.8.3",
     "dotenv": "^16.4.7",
     "facebook-nodejs-business-sdk": "^20.0.3",
@@ -36,7 +36,7 @@
     "react-icons": "^5.5.0",
     "react-phone-number-input": "^3.4.12",
     "react-tsparticles": "^2.12.2",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^4.3.3",
     "tsparticles-slim": "^2.12.0"
   },
   "devDependencies": {
@@ -51,7 +51,7 @@
     "typescript": "5.9.3"
   },
   "description": "This is a Next.js project for a clinical trial landing page for Ulcerative Colitis.",
-  "main": "tailwind.config.js",
+  "main": "index.html",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mbintumar0519/lp-a-.git"
