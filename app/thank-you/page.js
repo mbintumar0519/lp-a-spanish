@@ -2,13 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Script from "next/script";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCheckCircle,
   faHome,
-  faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function ThankYouPage() {
@@ -246,35 +244,6 @@ export default function ThankYouPage() {
                   <p className="text-xs sm:text-sm text-gray-600 mt-2 sm:mt-3">
                     Para que reconozca nuestra llamada
                   </p>
-                </div>
-              </motion.div>
-
-              {/* Booking Link Section */}
-              <motion.div
-                className="text-center mb-4 sm:mb-8"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.3, duration: 0.5 }}
-                whileHover={{ scale: 1.02 }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-teal-500/5"></div>
-                <div className="relative">
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-5">
-                    Programe su prueba de Lp(a)
-                  </h3>
-                  <p className="text-base sm:text-lg text-gray-700 mb-4 sm:mb-6">
-                    Reserve su cita ahora usando su enlace de programación personalizado
-                  </p>
-                  <div className="rounded-xl border border-emerald-100 shadow-sm overflow-hidden bg-white">
-                    <iframe
-                      src="https://api.leadconnectorhq.com/widget/booking/5tFnVrBbAfETptz6sPZ8"
-                      style={{ width: "100%", border: "none", overflow: "hidden", minHeight: "700px" }}
-                      scrolling="no"
-                      id="5tFnVrBbAfETptz6sPZ8_1779367284304"
-                      title="Reserva de cita"
-                    ></iframe>
-                  </div>
-                  <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="afterInteractive" />
                 </div>
               </motion.div>
 
