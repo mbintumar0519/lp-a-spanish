@@ -1,5 +1,6 @@
 import Footer from "./components/Footer";
 import HeroSection from "./components/HeroSection";
+import ReferralBanner from "./components/ReferralBanner";
 import TestimonialsSection from "./components/TestimonialsSection";
 import MechanismOfAction from "./components/MechanismOfAction";
 import AboutSection from "./components/AboutSection";
@@ -16,6 +17,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
+      <ReferralBanner />
       <TestimonialsSection />
       <MeetPISection />
       <StatisticsSection />

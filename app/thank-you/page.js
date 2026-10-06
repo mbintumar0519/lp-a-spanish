@@ -8,6 +8,7 @@ import {
   faCheckCircle,
   faHome,
 } from "@fortawesome/free-solid-svg-icons";
+import ReferralBanner from "../components/ReferralBanner";
 
 export default function ThankYouPage() {
   const [crioFormLoaded, setCrioFormLoaded] = useState(false);
@@ -246,6 +247,8 @@ export default function ThankYouPage() {
                   </p>
                 </div>
               </motion.div>
+
+              <ReferralBanner layout="stack" />
 
               <motion.div
                 className="text-center"
