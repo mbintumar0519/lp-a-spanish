@@ -6,46 +6,23 @@ import {
   capitalizeFullName,
 } from "../../utils/nameCapitalization.js";
 import { sendToGoogleSheets } from "../../utils/googleSheets.js";
+import {
+  addGhlNote,
+  createOrUpsertGhlContact,
+  getGhlConfig,
+} from "../../lib/ghl.js";
 
 const isDev = process.env.NODE_ENV !== "production";
 const ipgeolocationApi = new IPGeolocationAPI(
   process.env.IP_GEOLOCATION_API_KEY,
   false
 );
-const GHL_V1_BASE = "https://rest.gohighlevel.com/v1";
 
 // ---------- helpers ----------
 const mask = (str = "", left = 6, right = 4) => {
   if (!str) return "MISSING";
   if (str.length <= left + right) return `${str[0]}***${str[str.length - 1]}`;
   return `${str.slice(0, left)}...${str.slice(-right)}`;
-};
-
-const buildV1Headers = () => {
-  const token = (
-    process.env.GOHIGHLEVEL_API_KEY ||
-    process.env.GHL_API_KEY ||
-    ""
-  ).trim();
-  if (!token) return null;
-  if (process.env.NODE_ENV === 'production' && !token.includes('.')) {
-    throw new Error(
-      "GOHIGHLEVEL_API_KEY must be the v1 Location API key (eyJ…)."
-    );
-  }
-  if (isDev) console.log("[GHL v1] Using key:", mask(token));
-  return {
-    Authorization: `Bearer ${token}`,
-    "Content-Type": "application/json",
-    Accept: "application/json",
-  };
-};
-
-const extractContactIdV1 = (obj) => {
-  if (!obj) return undefined;
-  if (obj.contact?.id) return obj.contact.id;
-  if (obj.id) return obj.id;
-  return undefined;
 };
 
 function getGeolocationAsync(params) {
@@ -60,22 +37,23 @@ function getGeolocationAsync(params) {
 // ---------- GHL custom fields ----------
 
 const GHL_FIELD_KEY_MAP = {
-  google_click_id: "google_click_id",
-  fbclid: "fbclid",
-  msclkid: "msclkid",
-  utm_source: "utm_source",
-  utm_medium: "utm_medium",
-  utm_campaign: "utm_campaign",
-  utm_content: "utm_content",
-  utm_term: "utm_term",
-  lead_source: "lead_source",
-  event_id: "event_id",
-  hasElevatedLpa: "hasElevatedLpa",
-  ageOver50: "ageOver50",
-  takesCholesterolMeds: "takesCholesterolMeds",
-  canTravelToPlantCity: "canTravelToPlantCity",
-  qualificationStatus: "qualificationStatus",
-  studyName: "studyName",
+  google_click_id: "7kd30EtE3UzXz8tdNeVL",
+  gclid: "7kd30EtE3UzXz8tdNeVL",
+  fbclid: "yMrgtotc23za7sCdC8TQ",
+  msclkid: "XtXcaLuIRAoYzek5MsMZ",
+  utm_source: "NKhJ8fiKR1OxgqywLIwq",
+  utm_medium: "8DiVqOWzm6BJGTcpC9bw",
+  utm_campaign: "bKJgWP4TJhiVRtOG2uGQ",
+  utm_content: "zX6NRCDM2CuxE9zOOqMf",
+  utm_term: "1dL5BJCnBNEujF493fEM",
+  lead_source: "J3Xpbq929Fc6e786G5fp",
+  event_id: "Di3qpWTZ6EyQZtb2F6qa",
+  hasElevatedLpa: "L3MIhXPd3qfgRm4lccex",
+  ageOver50: "HelVW4nqMb0Wxy3UwDod",
+  takesCholesterolMeds: "eZMqJYmjI3QIH99HWMIJ",
+  canTravelToPlantCity: "Bak7rs2wj9tSidZwCGAF",
+  qualificationStatus: "bsduyvTkR2QuZVaVpjpz",
+  studyName: "Yn32DdtZIAZqELj1Ca1b",
 };
 
 function buildChannelTags(formData) {
@@ -104,82 +82,6 @@ function buildAttributionCustomFields(formData) {
     { name: "event_id", value: formData.event_id || "" },
   ];
   return fields.filter((f) => f.value);
-}
-
-let _fieldMapCache = null;
-let _fieldMapCacheTime = 0;
-const CACHE_TTL_MS = 5 * 60 * 1000;
-
-async function fetchGhlFieldMap(apiKey) {
-  const now = Date.now();
-  if (_fieldMapCache && now - _fieldMapCacheTime < CACHE_TTL_MS) return _fieldMapCache;
-  try {
-    const res = await fetch(`${GHL_V1_BASE}/custom-fields/`, {
-      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-    });
-    const data = await res.json();
-    const fields = data?.customFields || [];
-    const map = {};
-    for (const f of fields) {
-      if (!f?.id) continue;
-      if (f.fieldKey) map[f.fieldKey] = f.id;
-      if (f.key) map[f.key] = f.id;
-      if (f.name) map[f.name] = f.id;
-    }
-    _fieldMapCache = map;
-    _fieldMapCacheTime = now;
-    if (isDev) console.log("[GHL] Fetched custom field map:", Object.keys(map));
-    return map;
-  } catch (err) {
-    console.error("[GHL] Failed to fetch custom fields:", err.message);
-    return _fieldMapCache || {};
-  }
-}
-
-async function updateGhlCustomFields(apiKey, contactId, customFieldObj, contactData) {
-  try {
-    const batchPayload = {
-      firstName: contactData.firstName,
-      lastName: contactData.lastName,
-      email: contactData.email,
-      phone: contactData.phone,
-      customField: customFieldObj,
-    };
-    const res = await fetch(`${GHL_V1_BASE}/contacts/${contactId}`, {
-      method: "PUT",
-      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-      body: JSON.stringify(batchPayload),
-    });
-    if (!res.ok) {
-      const errText = await res.text();
-      throw new Error(`Batch update failed ${res.status}: ${errText}`);
-    }
-    if (isDev) console.log("[GHL] Batch customField update succeeded");
-    return true;
-  } catch (batchErr) {
-    console.error("[GHL] Batch customField update failed:", batchErr.message);
-    const fieldMap = await fetchGhlFieldMap(apiKey);
-    for (const [key, value] of Object.entries(customFieldObj)) {
-      const fieldId = fieldMap[key];
-      if (!fieldId) {
-        console.warn(`[GHL] No field ID for key: "${key}"`);
-        continue;
-      }
-      try {
-        const singleRes = await fetch(`${GHL_V1_BASE}/contacts/${contactId}/custom-field`, {
-          method: "PUT",
-          headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-          body: JSON.stringify({ custom_field_id: fieldId, value }),
-        });
-        if (!singleRes.ok) {
-          console.error(`[GHL] Failed to update "${key}":`, await singleRes.text());
-        }
-      } catch (singleErr) {
-        console.error(`[GHL] Failed to update "${key}":`, singleErr.message);
-      }
-    }
-    return false;
-  }
 }
 
 const ANSWER_LABELS = {
@@ -266,7 +168,7 @@ export async function POST(request) {
       console.warn("IP Geolocation failed:", e.message);
     }
 
-    const v1Headers = buildV1Headers();
+    const { isConfigured } = getGhlConfig();
 
     // --- Only accept qualified leads from pre-screening form ---
     const isPreScreening = formData.source === "pre-screening-form";
@@ -394,71 +296,55 @@ ${answerLines.join("\n") || "- None"}
       console.warn("[CRIO] Failed to send lead:", err.message);
     });
 
+    const apiKey = (
+      process.env.GOHIGHLEVEL_API_KEY ||
+      process.env.GHL_API_KEY ||
+      ""
+    ).trim();
+
     if (isDev) {
-      console.log("[GHL v1] Creating contact:", {
-        endpoint: `${GHL_V1_BASE}/contacts/`,
-        apiKeyPreview: mask(process.env.GOHIGHLEVEL_API_KEY || process.env.GHL_API_KEY),
+      console.log("[GHL] Creating contact:", {
+        engine: apiKey.startsWith("pit-") || apiKey.startsWith("pit_") ? "v2" : "v1",
+        apiKeyPreview: mask(apiKey),
         contactData,
         customFieldCount: Object.keys(customFieldObj).length,
       });
     }
 
-    if (v1Headers) {
+    if (isConfigured) {
       try {
-        // Step 1: Create contact with standard fields
-        const createRes = await fetch(`${GHL_V1_BASE}/contacts/`, {
-          method: "POST",
-          headers: v1Headers,
-          body: JSON.stringify(contactData),
+        const result = await createOrUpsertGhlContact({
+          firstName,
+          lastName,
+          email,
+          phone,
+          city: locationData.city,
+          state: locationData.state,
+          postalCode: locationData.postalCode,
+          country: locationData.country,
+          source: contactData.source,
+          tags,
+          companyName: contactData.companyName,
+          customField: customFieldObj,
         });
-        const createText = await createRes.text();
-        if (!createRes.ok)
-          throw new Error(`GHL v1 create contact failed ${createRes.status}: ${createText}`);
-        let createJson = {};
-        try {
-          createJson = JSON.parse(createText);
-        } catch {
-          /* ignore */
-        }
-        const contactId = extractContactIdV1(createJson);
-        if (!contactId)
-          throw new Error("GHL v1 returned success but contact id was not found.");
 
-        // Step 2: Update custom fields via batch PUT or individual fallback
-        if (Object.keys(customFieldObj).length > 0) {
-          await updateGhlCustomFields(
-            process.env.GOHIGHLEVEL_API_KEY || process.env.GHL_API_KEY,
-            contactId,
-            customFieldObj,
-            contactData
-          );
-        }
+        if (!result.contactId)
+          throw new Error("GHL returned success but contact id was not found.");
 
-        // Add notes
-        const note1 = await fetch(`${GHL_V1_BASE}/contacts/${contactId}/notes/`, {
-          method: "POST",
-          headers: v1Headers,
-          body: JSON.stringify({ body: qualificationNote }),
-        });
-        if (!note1.ok) console.warn("[GHL v1] Qualification note failed:", await note1.text());
-
-        const note2 = await fetch(`${GHL_V1_BASE}/contacts/${contactId}/notes/`, {
-          method: "POST",
-          headers: v1Headers,
-          body: JSON.stringify({ body: fullAssessmentNote }),
-        });
-        if (!note2.ok) console.warn("[GHL v1] Full assessment note failed:", await note2.text());
+        // Add the qualification + full assessment notes using the active engine.
+        await addGhlNote(result.contactId, qualificationNote);
+        await addGhlNote(result.contactId, fullAssessmentNote);
 
         return NextResponse.json({
           success: true,
-          message: "Qualified lead created successfully",
-          contactId,
+          message: `Qualified lead created successfully (GoHighLevel ${result.engine})`,
+          contactId: result.contactId,
           tagsApplied: tags,
           customFieldsApplied: Object.keys(customFieldObj),
           locationData,
         });
       } catch (e) {
-        console.warn("[GHL v1] CRM integration failed:", e.message);
+        console.warn("[GHL] CRM integration failed:", e.message);
         return NextResponse.json({
           success: true,
           message: "Lead received (CRM integration temporarily unavailable)",
@@ -468,7 +354,7 @@ ${answerLines.join("\n") || "- None"}
       }
     }
 
-    console.warn("[submit-lead] GOHIGHLEVEL_API_KEY not set. Accepting lead without CRM integration.");
+    console.warn("[submit-lead] GOHIGHLEVEL_API_KEY or GOHIGHLEVEL_LOCATION_ID not set. Accepting lead without CRM integration.");
     return NextResponse.json({
       success: true,
       message: "Lead received (CRM not configured)",

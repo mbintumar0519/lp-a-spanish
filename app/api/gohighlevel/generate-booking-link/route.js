@@ -23,81 +23,7 @@ export async function POST(request) {
       throw new Error('GoHighLevel Calendar ID not configured');
     }
 
-    // Try multiple potential endpoints for generating one-time booking links
-    const endpointsToTry = [
-      // API 2.0 endpoint
-      {
-        url: `https://services.leadconnectorhq.com/calendars/${calendarId}/bookingLink`,
-        headers: {
-          Authorization: `Bearer ${ghlApiKey}`,
-          'Content-Type': 'application/json',
-          Version: '2021-04-15',
-        },
-        body: {
-          contact: {
-            firstName,
-            lastName,
-            email,
-            phone,
-          },
-          oneTimeUse: true,
-          skipForm: true,
-        },
-      },
-      // API 1.0 endpoint (fallback)
-      {
-        url: `https://rest.gohighlevel.com/v1/calendars/${calendarId}/bookingLink`,
-        headers: {
-          Authorization: `Bearer ${ghlApiKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: {
-          contact: {
-            firstName,
-            lastName,
-            email,
-            phone,
-          },
-          oneTimeUse: true,
-          skipForm: true,
-        },
-      },
-    ];
-
-    let bookingLinkResponse;
-    let lastError;
-
-    // Try each endpoint in sequence
-    for (const endpoint of endpointsToTry) {
-      try {
-        bookingLinkResponse = await fetch(endpoint.url, {
-          method: 'POST',
-          headers: endpoint.headers,
-          body: JSON.stringify(endpoint.body),
-        });
-
-        if (bookingLinkResponse.ok) {
-          const bookingData = await bookingLinkResponse.json();
-
-          return NextResponse.json({
-            success: true,
-            bookingLink: bookingData.link || bookingData.bookingLink || bookingData.url,
-            data: bookingData,
-            method: 'api-generated',
-          });
-        }
-
-        lastError = await bookingLinkResponse.text();
-        console.warn(`Endpoint ${endpoint.url} failed:`, bookingLinkResponse.status, lastError);
-      } catch (endpointError) {
-        console.warn(`Endpoint ${endpoint.url} error:`, endpointError.message);
-        lastError = endpointError.message;
-      }
-    }
-
-    // If API endpoints fail, fall back to regular booking widget with pre-populated parameters
-    console.log('API endpoints failed, falling back to regular booking widget');
-
+    // HighLevel API v3 embeddable booking widget link
     const queryParams = new URLSearchParams();
     const fullName = [firstName, lastName].filter(Boolean).join(' ');
     if (firstName) {
@@ -112,21 +38,18 @@ export async function POST(request) {
     if (email) queryParams.append('email', email);
     if (phone) queryParams.append('phone', phone);
     queryParams.append('embed', '1');
-
     queryParams.append('skipForm', '1');
 
-
-    const fallbackBookingLink = `https://api.leadconnectorhq.com/widget/booking/${calendarId}?${queryParams.toString()}`;
+    const bookingLink = `https://api.leadconnectorhq.com/widget/booking/${calendarId}?${queryParams.toString()}`;
 
     return NextResponse.json({
       success: true,
-      bookingLink: fallbackBookingLink,
+      bookingLink,
       data: {
         calendarId,
         contactInfo: { firstName, lastName, email, phone },
-        note: 'Using regular booking widget with pre-populated contact information',
       },
-      method: 'widget-fallback',
+      method: 'widget',
     });
   } catch (error) {
     console.error('Error generating booking link:', error);
