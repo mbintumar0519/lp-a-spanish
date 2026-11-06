@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { scrollToHeroForm } from '../utils/scrollToForm';
 
-export default function Lp(a) testingSection() {
+export default function ConsultationSection() {
   return (
     <section id="schedule" className="Lp(a) testing-section" style={{
       background: 'linear-gradient(135deg, #991b1b 0%, #dc2626 50%, #991b1b 100%)',
