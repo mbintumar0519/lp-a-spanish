@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "ghl:setup": "node setup-env.js",
     "ghl:test": "node test-ghl-connection.js",
     "ghl:test-form": "node test-form-submission.js",

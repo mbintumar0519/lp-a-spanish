@@ -1,4 +1,38 @@
-'use client';
+"use client";
+
+function UsFlag({ className = "" }) {
+  return (
+    <svg className={className} viewBox="0 0 24 16" width="24" height="16" aria-hidden="true">
+      <defs>
+        <clipPath id="us-flag-shape">
+          <rect width="24" height="16" rx="2" />
+        </clipPath>
+      </defs>
+      <g clipPath="url(#us-flag-shape)">
+        <rect width="24" height="16" fill="#b22234" />
+        <path d="M0 2.46h24M0 4.92h24M0 7.38h24M0 9.85h24M0 12.31h24M0 14.77h24" stroke="#fff" strokeWidth="1.23" />
+        <rect width="10" height="8.62" fill="#3c3b6e" />
+        <g fill="#fff" opacity="0.95">
+          <circle cx="2" cy="1.6" r="0.6" />
+          <circle cx="4" cy="1.6" r="0.6" />
+          <circle cx="6" cy="1.6" r="0.6" />
+          <circle cx="8" cy="1.6" r="0.6" />
+          <circle cx="3" cy="3.2" r="0.6" />
+          <circle cx="5" cy="3.2" r="0.6" />
+          <circle cx="7" cy="3.2" r="0.6" />
+          <circle cx="2" cy="4.8" r="0.6" />
+          <circle cx="4" cy="4.8" r="0.6" />
+          <circle cx="6" cy="4.8" r="0.6" />
+          <circle cx="8" cy="4.8" r="0.6" />
+          <circle cx="3" cy="6.4" r="0.6" />
+          <circle cx="5" cy="6.4" r="0.6" />
+          <circle cx="7" cy="6.4" r="0.6" />
+        </g>
+      </g>
+    </svg>
+  );
+}
+
 
 import { useState, useEffect } from 'react';
 import { getAttribution, deriveLeadSource, generateEventId, persistAttribution } from '../utils/attribution';
@@ -38,10 +72,22 @@ const formatName = (name) => {
 
 const formatPhone = (raw) => {
   if (!raw) return '';
-  if (raw.trim().startsWith('+')) return raw;
-  const digits = raw.replace(/\D/g, '');
+  let digits = raw.replace(/\D/g, '');
+  if (digits.startsWith('1')) {
+    if (digits.length >= 11) digits = digits.slice(1, 11);
+    else {
+      digits = digits.slice(0, 11);
+      if (digits.length === 1) return '+1';
+      const national = digits.slice(1);
+      if (national.length <= 3) return `+1 (${national}`;
+      if (national.length <= 6) return `+1 (${national.slice(0, 3)}) ${national.slice(3)}`;
+      return `+1 (${national.slice(0, 3)}) ${national.slice(3, 6)}-${national.slice(6)}`;
+    }
+  } else {
+    digits = digits.slice(0, 10);
+  }
   if (digits.length === 0) return '';
-  if (digits.length <= 3) return `(${digits}`;
+  if (digits.length <= 3) return digits;
   if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
   return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
 };
@@ -306,23 +352,33 @@ export default function PreScreeningForm({ layout = 'vertical' }) {
 
               <div>
                 <label htmlFor="phone" className="block text-gray-700 text-sm font-medium mb-1.5">
-                  Número de Teléfono
+                  Número de Teléfono <span className="text-red-600">*</span>
                 </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  required
-                  value={contactInfo.phone}
-                  onChange={(e) => {
-                    setContactInfo({ ...contactInfo, phone: formatPhone(e.target.value) });
-                    if (validationErrors.phone) setValidationErrors({ ...validationErrors, phone: undefined });
-                  }}
-                  className={`w-full px-3.5 py-2.5 border rounded-lg text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:ring-offset-0 focus:border-red-500 hover:border-red-300 ${validationErrors.phone
-                      ? 'border-red-400 bg-red-50'
-                      : 'border-gray-300 bg-white'
-                    }`}
-                  placeholder="(813) 796-6716"
-                />
+                <div
+                  className={`flex w-full items-center rounded-lg border transition-all duration-200 focus-within:ring-2 focus-within:ring-red-500/20 focus-within:border-red-500 ${
+                    validationErrors.phone ? 'border-red-400 bg-red-50/20' : 'border-gray-300 bg-white hover:border-gray-400'
+                  }`}
+                >
+                  <div className="flex shrink-0 select-none items-center gap-2 border-r border-gray-300 px-3 py-2.5 text-sm font-semibold text-gray-700" aria-hidden="true">
+                    <UsFlag className="h-4 w-6 shrink-0 rounded-[2px] shadow-[0_0_0_1px_rgba(0,0,0,0.08)]" />
+                    <span className="font-bold">+1</span>
+                    <svg className="size-3.5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                  <input
+                    type="tel"
+                    id="phone"
+                    required
+                    value={contactInfo.phone}
+                    onChange={(e) => {
+                      setContactInfo({ ...contactInfo, phone: formatPhone(e.target.value) });
+                      if (validationErrors.phone) setValidationErrors({ ...validationErrors, phone: undefined });
+                    }}
+                    className="w-full flex-1 bg-transparent px-3 py-2.5 text-sm outline-none placeholder:text-gray-400"
+                    placeholder="(813) 555-0123"
+                  />
+                </div>
                 {validationErrors.phone && (
                   <p className="text-red-600 text-xs mt-1.5">{validationErrors.phone}</p>
                 )}
