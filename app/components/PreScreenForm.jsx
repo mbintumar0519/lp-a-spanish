@@ -36,6 +36,7 @@ function UsFlag({ className = "" }) {
 
 import { useState, useEffect } from 'react';
 import { getAttribution, deriveLeadSource, generateEventId, persistAttribution } from '../utils/attribution';
+import { formatUsPhone, isValidUsPhone } from '../lib/usPhone';
 
 const questions = [
   {
@@ -70,27 +71,7 @@ const formatName = (name) => {
     .join(' ');
 };
 
-const formatPhone = (raw) => {
-  if (!raw) return '';
-  let digits = raw.replace(/\D/g, '');
-  if (digits.startsWith('1')) {
-    if (digits.length >= 11) digits = digits.slice(1, 11);
-    else {
-      digits = digits.slice(0, 11);
-      if (digits.length === 1) return '+1';
-      const national = digits.slice(1);
-      if (national.length <= 3) return `+1 (${national}`;
-      if (national.length <= 6) return `+1 (${national.slice(0, 3)}) ${national.slice(3)}`;
-      return `+1 (${national.slice(0, 3)}) ${national.slice(3, 6)}-${national.slice(6)}`;
-    }
-  } else {
-    digits = digits.slice(0, 10);
-  }
-  if (digits.length === 0) return '';
-  if (digits.length <= 3) return digits;
-  if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
-  return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
-};
+const formatPhone = (raw) => formatUsPhone(raw);
 
 export default function PreScreeningForm({ layout = 'vertical' }) {
   const [answers, setAnswers] = useState({});
@@ -132,8 +113,8 @@ export default function PreScreeningForm({ layout = 'vertical' }) {
 
     if (!contactInfo.phone?.trim()) {
       errors.phone = 'El número de teléfono es requerido';
-    } else if (!/^[\d\s()+-]+$/.test(contactInfo.phone.trim()) || contactInfo.phone.replace(/[^\d]/g, '').length < 10) {
-      errors.phone = 'Por favor ingrese un número de teléfono válido con al menos 10 dígitos';
+    } else if (!isValidUsPhone(contactInfo.phone)) {
+      errors.phone = 'Por favor ingrese un número de teléfono válido de EE. UU. (10 dígitos)';
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { isValidUsPhone } from "../../lib/usPhone";
 import IPGeolocationAPI from "ip-geolocation-api-javascript-sdk";
 import GeolocationParams from "ip-geolocation-api-javascript-sdk/GeolocationParams.js";
 import {
@@ -139,6 +140,12 @@ export async function POST(request) {
   try {
     const body = await request.json();
     const { eventId, fbp, fbc, ...formData } = body;
+    if (!isValidUsPhone(String(formData.phone || ""))) {
+      return NextResponse.json(
+        { success: false, error: "invalid_phone", message: "Por favor ingrese un número de teléfono válido de EE. UU. (10 dígitos)." },
+        { status: 400 },
+      );
+    }
 
     // Live CRM test requested: remove dev short-circuit so requests hit GHL
 
