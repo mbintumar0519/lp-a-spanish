@@ -4,52 +4,50 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a clinical trial landing page for the UC study evaluating RO7790121 (anti-TL1A monoclonal antibody) built with Next.js 15 and React 19. The project focuses on lead generation and conversion tracking with integrations to Facebook Pixel and GoHighLevel CRM.
+Spanish-language recruitment landing page for the Lp(a) cardiovascular research study (Plant City, FL), built with Next.js 16, React 19 and TypeScript. The project focuses on lead generation and conversion tracking with Meta Pixel/CAPI, GoHighLevel CRM, CRIO and Google Sheets integrations.
 
 ## Development Commands
 
 ```bash
-# Development
-npm run dev              # Start development server at localhost:3000
-
-# Production
-npm run build           # Build for production
-npm run start           # Start production server
-
-# Code Quality
-npm run lint            # Run ESLint
-
-# GoHighLevel Integration
-npm run ghl:setup       # Set up GoHighLevel environment
-npm run ghl:test        # Test GoHighLevel integration
-npm run ghl:check-leads # Check local leads storage
+npm run dev        # Start development server at localhost:3000
+npm run build      # Production build
+npm run start      # Serve production build
+npm run lint       # ESLint
+npm run typecheck  # TypeScript type check
 ```
 
 ## Architecture Overview
 
 ### Tech Stack
-- **Framework**: Next.js 15.2.4 with App Router
-- **UI**: React 19.0.0 with Tailwind CSS
+- **Framework**: Next.js 16 (App Router), React 19, TypeScript (strict)
+- **Styling**: Tailwind CSS 4
+- **Forms**: React Hook Form + Zod; schemas in `lib/validations` are shared by the form and the API routes
 - **Animations**: Framer Motion
-- **Analytics**: Facebook Pixel + Conversions API
-- **CRM**: GoHighLevel integration + Google Sheets backup
+- **Analytics**: Meta Pixel + Conversions API, GTM, Microsoft Clarity
+- **CRM**: GoHighLevel + CRIO + Google Sheets backup
 
 ### Project Structure
 ```
-app/
-├── api/                    # API routes for integrations
-│   ├── facebook/          # Facebook tracking endpoints
-│   ├── gohighlevel/       # GoHighLevel booking and lead management
-│   └── submit-lead/       # Main lead submission endpoint
-├── components/            # Section-based React components
-├── hooks/                 # Custom hooks (useFormTracking, useFacebookPixel)
-└── lib/                   # Utilities (facebook-pixel, gohighlevel-api)
+app/                     Routes, layouts, API route handlers
+components/
+  analytics/             Tracking scripts and dev tooling
+  forms/pre-screening/   Pre-screening form, questions, submit service
+  layout/                navbar, sidebar-menu, footer, ribbon, floating-cta
+  sections/              Home page sections
+  shared/                Cross-page components
+  ui/                    Primitive UI components
+config/                  Site constants
+hooks/                   Client hooks
+lib/                     Validations, integrations, helpers
+types/                   Global and third-party type declarations
 ```
+
+Conventions: kebab-case file names, named exports for components (default exports only where Next.js requires them), no code comments.
 
 ### Key Integration Points
 
 1. **Facebook Pixel Integration**
-   - Client-side tracking via `useFacebookPixel` hook
+   - Client-side tracking via `components/analytics/facebook-pixel.tsx` and `hooks/use-lead-conversion.ts`
    - Server-side Conversions API in `/api/facebook/pageview`
    - Test mode support with TEST_EVENT_CODE environment variable
 
@@ -109,7 +107,7 @@ GOOGLE_SHEETS_WEBHOOK_URL=
 3. **State Management**
    - Local state with React hooks
    - No global state management library
-   - Form state managed in LeadCaptureForm component
+   - Form state managed by React Hook Form in `components/forms/pre-screening/pre-screening-form.tsx`
 
 4. **Styling**
    - Tailwind CSS with custom medical theme colors
@@ -119,34 +117,31 @@ GOOGLE_SHEETS_WEBHOOK_URL=
 ### Common Tasks
 
 **Adding a new API endpoint:**
-1. Create route file in `app/api/[endpoint-name]/route.js`
+1. Create route file in `app/api/[endpoint-name]/route.ts` and validate the body with a Zod schema via `parseJsonBody`
 2. Implement POST/GET handlers as needed
 3. Use consistent error handling pattern
 4. Add CORS headers if needed for external access
 
 **Modifying the lead form:**
-1. Edit `app/components/LeadCaptureForm.jsx`
-2. Update validation logic in the component
-3. Modify API submission in `/api/submit-lead/route.js`
-4. Test with GoHighLevel integration using `npm run ghl:test`
+1. Edit `components/forms/pre-screening/`
+2. Update the shared schema in `lib/validations/lead.ts`
+3. Update `app/api/submit-lead/route.ts` if the payload changes
 
 **Testing Facebook Pixel:**
-1. Visit `/pixel-test` route in development
-2. Check browser console for pixel events
-3. Use Facebook Pixel Helper Chrome extension
-4. Verify events in Facebook Events Manager
+1. Check browser console for pixel events
+2. Use Facebook Pixel Helper Chrome extension
+3. Verify events in Facebook Events Manager
 
 **Updating GoHighLevel integration:**
 1. Check workflow documentation in `GOHIGHLEVEL_WORKFLOW_SETUP.md`
-2. Test changes with `npm run ghl:test`
-3. Verify booking links with actual calendar ID
+2. Verify booking links with actual calendar ID
 
 **Managing Google Sheets Integration:**
 1. Webhook URL configured in `GOOGLE_SHEETS_WEBHOOK_URL` environment variable
 2. Lead data automatically sent to Google Sheets on form submission
 3. Integration runs in parallel (non-blocking) - won't fail main submission
 4. Data format: Name, Number, Email, Date Initiated, Status
-5. Sheet name defaults to 'BPD Leads' (configurable in `/api/submit-lead/route.js:217`)
+5. Sheet name is "Lp(a) Leads" (`SHEET_NAME` in `app/api/submit-lead/route.ts`)
 6. Check Google Apps Script logs for webhook errors
 7. Test webhook directly with the `testWebhook()` function in Apps Script editor
 

@@ -1,23 +1,64 @@
-# UC Study Site
+# Lp(a) Heart Health Study — Spanish Landing Page
 
-This is a Next.js project for a clinical trial landing page for Ulcerative Colitis.
+Spanish-language recruitment landing page for the Lp(a) cardiovascular research study in Plant City, FL.
 
-## Getting Started
+## Stack
 
-First, run the development server:
+- Next.js 16 (App Router) · React 19 · TypeScript (strict)
+- Tailwind CSS 4
+- React Hook Form + Zod (shared client/server validation)
+- Integrations: GoHighLevel CRM, CRIO, Google Sheets, Meta Pixel + Conversions API, GTM, Microsoft Clarity
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Script              | Purpose                    |
+| ------------------- | -------------------------- |
+| `npm run dev`       | Start the dev server       |
+| `npm run build`     | Production build           |
+| `npm run start`     | Serve the production build |
+| `npm run lint`      | ESLint                     |
+| `npm run typecheck` | TypeScript type check      |
 
-## Environment Variables
+## Project structure
 
-- `SITE_URL` - The fully qualified URL of the site (e.g. `https://amariuc.netlify.app`). This value is used for the sitemap, robots.txt and structured data in `layout.js`.
-- `GOHIGHLEVEL_API_KEY` - GoHighLevel API Key. (`GHL_API_KEY` is also accepted.)
-- `GHL_LOCATION_ID` - GoHighLevel Location ID for the specific clinic location.
-- `FB_PIXEL_ID` - Facebook Pixel ID.
-- `FB_API_ACCESS_TOKEN` - Facebook Conversions API Access Token.
-- `FB_TEST_EVENT_CODE` - (Optional) Facebook Test Event Code for debugging server-side events.
+```
+app/                     Routes, layouts and API route handlers
+  api/                   submit-lead, facebook/*, get-location, gohighlevel/*, leads
+components/
+  analytics/             Pixel, GTM, Clarity and dev-only tooling
+  forms/pre-screening/   Pre-screening form, questions and submit service
+  layout/                navbar, sidebar-menu, footer, ribbon, floating-cta
+  sections/              Home page sections
+  shared/                Components reused across pages
+  ui/                    Primitive UI building blocks
+config/                  Site-wide constants
+hooks/                   Client hooks
+lib/
+  validations/           Zod schemas shared by the client and API routes
+  integrations/          GoHighLevel, CRIO, Google Sheets clients
+  facebook/              Conversions API + browser id helpers
+types/                   Global and third-party type declarations
+```
 
+## Environment variables
+
+See `.env.example` for the full list.
+
+| Variable                                         | Description                                       |
+| ------------------------------------------------ | ------------------------------------------------- |
+| `SITE_URL`                                       | Canonical site URL (sitemap, robots, metadata)    |
+| `GOHIGHLEVEL_API_KEY` / `GOHIGHLEVEL_LOCATION_ID` | GoHighLevel private integration token + location |
+| `GOHIGHLEVEL_CALENDAR_ID`                        | Calendar used for booking links                   |
+| `NEXT_PUBLIC_GOHIGHLEVEL_CALENDAR_ID`            | Calendar embedded on `/schedule`                  |
+| `NEXT_PUBLIC_FACEBOOK_PIXEL_ID`                  | Meta Pixel id                                     |
+| `FACEBOOK_ACCESS_TOKEN`                          | Meta Conversions API token                        |
+| `FACEBOOK_TEST_EVENT_CODE`                       | Optional Meta test event code                     |
+| `IP_GEOLOCATION_API_KEY` / `IPINFO_TOKEN`        | IP geolocation providers                          |
+| `GOOGLE_SHEETS_WEBHOOK_URL`                      | Google Apps Script webhook for lead backup        |
+| `NEXT_PUBLIC_CLARITY_PROJECT_ID`                 | Microsoft Clarity project                         |
+| `LEADS_API_TOKEN`                                | Bearer token for `POST /api/leads`                |

@@ -1,16 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
 
 @import "tailwindcss";
 @import "./styles/buttons.css";
 
-/* ---------------------------------------------------------------------------
-   Tailwind v4 theme — preserves custom tokens from tailwind.config.js (v3)
-   so existing class names keep the same look (colors, fonts, backgrounds).
-   --------------------------------------------------------------------------- */
 @theme {
-  /* Brand / primary (legacy config + scale used on eligibility page) */
   --color-primary: #ef4444;
   --color-primary-light: #fee2e2;
   --color-primary-dark: #991b1b;
@@ -25,7 +20,6 @@
   --color-primary-800: #991b1b;
   --color-primary-900: #7f1d1d;
 
-  /* Semantic / brand tokens from previous config */
   --color-navy: #1a365d;
   --color-navy-900: #0f2744;
 
@@ -43,7 +37,6 @@
   --color-warning: #f59e0b;
   --color-error: #dc2626;
 
-  /* App-level tokens (used in @theme previously) */
   --color-background: #f9fafb;
   --color-foreground: #111827;
   --color-cta: #ef4444;
@@ -51,27 +44,13 @@
   --color-light-gray: #f3f4f6;
   --color-card-bg: #ffffff;
 
-  /* Medical / schedule page accents (if referenced) */
   --color-medical-primary: #dc2626;
 
-  /* Fonts — maps to font-heading / font-body utilities */
   --font-heading: "Plus Jakarta Sans", "IBM Plex Sans", "Poppins", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Work Sans", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
-/* Font display swap to prevent CLS */
-@font-face {
-  font-family: 'Work Sans';
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Plus Jakarta Sans';
-  font-display: swap;
-}
-
-/* Design tokens used by buttons.css and residual inline styles */
 :root {
   --primary-blue: #dc2626;
   --primary-dark: #991b1b;
@@ -116,7 +95,6 @@
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
-/* Skip link */
 .skip-link {
   @apply absolute -top-10 left-0 bg-gray-900 text-white px-3 py-2 z-[1000] rounded-br;
 }
@@ -124,7 +102,6 @@
   @apply top-0;
 }
 
-/* Focus styles */
 :focus-visible {
   @apply outline-2 outline-offset-2 outline-blue-600;
 }
@@ -137,13 +114,11 @@ textarea:focus-visible {
   @apply ring-2 ring-blue-500/40;
 }
 
-/* Base body */
 body {
   @apply bg-gray-50 text-gray-900 antialiased;
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
   @apply w-2;
 }
@@ -157,55 +132,34 @@ body {
   @apply bg-red-800;
 }
 
-/* Phone input overrides (needed for third-party component) */
-.PhoneInputInput {
-  @apply bg-transparent text-inherit h-full border-0 outline-none;
-}
-.phone-input-hero {
-  @apply bg-white/20 border border-white/30 text-white rounded-lg;
-}
-.phone-input-hero .PhoneInputInput::placeholder {
-  @apply text-white/70;
-}
-.phone-input-hero .PhoneInputCountrySelectArrow {
-  @apply text-white;
-}
-.phone-input-hero .PhoneInputCountryIcon--border {
-  @apply shadow-none;
-}
-.phone-input-default {
-  @apply border border-gray-300;
-}
-
-/* Wave divider (custom SVG background — keep as-is) */
 .wave-divider {
   @apply relative h-[150px] overflow-hidden;
 }
 .wave-divider::before {
-  content: '';
+  content: "";
   @apply absolute left-0 right-0 bottom-0 h-full;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%231F3B57' fill-opacity='0.1' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
   background-size: cover;
   background-position: center;
 }
 
-/* Nested list style used in eligibility (v3 list-circle was nonstandard) */
-.list-circle {
-  list-style-type: circle;
-}
-
 @layer base {
   html {
-    font-family: 'Work Sans', sans-serif;
+    font-family: "Work Sans", sans-serif;
   }
 }
 
-@layer components {
-  .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24;
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-  .card {
-    @apply bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 border border-gray-200;
-  }
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out;
 }

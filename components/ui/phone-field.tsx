@@ -1,0 +1,48 @@
+import type { ComponentProps, ReactNode } from "react";
+import { cn } from "@/lib/cn";
+import { FieldError } from "@/components/ui/field-error";
+import { ChevronDownIcon, UsFlagIcon } from "@/components/ui/icons";
+
+type PhoneFieldProps = Omit<ComponentProps<"input">, "id" | "type"> & {
+  id: string;
+  label: ReactNode;
+  error?: string;
+};
+
+export function PhoneField({ id, label, error, ...inputProps }: PhoneFieldProps) {
+  const errorId = `${id}-error`;
+
+  return (
+    <div>
+      <label htmlFor={id} className="block text-gray-700 text-sm font-medium mb-1.5">
+        {label}
+      </label>
+      <div
+        className={cn(
+          "flex w-full items-center rounded-lg border transition-all duration-200 focus-within:ring-2 focus-within:ring-red-500/20 focus-within:border-red-500",
+          error ? "border-red-400 bg-red-50/20" : "border-gray-300 bg-white hover:border-gray-400",
+        )}
+      >
+        <div
+          className="flex shrink-0 select-none items-center gap-2 border-r border-gray-300 px-3 py-2.5 text-sm font-semibold text-gray-700"
+          aria-hidden="true"
+        >
+          <UsFlagIcon className="h-4 w-6 shrink-0 rounded-[2px] shadow-[0_0_0_1px_rgba(0,0,0,0.08)]" />
+          <span className="font-bold">+1</span>
+          <ChevronDownIcon className="size-3.5 text-gray-500" />
+        </div>
+        <input
+          id={id}
+          type="tel"
+          inputMode="tel"
+          autoComplete="tel-national"
+          aria-invalid={Boolean(error)}
+          aria-describedby={error ? errorId : undefined}
+          className="w-full flex-1 bg-transparent px-3 py-2.5 text-sm outline-none placeholder:text-gray-400"
+          {...inputProps}
+        />
+      </div>
+      <FieldError id={errorId} message={error} />
+    </div>
+  );
+}
