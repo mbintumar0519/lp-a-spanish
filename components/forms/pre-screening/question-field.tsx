@@ -40,13 +40,9 @@ export function QuestionField({ number, prompt, hint, error, note, className, ch
           {number}
         </span>
         <div>
-          <label
-            id={ids.label}
-            htmlFor={ids.control}
-            className="block text-[15px] leading-snug font-medium text-gray-800"
-          >
+          <p id={ids.label} className="block text-[15px] leading-snug font-medium text-gray-800">
             {prompt}
-          </label>
+          </p>
           {hint && (
             <p id={ids.hint} className="mt-1 text-sm text-gray-500">
               {hint}

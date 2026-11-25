@@ -14,14 +14,13 @@ import {
   type PreScreeningFormInput,
   type PreScreeningFormValues,
 } from "@/lib/validations/lead";
-import { DropdownMultiSelect, DropdownSelect } from "@/components/ui/dropdown-select";
+import { CheckboxOptions, RadioOptions } from "@/components/ui/choice-options";
 import { PhoneField } from "@/components/ui/phone-field";
 import { TextField } from "@/components/ui/text-field";
 import {
   AGE_OPTIONS,
   ARTERY_SCAN_OPTIONS,
   CARDIAC_EVENT_OPTIONS,
-  MULTI_SELECT_LABELS,
   RISK_FACTOR_OPTIONS,
   TRAVEL_OPTIONS,
 } from "@/components/forms/pre-screening/questions";
@@ -192,14 +191,13 @@ export function PreScreeningForm({ layout = "vertical" }: PreScreeningFormProps)
                     error={fieldState.error?.message}
                   >
                     {(a11y) => (
-                      <DropdownSelect
+                      <RadioOptions
                         {...a11y}
                         options={AGE_OPTIONS}
-                        placeholder="Seleccione…"
                         value={field.value}
                         onChange={field.onChange}
                         onBlur={field.onBlur}
-                        buttonRef={field.ref}
+                        inputRef={field.ref}
                       />
                     )}
                   </QuestionField>
@@ -217,16 +215,14 @@ export function PreScreeningForm({ layout = "vertical" }: PreScreeningFormProps)
                     error={fieldState.error?.message}
                   >
                     {(a11y) => (
-                      <DropdownMultiSelect
+                      <CheckboxOptions
                         {...a11y}
                         options={RISK_FACTOR_OPTIONS}
                         exclusiveValue={NO_RISK_FACTOR}
-                        placeholder="Seleccione…"
-                        labels={MULTI_SELECT_LABELS}
                         value={field.value ?? []}
                         onChange={field.onChange}
                         onBlur={field.onBlur}
-                        buttonRef={field.ref}
+                        inputRef={field.ref}
                       />
                     )}
                   </QuestionField>
@@ -244,14 +240,13 @@ export function PreScreeningForm({ layout = "vertical" }: PreScreeningFormProps)
                     error={fieldState.error?.message}
                   >
                     {(a11y) => (
-                      <DropdownSelect
+                      <RadioOptions
                         {...a11y}
                         options={ARTERY_SCAN_OPTIONS}
-                        placeholder="Seleccione…"
                         value={field.value}
                         onChange={field.onChange}
                         onBlur={field.onBlur}
-                        buttonRef={field.ref}
+                        inputRef={field.ref}
                       />
                     )}
                   </QuestionField>
@@ -269,14 +264,13 @@ export function PreScreeningForm({ layout = "vertical" }: PreScreeningFormProps)
                     error={fieldState.error?.message}
                   >
                     {(a11y) => (
-                      <DropdownSelect
+                      <RadioOptions
                         {...a11y}
                         options={CARDIAC_EVENT_OPTIONS}
-                        placeholder="Seleccione…"
                         value={field.value}
                         onChange={field.onChange}
                         onBlur={field.onBlur}
-                        buttonRef={field.ref}
+                        inputRef={field.ref}
                       />
                     )}
                   </QuestionField>
@@ -305,14 +299,13 @@ export function PreScreeningForm({ layout = "vertical" }: PreScreeningFormProps)
                     }
                   >
                     {(a11y) => (
-                      <DropdownSelect
+                      <RadioOptions
                         {...a11y}
                         options={TRAVEL_OPTIONS}
-                        placeholder="Seleccione…"
                         value={field.value}
                         onChange={field.onChange}
                         onBlur={field.onBlur}
-                        buttonRef={field.ref}
+                        inputRef={field.ref}
                       />
                     )}
                   </QuestionField>
