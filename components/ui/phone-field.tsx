@@ -17,7 +17,7 @@ export function PhoneField({ id, label, hint, error, ...inputProps }: PhoneField
 
   return (
     <div>
-      <label htmlFor={id} className="block text-gray-700 text-sm font-medium mb-1.5">
+      <label htmlFor={id} className="mb-1.5 block text-[15px] font-semibold text-gray-900">
         {label}
       </label>
       <div

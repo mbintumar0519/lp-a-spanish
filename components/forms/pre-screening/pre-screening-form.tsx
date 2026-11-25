@@ -338,7 +338,7 @@ export function PreScreeningForm({ layout = "vertical" }: PreScreeningFormProps)
           </div>
         ) : (
           <div role="group" aria-labelledby={stepTitleId}>
-            <div className="space-y-4 rounded-lg border border-gray-100 bg-gray-50 p-4 sm:p-5">
+            <div className="space-y-5 rounded-lg border border-gray-100 bg-gray-50 p-4 sm:p-5">
               <TextField
                 id={`${fieldId}-name`}
                 type="text"
