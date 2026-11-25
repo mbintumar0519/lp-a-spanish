@@ -12,17 +12,17 @@ Spanish-language recruitment landing page for the Lp(a) cardiovascular research 
 ## Getting started
 
 ```bash
-npm install
-npm run dev
+bun install
+bun run dev
 ```
 
 | Script              | Purpose                    |
 | ------------------- | -------------------------- |
-| `npm run dev`       | Start the dev server       |
-| `npm run build`     | Production build           |
-| `npm run start`     | Serve the production build |
-| `npm run lint`      | ESLint                     |
-| `npm run typecheck` | TypeScript type check      |
+| `bun run dev`       | Start the dev server       |
+| `bun run build`     | Production build           |
+| `bun run start`     | Serve the production build |
+| `bun run lint`      | ESLint                     |
+| `bun run typecheck` | TypeScript type check      |
 
 ## Project structure
 

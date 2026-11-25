@@ -67,7 +67,7 @@ export function ReferralBanner({ layout = "row" }: ReferralBannerProps) {
           href={siteConfig.referralUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Refiera a alguien y gane $50"
+          aria-label="Referir a alguien y ganar $50 (se abre en una pestaña nueva)"
           className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-8 py-4 text-lg font-bold text-white no-underline shadow-md transition-all duration-200 hover:bg-red-700 hover:shadow-lg active:scale-[0.97] sm:w-auto lg:w-full"
         >
           Referir a alguien

@@ -4,7 +4,9 @@ import { normalizePhoneToE164 } from "@/lib/phone";
 const GHL_API_BASE = "https://services.leadconnectorhq.com";
 const GHL_API_VERSION = "v3";
 
-export type GhlCustomField = { id: string; value: string };
+export type GhlCustomField = { id: string; value: string | string[] | number };
+
+export const hasFieldValue = ({ value }: GhlCustomField) => typeof value === "number" || value.length > 0;
 
 export type GhlContactPayload = {
   firstName: string;
@@ -68,7 +70,7 @@ export async function upsertGhlContact(payload: GhlContactPayload) {
 
   const firstName = payload.firstName.trim();
   const lastName = payload.lastName.trim();
-  const customFields = payload.customFields?.filter((field) => field.value) ?? [];
+  const customFields = payload.customFields?.filter(hasFieldValue) ?? [];
 
   const baseBody = compact({
     locationId,

@@ -6,11 +6,14 @@ import { ChevronDownIcon, UsFlagIcon } from "@/components/ui/icons";
 type PhoneFieldProps = Omit<ComponentProps<"input">, "id" | "type"> & {
   id: string;
   label: ReactNode;
+  hint?: string;
   error?: string;
 };
 
-export function PhoneField({ id, label, error, ...inputProps }: PhoneFieldProps) {
+export function PhoneField({ id, label, hint, error, ...inputProps }: PhoneFieldProps) {
   const errorId = `${id}-error`;
+  const hintId = `${id}-hint`;
+  const describedBy = [hint && hintId, error && errorId].filter(Boolean).join(" ") || undefined;
 
   return (
     <div>
@@ -37,11 +40,16 @@ export function PhoneField({ id, label, error, ...inputProps }: PhoneFieldProps)
           inputMode="tel"
           autoComplete="tel-national"
           aria-invalid={Boolean(error)}
-          aria-describedby={error ? errorId : undefined}
+          aria-describedby={describedBy}
           className="w-full flex-1 bg-transparent px-3 py-2.5 text-sm outline-none placeholder:text-gray-400"
           {...inputProps}
         />
       </div>
+      {hint && (
+        <p id={hintId} className="mt-1 text-xs text-gray-500">
+          {hint}
+        </p>
+      )}
       <FieldError id={errorId} message={error} />
     </div>
   );

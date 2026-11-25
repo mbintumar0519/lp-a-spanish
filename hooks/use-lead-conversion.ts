@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { getFacebookBrowserContext } from "@/lib/facebook/browser-ids";
 import { clearLeadSession, readLeadSession } from "@/lib/lead-session";
 
+const TEST_LEAD_DOMAIN = "@denali-example.com";
+
 const createLeadEventId = () => `lead-${Date.now()}-${Math.random().toString(36).substring(2)}`;
 
 export function useLeadConversion() {
@@ -11,10 +13,12 @@ export function useLeadConversion() {
     const eventId = createLeadEventId();
     const lead = readLeadSession();
 
+    if (process.env.NODE_ENV !== "production" && lead.email?.endsWith(TEST_LEAD_DOMAIN)) return;
+
     window.fbq?.(
       "track",
       "Lead",
-      { content_name: "UC Study Lead", content_category: "clinical_trial", value: 100, currency: "USD" },
+      { content_name: "Lp(a) Study Lead", content_category: "clinical_trial", value: 100, currency: "USD" },
       { eventID: eventId },
     );
 

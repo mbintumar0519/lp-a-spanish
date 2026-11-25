@@ -9,11 +9,11 @@ Spanish-language recruitment landing page for the Lp(a) cardiovascular research 
 ## Development Commands
 
 ```bash
-npm run dev        # Start development server at localhost:3000
-npm run build      # Production build
-npm run start      # Serve production build
-npm run lint       # ESLint
-npm run typecheck  # TypeScript type check
+bun run dev        # Start development server at localhost:3000
+bun run build      # Production build
+bun run start      # Serve production build
+bun run lint       # ESLint
+bun run typecheck  # TypeScript type check
 ```
 
 ## Architecture Overview
