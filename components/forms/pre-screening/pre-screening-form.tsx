@@ -31,11 +31,28 @@ type PreScreeningFormProps = {
   layout?: "vertical" | "horizontal";
 };
 
-type Step = 1 | 2;
+type Step = 1 | 2 | 3;
 
-const TOTAL_STEPS = 2;
+const TOTAL_STEPS = 3;
 const SUBMIT_ERROR_MESSAGE = "Algo salió mal. Por favor intente de nuevo.";
-const STEP_LABELS = ["Preguntas", "Contacto"];
+const STEP_TITLES: Record<Step, string> = {
+  1: "Sobre Usted",
+  2: "Historial Cardíaco y Viaje",
+  3: "Su Información de Contacto",
+};
+
+const STEP_NUMBERS: Step[] = [1, 2, 3];
+
+const STEP_LABELS: Record<Step, string> = {
+  1: "Sobre Usted",
+  2: "Corazón y Viaje",
+  3: "Contacto",
+};
+
+const STEP_FIELDS = {
+  1: ["answers.age_range", "answers.risk_factors"],
+  2: ["answers.artery_scan", "answers.prior_cardiac_event", "answers.can_travel"],
+} as const;
 
 const defaultValues: DefaultValues<PreScreeningFormInput> = {
   name: "",
@@ -43,34 +60,6 @@ const defaultValues: DefaultValues<PreScreeningFormInput> = {
   email: "",
   answers: { risk_factors: [] },
 };
-
-function StepIndicator({ step }: { step: Step }) {
-  return (
-    <ol className="mb-6 flex items-center gap-3" aria-label={`Paso ${step} de ${TOTAL_STEPS}`}>
-      {STEP_LABELS.map((label, index) => {
-        const number = index + 1;
-        const isActive = number === step;
-        const isDone = number < step;
-        return (
-          <li key={label} className="flex flex-1 items-center gap-2" aria-current={isActive ? "step" : undefined}>
-            <span
-              className={cn(
-                "flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-semibold transition-colors",
-                isActive || isDone ? "bg-red-800 text-white" : "bg-gray-200 text-gray-600",
-              )}
-            >
-              {isDone ? "✓" : number}
-            </span>
-            <span className={cn("text-xs font-medium sm:text-sm", isActive ? "text-gray-900" : "text-gray-500")}>
-              {label}
-            </span>
-            {number < STEP_LABELS.length && <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />}
-          </li>
-        );
-      })}
-    </ol>
-  );
-}
 
 export function PreScreeningForm({ layout = "vertical" }: PreScreeningFormProps) {
   const fieldId = useId();
@@ -119,8 +108,9 @@ export function PreScreeningForm({ layout = "vertical" }: PreScreeningFormProps)
   };
 
   const handleContinue = async () => {
-    const valid = await trigger("answers", { shouldFocus: true });
-    if (valid) goToStep(2);
+    if (step === TOTAL_STEPS) return;
+    const valid = await trigger([...STEP_FIELDS[step]], { shouldFocus: true });
+    if (valid) goToStep((step + 1) as Step);
   };
 
   const onSubmit = async (values: PreScreeningFormValues) => {
@@ -145,13 +135,6 @@ export function PreScreeningForm({ layout = "vertical" }: PreScreeningFormProps)
         isHorizontal ? "max-w-[520px] lg:max-w-[880px]" : "max-w-[520px]",
       )}
     >
-      <div className="h-1.5 overflow-hidden rounded-t-xl bg-gray-100">
-        <div
-          className="h-full bg-red-800 transition-[width] duration-500 ease-out"
-          style={{ width: `${(step / TOTAL_STEPS) * 100}%` }}
-        />
-      </div>
-
       <div className="px-5 pt-7 pb-5 text-center sm:px-8 sm:pt-8">
         <h2 className="text-xl font-bold tracking-tight text-gray-900 sm:text-2xl">
           Evaluación Gratis de Riesgo de Infarto
@@ -163,154 +146,175 @@ export function PreScreeningForm({ layout = "vertical" }: PreScreeningFormProps)
 
       <form
         noValidate
-        onSubmit={step === 2 ? handleSubmit(onSubmit) : (event) => event.preventDefault()}
+        onSubmit={step === TOTAL_STEPS ? handleSubmit(onSubmit) : (event) => event.preventDefault()}
         className="px-4 pb-6 sm:px-8 sm:pb-8"
       >
-        <StepIndicator step={step} />
+        <div className="mb-6">
+          <ol className="grid grid-cols-3 gap-2 sm:gap-3" aria-label={`Paso ${step} de ${TOTAL_STEPS}`}>
+            {STEP_NUMBERS.map((number) => (
+              <li key={number} aria-current={number === step ? "step" : undefined}>
+                <span
+                  aria-hidden="true"
+                  className={cn(
+                    "block h-1.5 rounded-full transition-colors duration-300",
+                    number <= step ? "bg-red-800" : "bg-gray-200",
+                  )}
+                />
+                <span className="sr-only">{STEP_LABELS[number]}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
 
-        <h3
-          id={stepTitleId}
-          ref={stepTitleRef}
-          tabIndex={-1}
-          className="mb-4 text-base font-semibold text-gray-900 outline-none"
-        >
-          {step === 1 ? "Preguntas de Elegibilidad" : "Su Información de Contacto"}
+        <h3 id={stepTitleId} ref={stepTitleRef} tabIndex={-1} className="sr-only">
+          {STEP_TITLES[step]}
         </h3>
 
-        {step === 1 ? (
+        {step < TOTAL_STEPS ? (
           <div role="group" aria-labelledby={stepTitleId}>
-            <div className={cn("grid gap-4", isHorizontal && "lg:grid-cols-2 lg:gap-5")}>
-              <Controller
-                control={control}
-                name="answers.age_range"
-                render={({ field, fieldState }) => (
-                  <QuestionField
-                    number={1}
-                    prompt="¿Cuántos años tiene?"
-                    hint="Seleccione una opción."
-                    error={fieldState.error?.message}
-                  >
-                    {(a11y) => (
-                      <RadioOptions
-                        {...a11y}
-                        options={AGE_OPTIONS}
-                        value={field.value}
-                        onChange={field.onChange}
-                        onBlur={field.onBlur}
-                        inputRef={field.ref}
-                      />
+            <div className={cn("grid gap-5", isHorizontal && "lg:grid-cols-2")}>
+              {step === 1 && (
+                <>
+                  <Controller
+                    control={control}
+                    name="answers.age_range"
+                    render={({ field, fieldState }) => (
+                      <QuestionField
+                        number={1}
+                        prompt="¿Cuántos años tiene?"
+                        hint="Seleccione una opción."
+                        error={fieldState.error?.message}
+                      >
+                        {(a11y) => (
+                          <RadioOptions
+                            {...a11y}
+                            options={AGE_OPTIONS}
+                            columns={3}
+                            value={field.value}
+                            onChange={field.onChange}
+                            onBlur={field.onBlur}
+                            inputRef={field.ref}
+                          />
+                        )}
+                      </QuestionField>
                     )}
-                  </QuestionField>
-                )}
-              />
+                  />
 
-              <Controller
-                control={control}
-                name="answers.risk_factors"
-                render={({ field, fieldState }) => (
-                  <QuestionField
-                    number={2}
-                    prompt="¿Cuáles de las siguientes situaciones aplican a usted?"
-                    hint="Seleccione todas las que apliquen."
-                    error={fieldState.error?.message}
-                  >
-                    {(a11y) => (
-                      <CheckboxOptions
-                        {...a11y}
-                        options={RISK_FACTOR_OPTIONS}
-                        exclusiveValue={NO_RISK_FACTOR}
-                        value={field.value ?? []}
-                        onChange={field.onChange}
-                        onBlur={field.onBlur}
-                        inputRef={field.ref}
-                      />
+                  <Controller
+                    control={control}
+                    name="answers.risk_factors"
+                    render={({ field, fieldState }) => (
+                      <QuestionField
+                        number={2}
+                        prompt="¿Cuáles de las siguientes situaciones aplican a usted?"
+                        hint="Seleccione todas las que apliquen."
+                        error={fieldState.error?.message}
+                      >
+                        {(a11y) => (
+                          <CheckboxOptions
+                            {...a11y}
+                            options={RISK_FACTOR_OPTIONS}
+                            exclusiveValue={NO_RISK_FACTOR}
+                            value={field.value ?? []}
+                            onChange={field.onChange}
+                            onBlur={field.onBlur}
+                            inputRef={field.ref}
+                          />
+                        )}
+                      </QuestionField>
                     )}
-                  </QuestionField>
-                )}
-              />
+                  />
+                </>
+              )}
 
-              <Controller
-                control={control}
-                name="answers.artery_scan"
-                render={({ field, fieldState }) => (
-                  <QuestionField
-                    number={3}
-                    prompt="¿Alguna vez le han hecho un estudio del corazón o de las arterias que mostró acumulación de placa o arterias estrechas?"
-                    hint="Seleccione una opción."
-                    error={fieldState.error?.message}
-                  >
-                    {(a11y) => (
-                      <RadioOptions
-                        {...a11y}
-                        options={ARTERY_SCAN_OPTIONS}
-                        value={field.value}
-                        onChange={field.onChange}
-                        onBlur={field.onBlur}
-                        inputRef={field.ref}
-                      />
+              {step === 2 && (
+                <>
+                  <Controller
+                    control={control}
+                    name="answers.artery_scan"
+                    render={({ field, fieldState }) => (
+                      <QuestionField
+                        number={3}
+                        prompt="¿Alguna vez le han hecho un estudio del corazón o de las arterias que mostró acumulación de placa o arterias estrechas?"
+                        hint="Seleccione una opción."
+                        error={fieldState.error?.message}
+                      >
+                        {(a11y) => (
+                          <RadioOptions
+                            {...a11y}
+                            options={ARTERY_SCAN_OPTIONS}
+                            value={field.value}
+                            onChange={field.onChange}
+                            onBlur={field.onBlur}
+                            inputRef={field.ref}
+                          />
+                        )}
+                      </QuestionField>
                     )}
-                  </QuestionField>
-                )}
-              />
+                  />
 
-              <Controller
-                control={control}
-                name="answers.prior_cardiac_event"
-                render={({ field, fieldState }) => (
-                  <QuestionField
-                    number={4}
-                    prompt="¿Alguna vez ha tenido un ataque al corazón, derrame cerebral, mini derrame (AIT), stent o cirugía de bypass?"
-                    hint="Seleccione una opción."
-                    error={fieldState.error?.message}
-                  >
-                    {(a11y) => (
-                      <RadioOptions
-                        {...a11y}
-                        options={CARDIAC_EVENT_OPTIONS}
-                        value={field.value}
-                        onChange={field.onChange}
-                        onBlur={field.onBlur}
-                        inputRef={field.ref}
-                      />
+                  <Controller
+                    control={control}
+                    name="answers.prior_cardiac_event"
+                    render={({ field, fieldState }) => (
+                      <QuestionField
+                        number={4}
+                        prompt="¿Alguna vez ha tenido un ataque al corazón, derrame cerebral, mini derrame (AIT), stent o cirugía de bypass?"
+                        hint="Seleccione una opción."
+                        error={fieldState.error?.message}
+                      >
+                        {(a11y) => (
+                          <RadioOptions
+                            {...a11y}
+                            options={CARDIAC_EVENT_OPTIONS}
+                            columns={3}
+                            value={field.value}
+                            onChange={field.onChange}
+                            onBlur={field.onBlur}
+                            inputRef={field.ref}
+                          />
+                        )}
+                      </QuestionField>
                     )}
-                  </QuestionField>
-                )}
-              />
+                  />
 
-              <Controller
-                control={control}
-                name="answers.can_travel"
-                render={({ field, fieldState }) => (
-                  <QuestionField
-                    number={5}
-                    prompt={
-                      <>
-                        ¿Puede viajar a <span className="key-term">Plant City, FL</span>, para la evaluación y las
-                        visitas regulares del estudio?
-                      </>
-                    }
-                    hint="Es posible que haya asistencia de transporte disponible."
-                    error={fieldState.error?.message}
-                    className={cn(isHorizontal && "lg:col-span-2")}
-                    note={
-                      field.value === "No"
-                        ? "Es posible que haya asistencia de transporte disponible. Si viajar es difícil, déjenos saber — nuestro equipo puede ayudar."
-                        : undefined
-                    }
-                  >
-                    {(a11y) => (
-                      <RadioOptions
-                        {...a11y}
-                        options={TRAVEL_OPTIONS}
-                        value={field.value}
-                        onChange={field.onChange}
-                        onBlur={field.onBlur}
-                        inputRef={field.ref}
-                      />
+                  <Controller
+                    control={control}
+                    name="answers.can_travel"
+                    render={({ field, fieldState }) => (
+                      <QuestionField
+                        number={5}
+                        prompt={
+                          <>
+                            ¿Puede viajar a <span className="key-term">Plant City, FL</span>, para la evaluación y las
+                            visitas regulares del estudio?
+                          </>
+                        }
+                        hint="Es posible que haya asistencia de transporte disponible."
+                        error={fieldState.error?.message}
+                        className={cn(isHorizontal && "lg:col-span-2")}
+                        note={
+                          field.value === "No"
+                            ? "Es posible que haya asistencia de transporte disponible. Si viajar es difícil, déjenos saber — nuestro equipo puede ayudar."
+                            : undefined
+                        }
+                      >
+                        {(a11y) => (
+                          <RadioOptions
+                            {...a11y}
+                            options={TRAVEL_OPTIONS}
+                            columns={2}
+                            value={field.value}
+                            onChange={field.onChange}
+                            onBlur={field.onBlur}
+                            inputRef={field.ref}
+                          />
+                        )}
+                      </QuestionField>
                     )}
-                  </QuestionField>
-                )}
-              />
+                  />
+                </>
+              )}
             </div>
 
             <button
@@ -321,6 +325,16 @@ export function PreScreeningForm({ layout = "vertical" }: PreScreeningFormProps)
               Continuar
               <span aria-hidden="true">→</span>
             </button>
+
+            {step > 1 && (
+              <button
+                type="button"
+                onClick={() => goToStep((step - 1) as Step)}
+                className="mt-3 flex h-12 w-full items-center justify-center gap-2 rounded-xl border-2 border-gray-300 bg-white text-base font-semibold text-gray-700 transition-colors duration-200 hover:border-red-300 hover:bg-red-50 hover:text-red-800"
+              >
+                <span aria-hidden="true">←</span> Atrás
+              </button>
+            )}
           </div>
         ) : (
           <div role="group" aria-labelledby={stepTitleId}>
@@ -404,11 +418,11 @@ export function PreScreeningForm({ layout = "vertical" }: PreScreeningFormProps)
 
             <button
               type="button"
-              onClick={() => goToStep(1)}
+              onClick={() => goToStep(2)}
               disabled={isBusy}
-              className="mx-auto mt-4 flex items-center gap-1 text-sm font-medium text-gray-600 underline-offset-4 hover:text-red-700 hover:underline disabled:opacity-50"
+              className="mt-3 flex h-12 w-full items-center justify-center gap-2 rounded-xl border-2 border-gray-300 bg-white text-base font-semibold text-gray-700 transition-colors duration-200 hover:border-red-300 hover:bg-red-50 hover:text-red-800 disabled:opacity-50"
             >
-              <span aria-hidden="true">←</span> Volver a las preguntas
+              <span aria-hidden="true">←</span> Atrás
             </button>
 
             <p className="mt-4 text-center text-xs leading-relaxed text-gray-600">

@@ -32,23 +32,15 @@ export function QuestionField({ number, prompt, hint, error, note, className, ch
         className,
       )}
     >
-      <div className="mb-3 flex items-start gap-3">
-        <span
-          aria-hidden="true"
-          className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-red-100 text-xs font-bold text-red-800"
-        >
-          {number}
-        </span>
-        <div>
-          <p id={ids.label} className="block text-[15px] leading-snug font-medium text-gray-800">
-            {prompt}
+      <div className="mb-3">
+        <p id={ids.label} className="text-base leading-snug font-semibold text-gray-900 sm:text-[17px]">
+          <span className="text-red-800">{number}.</span> {prompt}
+        </p>
+        {hint && (
+          <p id={ids.hint} className="mt-1 text-sm text-gray-500">
+            {hint}
           </p>
-          {hint && (
-            <p id={ids.hint} className="mt-1 text-sm text-gray-500">
-              {hint}
-            </p>
-          )}
-        </div>
+        )}
       </div>
       {children({ id: ids.control, labelledBy: ids.label, describedBy, invalid: Boolean(error) })}
       {error && (
